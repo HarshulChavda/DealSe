@@ -1,0 +1,59 @@
+﻿@*Partial view to show event ticket type details*@
+<table class="table table-bordered table-striped datatable scroll" id="CountryDetails">
+    <thead>
+        <tr>
+            <th class="searchcheck">
+                <div class="checkbox checkbox-replace">
+                    <input type="checkbox" id="chk-1" onclick="checkall(this);">
+                </div>
+            </th>
+            <th>Sr No.</th>
+            <th>Country Name</th>
+            <th>Added Date</th>
+            <th>Active</th>
+            <th class="actionedit view-more">
+                Actions
+            </th>
+        </tr>
+    </thead>
+</table>
+<script type="text/javascript">
+    function checkall(current) {
+        var status = $('#' + current.id).is(':checked');
+        if (status == true) {
+            $('#CountryDetails input[type="checkbox"]').each(function () {
+                $(this).prop('checked', true);
+                $(this).attr('checked', true);
+            });
+            $(".itemclass").addClass("checked");
+        }
+        else {
+            $('#CountryDetails input[type="checkbox"]').each(function () {
+                $(this).prop('checked', false);
+            });
+            $(".itemclass").removeClass("checked");
+        }
+    }
+    function checkchanged() {
+        $('#CountryDetails td input[type="checkbox"]').on("change", function () {
+            checkAllCheckboxes()
+        });
+    }
+    function checkAllCheckboxes() {
+        var total = $('#CountryDetails td input[type="checkbox"]').length;
+        var selected = 0;
+        $('#CountryDetails td input[type="checkbox"]').each(function () {
+            if ($(this).is(":checked")) {
+                selected += 1;
+            }
+        });
+        if ((selected == total) && (total != 0)) {
+            $('#CountryDetails th input[type="checkbox"]').prop("checked", true);
+            $('#CountryDetails th input[type="checkbox"]').trigger("change")
+        }
+        else {
+            $('#CountryDetails th input[type="checkbox"]').prop("checked", false);
+            $('#CountryDetails th input[type="checkbox"]').trigger("change")
+        }
+    }
+</script>

@@ -1,0 +1,101 @@
+﻿@model DealSe.Areas.Admin.FormModels.UserFormModel
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label" for="firstname">First Name</label>
+                    @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label" for="lastname">Last Name</label>
+                    @Html.TextBoxFor(model => model.LastName, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label" for="email">Email</label>
+                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label" for="gender">Gender</label>
+                    @Html.TextBoxFor(model => model.Gender, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label" for="mobileno">Mobile No</label>
+                    @Html.TextBoxFor(model => model.MobileNo, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label" for="mobileno">Facebook Id</label>
+                    @Html.TextBoxFor(model => model.FacebookId, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label" for="mobileno">Google+ Id</label>
+                    @Html.TextBoxFor(model => model.GooglePlusId, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label" for="mobileno">Registration Type</label>
+                    @Html.TextBoxFor(model => model.RegistrationType, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label" for="mobileno">Device ID</label>
+                    @Html.TextBoxFor(model => model.DeviceID, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label" for="mobileno">Device Type</label>
+                    @Html.TextBoxFor(model => model.DeviceType, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            @*<div class="col-md-3">
+                <label class="control-label" for="status">Status</label>
+                <div class="input-group">
+                    <div class="make-switch statusswitch" data-on="status" data-off="status" data-on-label="Active" data-off-label="Inactive">
+                        @Html.CheckBoxFor(model => model.Active)
+                    </div>
+                </div>
+            </div>*@
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <label class="control-label">Image</label>
+                <div class="input-group">
+                    @if (!string.IsNullOrEmpty(Model.Image))
+                    {
+                        <a href="@Model.Image" target="_blank">
+                            <img src="@Model.Image" alt="Image" style="width: 150px; height: 150px;">
+                        </a>
+                        
+                    }
+                    else
+                    {
+                        <img src="~/Admin/images/noimage.png" alt="noimage" style="width: 150px; height: 150px;" />
+                    }
+
+                </div>
+            </div>
+        </div>
+    <div class="row center">
+        <a href="@Url.Action("Index", "User", new { Area = "Admin" })" class="btn btn-default">
+            <i class="glyphicon glyphicon-remove"></i>
+            Cancel
+        </a>
+    </div>

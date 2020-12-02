@@ -1,0 +1,30 @@
+﻿@*View to edit event ticket type*@
+@model DealSe.Areas.Admin.FormModels.CountryFormModel
+@{
+    ViewData["Title"] = "EditCountry";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<ol class="breadcrumb">
+    <li>
+        <a href="@Url.Action("Index", "Home" , new {Area="Admin" })"><i class="entypo-home"></i>Home</a>
+    </li>
+    <li><a href="@Url.Action("Index", "Country" , new { Area="Admin" })"><i class="entypo-globe"></i>Countries</a></li>
+    <li class="active">
+        <strong>Edit Country</strong>
+    </li>
+</ol>
+<h2>Edit Country</h2>
+<br />
+@if (ViewBag.Error != null)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger"><strong>Oops!</strong> @ViewBag.Error</div>
+        </div>
+    </div>
+}
+@using (Html.BeginForm("EditCountry", "Country", FormMethod.Post))
+{
+    @await Html.PartialAsync("_CountryInfo", Model)
+}

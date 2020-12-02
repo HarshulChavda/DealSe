@@ -1,0 +1,254 @@
+﻿@*View to edit site settings*@
+@model DealSe.Areas.Admin.FormModels.SiteSettingFormModel
+@{
+    ViewData["Title"] = "EditSiteSetting";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<ol class="breadcrumb">
+    <li>
+        <a href="@Url.Action("Index", "Home", new {Area = "Admin" })"><i class="entypo-home"></i>Home</a>
+    </li>
+    <li>
+        <i class="entypo-cog"></i>Others
+    </li>
+    <li><a href="@Url.Action("Index", "SiteSetting", new { Area = "Admin" })"><i class="entypo-tools"></i>Site Settings</a></li>
+    <li class="active">
+        <strong>Edit Site Setting</strong>
+    </li>
+</ol>
+<h2>Edit Site Setting</h2>
+<br />
+@if (ViewBag.Error != null)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger"><strong>Oops!</strong> @ViewBag.Error</div>
+        </div>
+    </div>
+}
+@using (Html.BeginForm("EditSiteSetting", "SiteSetting", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.SiteSettingId)
+    @Html.HiddenFor(model => Model.AddedDate)
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label" for="SiteSetting_name">Site Setting Name</label>
+                        <label class="field-validation-error">*</label>
+                        @Html.TextBoxFor(model => model.SiteSettingName, new { @class = "form-control htmlvalid trimmed", @maxlength = "50" })
+                        <span id="span_SiteSettingName" style="color:red"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label" for="SiteSetting_name">Site Setting Type</label>
+                        <label class="field-validation-error">*</label>
+                        @Html.DropDownListFor(model => model.SiteSettingType, new SelectList(
+                                              new List<Object>{
+                                                new { value = 0 , text = "--Select Type--"  },
+                                                new { value = 1 , text = "Text"},
+                                                new { value = 2 , text = "Domain" },
+                                                new { value = 3 , text = "Email"  },
+                                                new{value=4,text="Number"},
+                                                new{value=5,text="Boolean"},
+                                                new{value=6,text="Html"}
+                                              },
+                                              "value",
+                                              "text", 0), new { @class = "form-control", @id = "drpdata" })
+                        <span id="span_SiteSettingType" style="color:red"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label class="control-label" for="SiteSetting_value">Enforce Validation</label>
+                        <div class="form-group" id="enforcevalidationswitch">
+                            <div class="make-switch statusswitch" data-on="status" data-off="status" data-on-label="Yes" data-off-label="No">
+                                @Html.CheckBoxFor(model => model.EnforceValidation, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="control-label" for="SiteSetting_value">Site Setting Value</label>
+                            <div class="form-group textdiv">
+                                @Html.TextBoxFor(model => model.TextTypeSiteSettingValue, new { @class = "form-control htmlvalid trimmed" })
+                                <span id="span_TextTypeSiteSettingValue" style="color:red"></span>
+                            </div>
+                            <div class="form-group domaindiv" style="display:none;">
+                                @Html.TextBoxFor(model => model.DomainTypeSiteSettingValue, new { @class = "form-control htmlvalid trimmed" })
+                                <span id="span_DomainTypeSiteSettingValue" style="color:red"></span>
+                            </div>
+                            <div class="form-group emaildiv" style="display:none;">
+                                @Html.TextBoxFor(model => model.EmailTypeSiteSettingValue, new { @class = "form-control htmlvalid trimmed" })
+                                <span id="span_EmailTypeSiteSettingValue" style="color:red"></span>
+                            </div>
+                            <div class="form-group numberdiv" style="display:none;">
+                                @Html.TextBoxFor(model => model.NumberTypeSiteSettingValue, new { @class = "form-control digit", @maxlength = "9" })
+                                <span id="span_NumberTypeSiteSettingValue" style="color:red"></span>
+                            </div>
+                            <div class="form-group booleandiv" style="display:none;">
+                                <div class="make-switch statusswitch" data-on="status" data-off="status" data-on-label="Yes" data-off-label="No">
+                                    @Html.CheckBoxFor(model => model.BooleanTypeSiteSettingValue, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group htmldiv" style="display:none;">
+                                @Html.TextAreaFor(model => model.HtmlTypeSiteSettingValue, new { @class = "form-control English htmlvalid trimmed", id = "textarea" })
+                                <span id="span_HtmlTypeSiteSettingValue" style="color:red"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row center">
+                <button type="submit" id="btnsubmit" class="btn btn-success">
+                    <i class="glyphicon glyphicon-save"></i>
+                    Save
+                </button>
+                <a href="@Url.Action("Index", "SiteSetting", new { Area = "Admin" })" class="btn btn-default">
+                    <i class="glyphicon glyphicon-remove"></i>
+                    Cancel
+                </a>
+            </div>
+        </div>
+    </div>
+}
+<script src="~/admin/assets/js/icheck.js"></script>
+<script src="~/admin/assets/js/ckeditor.js"></script>
+<script src="~/Admin/assets/js/tinymce/tinymce.min.js"></script>
+@await Html.PartialAsync("_SiteSettingScripts")
+<script type="text/javascript">
+    $(document).ready(function () {
+        var SiteSettingType = $("#drpdata").val();
+        if (SiteSettingType == 2) {
+            $(".emaildiv").hide();
+            $(".domaindiv").show();
+            $(".numberdiv").hide();
+            $(".booleandiv").hide();
+            $(".htmldiv").hide();
+            $(".textdiv").hide();
+            $("#EmailTypeSiteSettingValue").val("");
+            $("#HtmlTypeSiteSettingValue").val("");
+            $("#NumberTypeSiteSettingValue").val("");
+            $("#TextTypeSiteSettingValue").val("");
+        }
+        else if (SiteSettingType == 3) {
+            $(".emaildiv").show();
+            $(".domaindiv").hide();
+            $(".numberdiv").hide();
+            $(".booleandiv").hide();
+            $(".htmldiv").hide();
+            $(".textdiv").hide();
+            $("#DomainTypeSiteSettingValue").val("");
+            $("#HtmlTypeSiteSettingValue").val("");
+            $("#NumberTypeSiteSettingValue").val("");
+            $("#TextTypeSiteSettingValue").val("");
+            $("#EnforceValidation")[0].checked = true;
+            $("#EnforceValidation").parent().removeClass("switch-off");
+            $("#enforcevalidationswitch").css("pointer-events", " none");
+        }
+        else if (SiteSettingType == 4) {
+            $(".emaildiv").hide();
+            $(".domaindiv").hide();
+            $(".numberdiv").show();
+            $(".booleandiv").hide();
+            $(".htmldiv").hide();
+            $(".textdiv").hide();
+            $("#DomainTypeSiteSettingValue").val("");
+            $("#EmailTypeSiteSettingValue").val("");
+            $("#HtmlTypeSiteSettingValue").val("");
+            $("#TextTypeSiteSettingValue").val("");
+            $("#EnforceValidation")[0].checked = true;
+            $("#EnforceValidation").parent().removeClass("switch-off");
+            $("#enforcevalidationswitch").css("pointer-events", " none");
+        }
+        else if (SiteSettingType == 5) {
+            $(".emaildiv").hide();
+            $(".domaindiv").hide();
+            $(".numberdiv").hide();
+            $(".booleandiv").show();
+            $(".htmldiv").hide();
+            $(".textdiv").hide();
+            $("#DomainTypeSiteSettingValue").val("");
+            $("#EmailTypeSiteSettingValue").val("");
+            $("#HtmlTypeSiteSettingValue").val("");
+            $("#NumberTypeSiteSettingValue").val("");
+            $("#TextTypeSiteSettingValue").val("");
+            $("#EnforceValidation")[0].checked = true;
+            $("#EnforceValidation").parent().removeClass("switch-off");
+            $("#enforcevalidationswitch").css("pointer-events", " none");
+        }
+        else if (SiteSettingType == 6) {
+            $(".emaildiv").hide();
+            $(".domaindiv").hide();
+            $(".numberdiv").hide();
+            $(".booleandiv").hide();
+            $(".htmldiv").show();
+            $(".textdiv").hide();
+            $("#DomainTypeSiteSettingValue").val("");
+            $("#EmailTypeSiteSettingValue").val("");
+            $("#NumberTypeSiteSettingValue").val("");
+            $("#TextTypeSiteSettingValue").val("");
+        }
+        else {
+            $(".emaildiv").hide();
+            $(".domaindiv").hide();
+            $(".numberdiv").hide();
+            $(".booleandiv").hide();
+            $(".htmldiv").hide();
+            $(".textdiv").show();
+            //English
+            $("#DomainTypeSiteSettingValue").val("");
+            $("#EmailTypeSiteSettingValue").val("");
+            $("#HtmlTypeSiteSettingValue").val("");
+            $("#NumberTypeSiteSettingValue").val("");
+        }
+    });
+    $(function () {
+        tinymce.init({
+            selector: '#textarea',
+            relative_urls: false,
+            remove_script_host: false,
+            extended_valid_elements: "a[class|name|href|target|title|onclick|rel],script[language|type|src],iframe[src|style|width|height|scrolling|marginwidth|marginheight|frameborder],img[class|src|border=0|alt|title|hspace|vspace|width|height|align|onmouseover|onmouseout|name],link[href|rel],i[class|name|href|target|title|onclick|rel]",
+            width: 'auto',
+            height: 'auto',
+            plugins: [
+                "advlist autolink link image lists charmap print preview hr anchor pagebreak",
+                "searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking",
+                "table contextmenu directionality emoticons paste textcolor code fullpage"
+            ],
+            content_css: ['//fonts.googleapis.com/css?family=Montserrat'],
+            toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect",
+            toolbar2: "| link unlink anchor | image media | forecolor backcolor  | print preview code ",
+            image_advtab: true,
+            file_browser_callback: function (field_name, url, type, win) {
+                var w = window,
+                    d = document,
+                    e = d.documentElement,
+                    g = d.getElementsByTagName('body')[0],
+                    x = w.innerWidth || e.clientWidth || g.clientWidth,
+                    y = w.innerHeight || e.clientHeight || g.clientHeight;
+                var cmsURL = '/mcemanager/index.html?&field_name=' + field_name + '&langCode=' + tinymce.settings.language;
+                if (type == 'image') {
+                    cmsURL = cmsURL + "&type=images";
+                }
+                tinyMCE.activeEditor.windowManager.open({
+                    file: cmsURL,
+                    title: 'Filemanager',
+                    width: x * 0.9,
+                    height: y * 0.9,
+                    resizable: "yes",
+                    close_previous: "no"
+                });
+            }
+        });
+    });
+</script>

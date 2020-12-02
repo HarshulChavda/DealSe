@@ -1,0 +1,8 @@
+E:\Projects\EventManagement\MEArts\MEArts.Data\bin\Debug\netcoreapp3.1\MEArts.Data.deps.json
+E:\Projects\EventManagement\MEArts\MEArts.Data\bin\Debug\netcoreapp3.1\MEArts.Data.dll
+E:\Projects\EventManagement\MEArts\MEArts.Data\bin\Debug\netcoreapp3.1\MEArts.Data.pdb
+E:\Projects\EventManagement\MEArts\MEArts.Data\obj\Debug\netcoreapp3.1\MEArts.Data.csprojAssemblyReference.cache
+E:\Projects\EventManagement\MEArts\MEArts.Data\obj\Debug\netcoreapp3.1\MEArts.Data.AssemblyInfoInputs.cache
+E:\Projects\EventManagement\MEArts\MEArts.Data\obj\Debug\netcoreapp3.1\MEArts.Data.AssemblyInfo.cs
+E:\Projects\EventManagement\MEArts\MEArts.Data\obj\Debug\netcoreapp3.1\MEArts.Data.dll
+E:\Projects\EventManagement\MEArts\MEArts.Data\obj\Debug\netcoreapp3.1\MEArts.Data.pdb

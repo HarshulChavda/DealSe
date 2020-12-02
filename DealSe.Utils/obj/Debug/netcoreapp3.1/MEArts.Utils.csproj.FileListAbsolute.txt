@@ -1,0 +1,10 @@
+E:\Projects\EventManagement\MEArts\MEArts.Utils\bin\Debug\netcoreapp3.1\MEArts.Utils.deps.json
+E:\Projects\EventManagement\MEArts\MEArts.Utils\bin\Debug\netcoreapp3.1\MEArts.Utils.dll
+E:\Projects\EventManagement\MEArts\MEArts.Utils\bin\Debug\netcoreapp3.1\MEArts.Utils.pdb
+E:\Projects\EventManagement\MEArts\MEArts.Utils\obj\Debug\netcoreapp3.1\MEArts.Utils.MEArtsResource.resources
+E:\Projects\EventManagement\MEArts\MEArts.Utils\obj\Debug\netcoreapp3.1\MEArts.Utils.csproj.GenerateResource.cache
+E:\Projects\EventManagement\MEArts\MEArts.Utils\obj\Debug\netcoreapp3.1\MEArts.Utils.AssemblyInfoInputs.cache
+E:\Projects\EventManagement\MEArts\MEArts.Utils\obj\Debug\netcoreapp3.1\MEArts.Utils.AssemblyInfo.cs
+E:\Projects\EventManagement\MEArts\MEArts.Utils\obj\Debug\netcoreapp3.1\MEArts.Utils.dll
+E:\Projects\EventManagement\MEArts\MEArts.Utils\obj\Debug\netcoreapp3.1\MEArts.Utils.pdb
+E:\Projects\EventManagement\MEArts\MEArts.Utils\obj\Debug\netcoreapp3.1\MEArts.Utils.csprojAssemblyReference.cache

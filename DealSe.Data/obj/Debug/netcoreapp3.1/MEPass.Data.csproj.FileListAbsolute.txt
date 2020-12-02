@@ -1,0 +1,17 @@
+E:\Projects\EventManagement\MEPass\MEPass.Data\bin\Debug\netcoreapp3.1\MEPass.Data.deps.json
+E:\Projects\EventManagement\MEPass\MEPass.Data\bin\Debug\netcoreapp3.1\MEPass.Data.dll
+E:\Projects\EventManagement\MEPass\MEPass.Data\bin\Debug\netcoreapp3.1\MEPass.Data.pdb
+E:\Projects\EventManagement\MEPass\MEPass.Data\obj\Debug\netcoreapp3.1\MEPass.Data.AssemblyInfoInputs.cache
+E:\Projects\EventManagement\MEPass\MEPass.Data\obj\Debug\netcoreapp3.1\MEPass.Data.AssemblyInfo.cs
+E:\Projects\EventManagement\MEPass\MEPass.Data\obj\Debug\netcoreapp3.1\MEPass.Data.dll
+E:\Projects\EventManagement\MEPass\MEPass.Data\obj\Debug\netcoreapp3.1\MEPass.Data.pdb
+E:\Projects\EventManagement\MEPass\MEPass.Data\obj\Debug\netcoreapp3.1\MEPass.Data.csprojAssemblyReference.cache
+D:\Company Running Projects\MEPass\Project\MEPass\MEPass.Data\bin\Debug\netcoreapp3.1\MEPass.Data.deps.json
+D:\Company Running Projects\MEPass\Project\MEPass\MEPass.Data\bin\Debug\netcoreapp3.1\MEPass.Data.dll
+D:\Company Running Projects\MEPass\Project\MEPass\MEPass.Data\bin\Debug\netcoreapp3.1\MEPass.Data.pdb
+D:\Company Running Projects\MEPass\Project\MEPass\MEPass.Data\obj\Debug\netcoreapp3.1\MEPass.Data.csprojAssemblyReference.cache
+D:\Company Running Projects\MEPass\Project\MEPass\MEPass.Data\obj\Debug\netcoreapp3.1\MEPass.Data.AssemblyInfoInputs.cache
+D:\Company Running Projects\MEPass\Project\MEPass\MEPass.Data\obj\Debug\netcoreapp3.1\MEPass.Data.AssemblyInfo.cs
+D:\Company Running Projects\MEPass\Project\MEPass\MEPass.Data\obj\Debug\netcoreapp3.1\MEPass.Data.csproj.CoreCompileInputs.cache
+D:\Company Running Projects\MEPass\Project\MEPass\MEPass.Data\obj\Debug\netcoreapp3.1\MEPass.Data.dll
+D:\Company Running Projects\MEPass\Project\MEPass\MEPass.Data\obj\Debug\netcoreapp3.1\MEPass.Data.pdb

@@ -1,0 +1,18 @@
+D:\Company Running Projects\Pratigya\Source Code\Website\Pratigya\Pratigya.Data\bin\Debug\netcoreapp3.1\Pratigya.Data.deps.json
+D:\Company Running Projects\Pratigya\Source Code\Website\Pratigya\Pratigya.Data\bin\Debug\netcoreapp3.1\Pratigya.Data.dll
+D:\Company Running Projects\Pratigya\Source Code\Website\Pratigya\Pratigya.Data\bin\Debug\netcoreapp3.1\Pratigya.Data.pdb
+D:\Company Running Projects\Pratigya\Source Code\Website\Pratigya\Pratigya.Data\obj\Debug\netcoreapp3.1\Pratigya.Data.csprojAssemblyReference.cache
+D:\Company Running Projects\Pratigya\Source Code\Website\Pratigya\Pratigya.Data\obj\Debug\netcoreapp3.1\Pratigya.Data.AssemblyInfoInputs.cache
+D:\Company Running Projects\Pratigya\Source Code\Website\Pratigya\Pratigya.Data\obj\Debug\netcoreapp3.1\Pratigya.Data.AssemblyInfo.cs
+D:\Company Running Projects\Pratigya\Source Code\Website\Pratigya\Pratigya.Data\obj\Debug\netcoreapp3.1\Pratigya.Data.csproj.CoreCompileInputs.cache
+D:\Company Running Projects\Pratigya\Source Code\Website\Pratigya\Pratigya.Data\obj\Debug\netcoreapp3.1\Pratigya.Data.dll
+D:\Company Running Projects\Pratigya\Source Code\Website\Pratigya\Pratigya.Data\obj\Debug\netcoreapp3.1\Pratigya.Data.pdb
+D:\Company Running Projects\DealSe\Project\Pratigya.Data\obj\Debug\netcoreapp3.1\Pratigya.Data.csprojAssemblyReference.cache
+D:\Company Running Projects\DealSe\Project\Pratigya.Data\obj\Debug\netcoreapp3.1\Pratigya.Data.AssemblyInfoInputs.cache
+D:\Company Running Projects\DealSe\Project\Pratigya.Data\obj\Debug\netcoreapp3.1\Pratigya.Data.AssemblyInfo.cs
+D:\Company Running Projects\DealSe\Project\Pratigya.Data\obj\Debug\netcoreapp3.1\Pratigya.Data.csproj.CoreCompileInputs.cache
+D:\Company Running Projects\DealSe\Project\Pratigya.Data\obj\Debug\netcoreapp3.1\Pratigya.Data.dll
+D:\Company Running Projects\DealSe\Project\Pratigya.Data\obj\Debug\netcoreapp3.1\Pratigya.Data.pdb
+D:\Company Running Projects\DealSe\Project\Pratigya.Data\bin\Debug\netcoreapp3.1\Pratigya.Data.deps.json
+D:\Company Running Projects\DealSe\Project\Pratigya.Data\bin\Debug\netcoreapp3.1\Pratigya.Data.dll
+D:\Company Running Projects\DealSe\Project\Pratigya.Data\bin\Debug\netcoreapp3.1\Pratigya.Data.pdb

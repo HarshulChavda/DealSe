@@ -1,0 +1,23 @@
+E:\Projects\EventManagement\MEPass\MEPass.Service\bin\Debug\netcoreapp3.1\MEPass.Service.deps.json
+E:\Projects\EventManagement\MEPass\MEPass.Service\bin\Debug\netcoreapp3.1\MEPass.Service.dll
+E:\Projects\EventManagement\MEPass\MEPass.Service\bin\Debug\netcoreapp3.1\MEPass.Service.pdb
+E:\Projects\EventManagement\MEPass\MEPass.Service\bin\Debug\netcoreapp3.1\MEPass.Data.dll
+E:\Projects\EventManagement\MEPass\MEPass.Service\bin\Debug\netcoreapp3.1\MEPass.Data.pdb
+E:\Projects\EventManagement\MEPass\MEPass.Service\obj\Debug\netcoreapp3.1\MEPass.Service.csprojAssemblyReference.cache
+E:\Projects\EventManagement\MEPass\MEPass.Service\obj\Debug\netcoreapp3.1\MEPass.Service.AssemblyInfoInputs.cache
+E:\Projects\EventManagement\MEPass\MEPass.Service\obj\Debug\netcoreapp3.1\MEPass.Service.AssemblyInfo.cs
+E:\Projects\EventManagement\MEPass\MEPass.Service\obj\Debug\netcoreapp3.1\MEPass.Service.csproj.CopyComplete
+E:\Projects\EventManagement\MEPass\MEPass.Service\obj\Debug\netcoreapp3.1\MEPass.Service.dll
+E:\Projects\EventManagement\MEPass\MEPass.Service\obj\Debug\netcoreapp3.1\MEPass.Service.pdb
+D:\Company Running Projects\MEPass\Project\MEPass\MEPass.Service\bin\Debug\netcoreapp3.1\MEPass.Service.deps.json
+D:\Company Running Projects\MEPass\Project\MEPass\MEPass.Service\bin\Debug\netcoreapp3.1\MEPass.Service.dll
+D:\Company Running Projects\MEPass\Project\MEPass\MEPass.Service\bin\Debug\netcoreapp3.1\MEPass.Service.pdb
+D:\Company Running Projects\MEPass\Project\MEPass\MEPass.Service\bin\Debug\netcoreapp3.1\MEPass.Data.dll
+D:\Company Running Projects\MEPass\Project\MEPass\MEPass.Service\bin\Debug\netcoreapp3.1\MEPass.Data.pdb
+D:\Company Running Projects\MEPass\Project\MEPass\MEPass.Service\obj\Debug\netcoreapp3.1\MEPass.Service.csprojAssemblyReference.cache
+D:\Company Running Projects\MEPass\Project\MEPass\MEPass.Service\obj\Debug\netcoreapp3.1\MEPass.Service.AssemblyInfoInputs.cache
+D:\Company Running Projects\MEPass\Project\MEPass\MEPass.Service\obj\Debug\netcoreapp3.1\MEPass.Service.AssemblyInfo.cs
+D:\Company Running Projects\MEPass\Project\MEPass\MEPass.Service\obj\Debug\netcoreapp3.1\MEPass.Service.csproj.CoreCompileInputs.cache
+D:\Company Running Projects\MEPass\Project\MEPass\MEPass.Service\obj\Debug\netcoreapp3.1\MEPass.Service.csproj.CopyComplete
+D:\Company Running Projects\MEPass\Project\MEPass\MEPass.Service\obj\Debug\netcoreapp3.1\MEPass.Service.dll
+D:\Company Running Projects\MEPass\Project\MEPass\MEPass.Service\obj\Debug\netcoreapp3.1\MEPass.Service.pdb
