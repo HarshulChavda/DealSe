@@ -1,0 +1,173 @@
+<script type="text/javascript">
+    $("#drpdata").change(function () {
+        var SiteSettingType = $("#drpdata").val();
+        if (SiteSettingType == 2) {
+            $(".emaildiv").hide();
+            $(".domaindiv").show();
+            $(".numberdiv").hide();
+            $(".booleandiv").hide();
+            $(".booleandiv").hide();
+            $(".htmldiv").hide();
+            $(".textdiv").hide();
+            $("#enforcevalidationswitch").css("pointer-events", "all");
+        }
+        else if (SiteSettingType == 3) {
+            $(".emaildiv").show();
+            $(".domaindiv").hide();
+            $(".numberdiv").hide();
+            $(".booleandiv").hide();
+            $(".htmldiv").hide();
+            $(".textdiv").hide();
+            $("#EnforceValidation")[0].checked = true;
+            $("#EnforceValidation").parent().removeClass("switch-off");
+            $("#enforcevalidationswitch").css("pointer-events", "none");
+        }
+        else if (SiteSettingType == 4) {
+            $(".emaildiv").hide();
+            $(".domaindiv").hide();
+            $(".numberdiv").show();
+            $(".booleandiv").hide();
+            $(".htmldiv").hide();
+            $(".textdiv").hide();
+            $("#EnforceValidation")[0].checked = true;
+            $("#EnforceValidation").parent().removeClass("switch-off");
+            $("#enforcevalidationswitch").css("pointer-events", "none");
+        }
+        else if (SiteSettingType == 5) {
+            $(".emaildiv").hide();
+            $(".domaindiv").hide();
+            $(".numberdiv").hide();
+            $(".booleandiv").show();
+            $(".htmldiv").hide();
+            $(".textdiv").hide();
+            $("#EnforceValidation")[0].checked = true;
+            $("#EnforceValidation").parent().removeClass("switch-off");
+            $("#enforcevalidationswitch").css("pointer-events", "none");
+        }
+        else if (SiteSettingType == 6) {
+            $(".emaildiv").hide();
+            $(".domaindiv").hide();
+            $(".numberdiv").hide();
+            $(".booleandiv").hide();
+            $(".htmldiv").show();
+            $(".textdiv").hide();
+            $("#enforcevalidationswitch").css("pointer-events", "all");
+        }
+        else {
+            $(".emaildiv").hide();
+            $(".domaindiv").hide();
+            $(".numberdiv").hide();
+            $(".booleandiv").hide();
+            $(".htmldiv").hide();
+            $(".textdiv").show();
+            $("#enforcevalidationswitch").css("pointer-events", "all");
+        }
+    });
+
+    $('#btnsubmit').on("click", function () {
+        var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+        var SiteSettingType = $("#drpdata").val();
+        var enforceValidation = $("#EnforceValidation")[0].checked;
+        var valid = 0;
+
+        if ($("#SiteSettingName").val() == "" || SiteSettingType == "0") {
+            if ($("#SiteSettingName").val() == "") {
+                $("#span_SiteSettingName").html("Site Setting Name Is Required.");
+                valid = 1;
+            }
+            else {
+                $("#span_SiteSettingName").html("");
+            }
+            if (SiteSettingType == "0") {
+                $("#span_SiteSettingType").html("Site Setting Type Is Required.");
+                valid = 1;
+            }
+            else {
+                $("#span_SiteSettingType").html("");
+            }
+
+        }
+        else {
+            $("#span_SiteSettingName").html("");
+            $("#span_SiteSettingType").html("");
+        }
+        if (SiteSettingType == "3" || SiteSettingType == "0") {
+            if ($("#EmailTypeSiteSettingValue").val() == "") {
+                $("#span_EmailTypeSiteSettingValue").html("Site Setting Value Is Required.");
+                valid = 1;
+            }
+            else if (!pattern.test($("#EmailTypeSiteSettingValue").val())) {
+                $("#span_EmailTypeSiteSettingValue").html("Site Setting Value Is Not Valid.");
+                valid = 1;
+            }
+            else {
+                $("#span_EmailTypeSiteSettingValue").html("");
+            }
+          
+        }
+        else if (SiteSettingType == "4" || SiteSettingType == "0") {
+            if ($("#NumberTypeSiteSettingValue").val() == "") {
+                $("#span_NumberTypeSiteSettingValue").html("Site Setting Value Is Required.");
+                valid = 1;
+            }
+            else {
+                $("#span_NumberTypeSiteSettingValue").html("");
+
+            }
+        
+        }
+        else {
+            if (enforceValidation == true) {
+                if (SiteSettingType == "1" || SiteSettingType == "0") {
+                    
+                    if ($("#TextTypeSiteSettingValue").val() == "") {
+                        $("#span_TextTypeSiteSettingValue").html("Site Setting Value Is Required.");
+                        valid = 1;
+                    }
+                    else {
+                        $("#span_TextTypeSiteSettingValue").html("");
+                    }
+                }
+                else if (SiteSettingType == "2" || SiteSettingType == "0") {
+                   
+                    if ($("#DomainTypeSiteSettingValue").val() == "") {
+                        $("#span_DomainTypeSiteSettingValue").html("Site Setting Value Is Required.");
+                        valid = 1;
+                    }
+                    else {
+                        $("#span_DomainTypeSiteSettingValue").html("");
+                    }
+               
+                }
+                else if (SiteSettingType == "6" || SiteSettingType == "0") {
+                   
+                    if (tinymce.get('textarea').getBody().textContent == "") {
+                        $("#span_HtmlTypeSiteSettingValue").html("Site Setting Value Is Required.");
+                        valid = 1;
+                    }
+                    else {
+                        $("#span_HtmlTypeSiteSettingValue").html("");
+                    }
+                   
+                }
+            }
+        }
+
+        if (valid == 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    });
+
+
+    $(".digit").on("keypress keyup blur", function (event) {
+        $(this).val($(this).val().replace(/[^0-9\.]/g, ''));
+        if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57)) {
+            event.preventDefault();
+        }
+    });
+
+
+</script>

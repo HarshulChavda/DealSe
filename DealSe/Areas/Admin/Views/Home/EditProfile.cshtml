@@ -1,0 +1,194 @@
+﻿@*View to edit admin profile details*@
+@model DealSe.Areas.Admin.FormModels.AdminFormModel
+@{
+    ViewBag.Title = "Profile Details";
+}
+<ol class="breadcrumb">
+    <li>
+        <a href="@Url.Action("Index", "Home", new { Area = "Admin" })"><i class="entypo-home"></i>Home</a>
+    </li>
+    <li class="active">
+        <strong>Edit Profile</strong>
+    </li>
+</ol>
+<h2>Edit Profile</h2>
+@if (TempData["Success"] != null)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success"><strong>Success!</strong> @TempData["Success"]</div>
+        </div>
+    </div>
+}
+@if (ViewBag.Error != null)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger"><strong>Oops!</strong> @ViewBag.Error</div>
+        </div>
+    </div>
+}
+<br />
+<form method="post" role="form" asp-area="admin" asp-controller="Home" asp-action="EditProfile" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.AdminID)
+    @Html.HiddenFor(model => model.AddedDate)
+    @Html.HiddenFor(model => model.UpdatedDate)
+    @Html.HiddenFor(model => model.Password)
+    @Html.HiddenFor(model => model.PasswordResetToken)
+    @Html.HiddenFor(model => model.Logo)
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="control-label" for="first_name">First Name</label>
+                @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control trimmed" })
+                @Html.ValidationMessageFor(model => model.FirstName)
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="control-label" for="last_name">Last Name</label>
+                @Html.TextBoxFor(model => model.LastName, new { @class = "form-control trimmed" })
+                @Html.ValidationMessageFor(model => model.LastName)
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">Email</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="entypo-mail"></i>
+                    </div>
+                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control trimmed" })
+                </div>
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">Choose Password</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="entypo-key"></i>
+                    </div>
+                    @Html.PasswordFor(model => model.NewPassword, new { @class = "form-control passwordField", autocomplete = "new-password" })
+                </div>
+                @Html.ValidationMessageFor(model => model.NewPassword)
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">Mobile No</label>
+                @Html.TextBoxFor(model => model.MobileNo, new { @class = "form-control trimmed" })
+                @Html.ValidationMessageFor(model => model.MobileNo)
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12" style="margin-bottom:25px;">
+            <div class="form-group">
+                <label class="control-label">Logo</label>
+                <label class="field-validation-error">*</label>
+                <div class="input-group">
+                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                        <div class="fileinput-new thumbnail file" style="width: 150px; height: 150px;" data-trigger="fileinput">
+                            @if (Model.Logo != null)
+                            {
+                                <img src="/Upload/Admin/@Model.Logo" id="NewImage" />
+                            }
+                            else
+                            {
+                                <img src="~/Admin/images/noimage.png" alt="noimage" />
+                            }
+                        </div>
+                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 250px; max-height: 140px"></div>
+                        <div>
+                            <span class="btn btn-white btn-file">
+                                <span class="fileinput-new">Select Image</span>
+                                <span class="fileinput-exists">Change</span>
+                                <input type="file" name="file" id="imageUpload">
+                            </span>
+                            <a href="#" class="btn btn-orange fileinput-exists" data-dismiss="fileinput" id="btnRemove">Remove</a>
+                        </div>
+                        <span id="errormsgForimage"></span>
+                    </div>
+                    <div>
+                        <span class="label label-important">NOTE!</span>
+                        <span>Please upload image of 150 x 150 or higher pixels. For best results, the image pixels should be multiples of the minimum width and height.</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="row center">
+        <button type="submit" class="btn btn-success">
+            <i class="glyphicon glyphicon-save"></i>
+            Update
+        </button>
+        <a href="@Url.Action("Index","Home")" class="btn btn-default">
+            <i class="glyphicon glyphicon-remove"></i>
+            Cancel
+        </a>
+    </div>
+</form>
+<script src="~/Admin/assets/js/fileinput.js"></script>
+<script type="text/javascript">
+    $('.passwordField').keypress(function (e) {
+        if (e.which === 32)
+            return false;
+    });
+
+    $("#imageUpload").change(function () {
+        //Get reference of FileUpload.
+        var fileUpload = $("#imageUpload")[0];
+        if (fileUpload.value != "") {
+            //Check whether the file is valid Image.
+            var regex = new RegExp(".jpg|.png|.jpeg");
+            if (regex.test(fileUpload.value.toLowerCase())) {
+                //Check whether HTML5 is supported.
+                if (typeof (fileUpload.files) != "undefined") {
+                    //Initiate the FileReader object.
+                    var reader = new FileReader();
+                    //Read the contents of Image File.
+                    reader.readAsDataURL(fileUpload.files[0]);
+                    reader.onload = function (e) {
+                        //Initiate the JavaScript Image object.
+                        var image = new Image();
+                        //Set the Base64 string return from FileReader as source.
+                        image.src = e.target.result;
+                        image.onload = function () {
+                            //Determine the Height and Width.
+                            var height = this.height;
+                            var width = this.width;
+                            if (!(height >= 150 || width >= 150)) {
+                                $.alert({
+                                    title: 'Alert!',
+                                    content: 'Oops! Please upload banner image of 150 x 150 or higher pixels. For best results, the image pixels should be multiples of the minimum width and height.',
+                                });
+                                $("#btnRemove").trigger("click");
+                            }
+                        };
+                    }
+                } else {
+                    $.alert({
+                        title: 'Alert!',
+                        content: 'Oops! This browser does not support HTML5.',
+                    });
+                    $("#btnRemove").trigger("click");
+                }
+            }
+            else {
+                $.alert({
+                    title: 'Alert!',
+                    content: 'Oops! Please select a valid Image file.',
+                });
+                $("#btnRemove").trigger("click");
+            }
+        }
+    })
+</script>

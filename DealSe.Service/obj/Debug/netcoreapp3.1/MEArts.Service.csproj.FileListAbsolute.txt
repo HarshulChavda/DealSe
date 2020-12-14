@@ -1,0 +1,11 @@
+E:\Projects\EventManagement\MEArts\MEArts.Service\bin\Debug\netcoreapp3.1\MEArts.Service.deps.json
+E:\Projects\EventManagement\MEArts\MEArts.Service\bin\Debug\netcoreapp3.1\MEArts.Service.dll
+E:\Projects\EventManagement\MEArts\MEArts.Service\bin\Debug\netcoreapp3.1\MEArts.Service.pdb
+E:\Projects\EventManagement\MEArts\MEArts.Service\bin\Debug\netcoreapp3.1\MEArts.Data.dll
+E:\Projects\EventManagement\MEArts\MEArts.Service\bin\Debug\netcoreapp3.1\MEArts.Data.pdb
+E:\Projects\EventManagement\MEArts\MEArts.Service\obj\Debug\netcoreapp3.1\MEArts.Service.csprojAssemblyReference.cache
+E:\Projects\EventManagement\MEArts\MEArts.Service\obj\Debug\netcoreapp3.1\MEArts.Service.AssemblyInfoInputs.cache
+E:\Projects\EventManagement\MEArts\MEArts.Service\obj\Debug\netcoreapp3.1\MEArts.Service.AssemblyInfo.cs
+E:\Projects\EventManagement\MEArts\MEArts.Service\obj\Debug\netcoreapp3.1\MEArts.Service.csproj.CopyComplete
+E:\Projects\EventManagement\MEArts\MEArts.Service\obj\Debug\netcoreapp3.1\MEArts.Service.dll
+E:\Projects\EventManagement\MEArts\MEArts.Service\obj\Debug\netcoreapp3.1\MEArts.Service.pdb

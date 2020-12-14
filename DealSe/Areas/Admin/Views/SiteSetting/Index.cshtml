@@ -1,0 +1,108 @@
+﻿@*View to display site settings listing*@
+@model DealSe.Areas.Admin.ViewModels.SiteSettingViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";    
+}
+<ol class="breadcrumb">
+    <li>
+        <a href="@Url.Action("Index", "Home",new { Area = "Admin" })"><i class="entypo-home"></i>Home</a>
+    </li>
+    <li>
+        <i class="entypo-cog"></i>Others
+    </li>
+    <li class="active">
+        <strong><i class="entypo-tools"></i>Site Setting</strong>
+    </li>
+</ol>
+<h2>Site Setting</h2>
+<br />
+@if (TempData["Error"] != null)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger"><strong>Oops!</strong><br /><span>@TempData["Error"]</span></div>
+        </div>
+    </div>
+}
+else if (TempData["Success"] != null)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success"><strong>Success!</strong> @TempData["Success"]</div>
+        </div>
+    </div>
+}
+<br class="clear" />
+@await Html.PartialAsync("_SiteSettingDetails")
+@await Html.PartialAsync("_DatatableCSSJSView")
+<script src="~/admin/assets/js/tinymce.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        loadData();
+    });
+    var responsiveHelper;
+    var breakpointDefinition = {
+        tablet: 1024,
+        phone: 480
+    };
+    function loadData() {
+        var tableContainer;
+        tableContainer = $("#SiteSettingDetails");
+        tableContainer.dataTable(
+            {
+                "destroy": true,
+                "aaSorting": [],
+                "pageLength": 10,
+                "bStateSave": false,
+                "processing": true, // for show processing bar
+                oLanguage: {
+                    sProcessing: "<div id=preloader></div>"
+                },
+                "serverSide": true, // for process on server side
+                "ajax": {
+                    "url": '/Admin/SiteSetting/LoadData',
+                    "type": "POST",
+                    "datatype": "json"
+                },
+                "aoColumns": [
+                    { "data": "siteSettingName", "name": "siteSettingName", "bSearchable": true, "autoWidth": true, "width": "20%" },
+                    { "data": "siteSettingValue", "name": "siteSettingValue", "bSearchable": true, "autoWidth": true, "width": "50%" },
+                    { "data": "addedDate", "name": "addedDate", "bSearchable": true, "autoWidth": true, "width": "15%" },
+                    {
+                        "mData": "Activated", "bSearchable": false, "bSortable": false, "autoWidth": true, "width": "10%",
+                        "mRender": function (data, type, row) {
+                            return '<a class="btn btn-blue btn-sm btn-icon icon-left" href="/Admin/SiteSetting/EditSiteSetting/' + row.siteSettingId + '"><i class="entypo-pencil"></i>Edit</a>';
+                        }, "sClass": "view-more"
+                    }
+                ],
+                bAutoWidth: false,
+                fnPreDrawCallback: function () {
+                    // Initialize the responsive datatables helper once.
+                    if (!responsiveHelper) {
+                        responsiveHelper = new ResponsiveDatatablesHelper(tableContainer, breakpointDefinition);
+                    }
+                },
+                fnRowCallback: function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                    responsiveHelper.createExpandIcon(nRow);
+                },
+                fnDrawCallback: function (oSettings) {
+                    responsiveHelper.respond();
+                    responsivePaginationDesign();
+                    if (window.matchMedia('(max-width: 768px)').matches) {
+                           responsiveTableColumn("#SiteSettingDetails");
+                    }
+                }
+            });
+        $(".dataTables_wrapper select").select2({
+            minimumResultsForSearch: -1
+        });
+    }
+    $(window).resize(function () {
+        if (window.matchMedia('(max-width: 768px)').matches) {
+        responsiveTableColumn('#SiteSettingDetails');
+        }
+    })
+</script>
+
+

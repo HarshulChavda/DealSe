@@ -1,0 +1,115 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<ol class="breadcrumb">
+    <li>
+        <a href="@Url.Action("Index", "Home", new { Area = "Admin" })"><i class="entypo-home"></i>Home</a>
+    </li>
+    <li class="active">
+        <strong><i class="entypo-users"></i>Users</strong>
+    </li>
+</ol>
+<h2>Users</h2>
+<br />
+@if (TempData["Error"] != null)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger"><strong>Oops!</strong><br /><span> @TempData["Error"]</span></div>
+        </div>
+    </div>
+}
+else if (TempData["Success"] != null)
+{
+    <div class="row">
+        <div class="col-md-14">
+            <div class="alert alert-success"><strong>Success!</strong> @TempData["Success"]</div>
+        </div>
+    </div>
+}
+
+<br class="clear" />
+@await Html.PartialAsync("_UserDetails")
+@await Html.PartialAsync("_DatatableCSSJSView")
+<script type="text/javascript">
+    var responsiveHelper;
+    var breakpointDefinition = {
+        tablet: 1024,
+        phone: 480
+    };
+
+    jQuery(document).ready(function ($) {
+        loadData();
+    });
+    function loadData() {
+
+        var tableContainer;
+        tableContainer = $("#UserDetails");
+        tableContainer.dataTable(
+            {
+                "destroy": true,
+                "aaSorting": [],
+                "pageLength": 10,
+                "bStateSave": false,
+                "processing": true, // for show processing bar
+
+                oLanguage: {
+                    sProcessing: "<div id=preloader></div>"
+                },
+                "serverSide": true, // for process on server side
+                "ajax": {
+                    "url": '/Admin/User/LoadData',
+                    "type": "POST",
+                    "datatype": "json"
+                },
+                "aoColumns": [
+                    {
+                        mData: null, "bSortable": false, "bSearchable": false, "width": "4%",
+                        "mRender": function (data, type, row) {
+                            return '';
+                        }
+                    },
+                    { "data": "userName", "name": "userName", "autoWidth": true, "width": "15%" },
+                    { "data": "email", "name": "email", "autoWidth": true, "width": "10%" },
+                    { "data": "mobileNo", "name": "mobileNo", "autoWidth": true, "width": "10%" },
+                    { "data": "facebookId", "name": "facebookId", "autoWidth": true, "width": "10%" },
+                    { "data": "googlePlusId", "name": "googlePlusId", "autoWidth": true, "width": "10%" },
+                    {
+                        "mData": "active", "name": "active", "autoWidth": true, "width": "5%",
+                        "mRender": function (data, type, row) {
+                            if (row.active == true) {
+                                return '<div class="label label-success">Active</div>';
+                            }
+                            else {
+                                return '<div class="label label-inactive">Inactive</div>';
+                            }
+                        }
+                    },
+                    { "data": "addedDate", "name": "addedDate", "autoWidth": true, "width": "15%" },
+                    {
+                        "mData": "Activated", "bSearchable": false, "bSortable": false, "autoWidth": true, "width": "5%",
+                        "mRender": function (data, type, row) {
+                                return '<a class="btn btn-blue btn-sm btn-icon icon-left" href="/Admin/User/ViewUser/' + row.userId + '"><i class="entypo-eye"></i>View</a>';
+                        }, "sClass": "view-more"
+                    }
+                ],
+
+                "fnRowCallback": function (nRow, aData, iDisplayIndex) {
+                    var info = $(this).DataTable().page.info();
+                    $("td:nth-child(1)", nRow).append(info.start + iDisplayIndex+1);
+                    return nRow;
+                },
+                "fnDrawCallback": function () {
+                    replaceCheckboxes();
+                    responsivePaginationDesign();
+                }
+            });
+
+
+        $(".dataTables_wrapper select").select2({
+            minimumResultsForSearch: -1
+        });
+    }
+</script>

@@ -1,0 +1,140 @@
+﻿@*View to edit email template*@
+@model DealSe.Areas.Admin.FormModels.EmailTemplateFormModel
+@{
+	ViewData["Title"] = "EditEmailTemplate";
+	Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<ol class="breadcrumb">
+	<li>
+		<a href="@Url.Action("Index", "Home" , new {Area="Admin" })"><i class="entypo-home"></i>Home</a>
+	</li>
+	<li>
+		<i class="entypo-cog"></i>Others
+	</li>
+	<li><a href="@Url.Action("Index", "EmailTemplate" , new { Area="Admin" })"><i class="entypo-mail"></i>Email Templates</a></li>
+	<li class="active">
+		<strong>Edit Email Template</strong>
+	</li>
+</ol>
+<h2>Edit Email Template</h2>
+<br />
+@if (ViewBag.Error != null)
+{
+	<div class="row">
+		<div class="col-md-12">
+
+			<div class="alert alert-danger"><strong>Oops!</strong> @ViewBag.Error</div>
+		</div>
+	</div>
+}
+@using (Html.BeginForm("EditEmailTemplate", "EmailTemplate", FormMethod.Post))
+{
+	@Html.ValidationSummary(true);
+	@Html.HiddenFor(model => model.EmailTemplateId)
+	@Html.HiddenFor(model => model.AddedDate)
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label" for="email_template_name">Email Name</label>
+						<label class="field-validation-error">*</label>
+						@Html.TextBoxFor(model => model.EmailTemplateName, new { @class = "form-control htmlvalid trimmed", @maxlength = "50" })
+						<span id="errormsgForEmailTemplateName"></span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label" for="email_template_name">Email Subject</label>
+						<label class="field-validation-error">*</label>
+						@Html.TextBoxFor(model => model.EmailTemplateSubject, new { @class = "form-control htmlvalid trimmed", @maxlength = "100" })
+						<span id="errormsgForEmailTemplateSubject"></span>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<label class="control-label" for="plan_url">Email Body</label>
+						<label class="field-validation-error">*</label>
+						@Html.TextAreaFor(model => model.EmailTemplateBody, new { id = "textarea1" })
+						<span id="errormsgForEmailbody"></span>
+					</div>
+				</div>
+			</div>
+		<div class="row center">
+			<button type="submit" id="btnsubmit" class="btn btn-success">
+				<i class="glyphicon glyphicon-save"></i>
+				Save
+			</button>
+			<a href="@Url.Action("Index", "EmailTemplate", new { Area = "Admin" })" class="btn btn-default">
+				<i class="glyphicon glyphicon-remove"></i>
+				Cancel
+			</a>
+		</div>
+}
+<script src="~/Admin/assets/js/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+	$(function () {
+		tinymce.init({
+			selector: '#textarea1',
+			relative_urls: false,
+			extended_valid_elements: "a[class|name|href|target|title|onclick|rel|style],style[language|type|src],script[language|type|src],iframe[src|style|width|height|scrolling|marginwidth|marginheight|frameborder],img[class|src|border=0|alt|title|hspace|vspace|width|height|align|onmouseover|onmouseout|name|style],head,html,body",
+			width: 'auto',
+			height: 'auto',
+			plugins: [
+				"advlist autolink link image lists charmap print preview hr anchor pagebreak",
+				"searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking",
+				"table contextmenu directionality emoticons paste textcolor code fullpage"
+			],
+			toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect",
+			toolbar2: "| link unlink anchor | image media | forecolor backcolor  | print preview code ",
+			image_advtab: true,
+			file_browser_callback: function (field_name, url, type, win) {
+				var w = window,
+					d = document,
+					e = d.documentElement,
+					g = d.getElementsByTagName('body')[0],
+					x = w.innerWidth || e.clientWidth || g.clientWidth,
+					y = w.innerHeight || e.clientHeight || g.clientHeight;
+
+				var cmsURL = '/mcemanager/index.html?&field_name=' + field_name + '&langCode=' + tinymce.settings.language;
+
+				if (type == 'image') {
+					cmsURL = cmsURL + "&type=images";
+				}
+
+				tinyMCE.activeEditor.windowManager.open({
+					file: cmsURL,
+					title: 'Filemanager',
+					width: x * 0.9,
+					height: y * 0.9,
+					resizable: "yes",
+					close_previous: "no"
+				});
+			}
+		});
+	});
+	$("#btnsubmit").click(function () {
+		var valid = true;
+		var emailTemplateName = $("#EmailTemplateName").val();
+		var emailTemplateSubject = $("#EmailTemplateSubject").val();
+		var emailBody = tinymce.get('textarea1').getBody().textContent;
+		if (emailTemplateName == "" || emailTemplateName == null) {
+			$("#errormsgForEmailTemplateName")[0].innerHTML = "Email Name is required";
+			$("#errormsgForEmailTemplateName")[0].style.color = "red";
+			valid = false;
+		}
+		if (emailTemplateSubject == "" || emailTemplateSubject == null) {
+			$("#errormsgForEmailTemplateSubject")[0].innerHTML = "Email Subject is required";
+			$("#errormsgForEmailTemplateSubject")[0].style.color = "red";
+			valid = false;
+		}
+		if (emailBody == "" || emailBody == null) {
+			$("#errormsgForEmailbody")[0].innerHTML = "Email Body is required";
+			$("#errormsgForEmailbody")[0].style.color = "red";
+			valid = false;
+		}
+		if (valid == false) {
+			return false;
+		}
+	});
+</script>

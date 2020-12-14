@@ -1,0 +1,38 @@
+﻿@*Partial view for header*@
+@using Microsoft.AspNetCore.Http
+<div class="col-md-6 col-sm-8 clearfix" id="notification">
+    <ul class="user-info pull-left pull-none-xsm">
+        <li class="profile-info dropdown">
+            <a href="#" class="dropdown-toggle profile-info-main" data-toggle="dropdown">
+                @if (!string.IsNullOrEmpty(Context.Session.GetString("username")))
+                {
+                    <text> @Html.Raw(Context.Session.GetString("username"))</text>
+                }
+            </a>
+            <ul class="dropdown-menu">
+                <li class="caret"></li>
+                <li>
+                    <a asp-area="Admin" asp-controller="Home" asp-action="EditProfile">
+                        <i class="entypo-user"></i>
+                        Edit Profile
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <ul class="user-info pull-left pull-right-xs pull-none-xsm">
+        <!-- Raw Notifications -->
+        <li class="notifications dropdown open" id="notifications-dropdown-id">
+        </li>
+    </ul>
+</div>
+<!-- Raw Links -->
+<div class="col-md-6 col-sm-4 clearfix">
+    <ul class="list-inline links-list pull-right">
+        <li style="padding-top:2px;">
+            <a asp-area="admin" asp-controller="Home" asp-action="LogOff">
+                <i class="entypo-logout right"></i>Log Out
+            </a>
+        </li>
+    </ul>
+</div>
