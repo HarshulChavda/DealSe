@@ -26,9 +26,7 @@ namespace DealSe.Data.Models
         [StringLength(150)]
         public string Email { get; set; }
         public byte RegistrationType { get; set; }
-        [StringLength(50)]
         public string GoogleId { get; set; }
-        [StringLength(50)]
         public string FacebookId { get; set; }
         [StringLength(50)]
         public string Photo { get; set; }

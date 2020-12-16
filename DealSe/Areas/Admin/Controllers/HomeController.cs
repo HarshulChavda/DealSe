@@ -184,6 +184,7 @@ namespace DealSe.Areas.Admin.Controllers
             TempData["Success"] = DealSeResource.UpdateMessage;
             return RedirectToAction("EditProfile");
         }
+
         public ActionResult ForgotPassword()
         {
             return View();

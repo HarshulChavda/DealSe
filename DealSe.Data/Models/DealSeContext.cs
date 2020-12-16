@@ -27,6 +27,7 @@ namespace DealSe.Data.Models
         public virtual DbSet<State> State { get; set; }
         public virtual DbSet<Store> Store { get; set; }
         public virtual DbSet<StoreSuggestedOffer> StoreSuggestedOffer { get; set; }
+        public virtual DbSet<StoreTime> StoreTime { get; set; }
         public virtual DbSet<StoreType> StoreType { get; set; }
         public virtual DbSet<SuggestedOffer> SuggestedOffer { get; set; }
         public virtual DbSet<User> User { get; set; }
@@ -114,6 +115,15 @@ namespace DealSe.Data.Models
                     .HasForeignKey(d => d.SuggestedOfferId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_StoreSuggestedOffer_SuggestedOffer");
+            });
+
+            modelBuilder.Entity<StoreTime>(entity =>
+            {
+                entity.HasOne(d => d.Store)
+                    .WithMany(p => p.StoreTime)
+                    .HasForeignKey(d => d.StoreId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_StoreTime_Store");
             });
 
             modelBuilder.Entity<SuggestedOffer>(entity =>

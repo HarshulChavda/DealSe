@@ -12,6 +12,7 @@ namespace DealSe.Data.Models
         {
             Offer = new HashSet<Offer>();
             StoreSuggestedOffer = new HashSet<StoreSuggestedOffer>();
+            StoreTime = new HashSet<StoreTime>();
         }
 
         [Key]
@@ -23,6 +24,9 @@ namespace DealSe.Data.Models
         public string Name { get; set; }
         [StringLength(100)]
         public string Email { get; set; }
+        public byte RegistrationType { get; set; }
+        public string GoogleId { get; set; }
+        public string FacebookId { get; set; }
         [StringLength(10)]
         public string MobileNo1 { get; set; }
         [StringLength(10)]
@@ -34,12 +38,6 @@ namespace DealSe.Data.Models
         public string Address2 { get; set; }
         [StringLength(500)]
         public string Address3 { get; set; }
-        [Required]
-        [StringLength(5)]
-        public string OpenTime { get; set; }
-        [Required]
-        [StringLength(5)]
-        public string CloseTime { get; set; }
         [Column(TypeName = "decimal(11, 8)")]
         public decimal Latitude { get; set; }
         [Column(TypeName = "decimal(11, 8)")]
@@ -70,5 +68,7 @@ namespace DealSe.Data.Models
         public virtual ICollection<Offer> Offer { get; set; }
         [InverseProperty("Store")]
         public virtual ICollection<StoreSuggestedOffer> StoreSuggestedOffer { get; set; }
+        [InverseProperty("Store")]
+        public virtual ICollection<StoreTime> StoreTime { get; set; }
     }
 }
