@@ -30,6 +30,24 @@ namespace DealSe.API.v1
             this.mapper = mapper;
         }
 
+        [Route("CheckStoreMobieNumberExist")]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(200)]
+        [HttpPost]
+        public async Task<IActionResult> CheckStoreMobieNumberExist(CheckStoreMobieNumberParamApiFormModel model)
+        {
+            ApiOkResponse apiModel = new ApiOkResponse();
+            if (ModelState.IsValid)
+            {
+                CheckStoreMobieNumberReturnApiFormModel checkStoreMobieNumberReturnApiFormModel = new CheckStoreMobieNumberReturnApiFormModel();
+                var storeDetails = await storeService.CheckStoreMobileNoExists(0, model.MobileNo);
+                checkStoreMobieNumberReturnApiFormModel.StoreId = storeDetails.StoreId;
+                apiModel = APIStatusHelper.Success(checkStoreMobieNumberReturnApiFormModel, DealSeResource.RecordExists.Replace("{0}", "User"));
+                return Ok(apiModel);
+            }
+            return StatusCode((int)HttpStatusCode.Forbidden, APIStatusHelper.Forbidden("Model not valid"));
+        }
+
         //[Route("AddRetailer")]
         //[ProducesResponseType(404)]
         //[ProducesResponseType(200)]
