@@ -8,6 +8,12 @@ namespace DealSe.Data.Models
 {
     public partial class Area
     {
+        public Area()
+        {
+            Store = new HashSet<Store>();
+            User = new HashSet<User>();
+        }
+
         [Key]
         public int AreaId { get; set; }
         public int CityId { get; set; }
@@ -23,5 +29,9 @@ namespace DealSe.Data.Models
         [ForeignKey(nameof(CityId))]
         [InverseProperty("Area")]
         public virtual City City { get; set; }
+        [InverseProperty("Area")]
+        public virtual ICollection<Store> Store { get; set; }
+        [InverseProperty("Area")]
+        public virtual ICollection<User> User { get; set; }
     }
 }

@@ -11,6 +11,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using DealSe.Utils.Enum;
 using DealSe.ExceptionFilter;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace DealSe.API.v1
 {
@@ -23,10 +27,16 @@ namespace DealSe.API.v1
     public class StoreController : ControllerBase
     {
         private readonly IStoreService storeService;
+        private readonly IAreaService areaService;
+        private readonly IStoreTypeService storeTypeService;
+        private readonly IWebHostEnvironment hostingEnvironment;
         private readonly IMapper mapper;
-        public StoreController(IStoreService storeService, IMapper mapper)
+        public StoreController(IStoreService storeService, IAreaService areaService, IStoreTypeService storeTypeService, IWebHostEnvironment hostingEnvironment, IMapper mapper)
         {
             this.storeService = storeService;
+            this.areaService = areaService;
+            this.storeTypeService = storeTypeService;
+            this.hostingEnvironment = hostingEnvironment;
             this.mapper = mapper;
         }
 
@@ -41,46 +51,63 @@ namespace DealSe.API.v1
             {
                 CheckStoreMobieNumberReturnApiFormModel checkStoreMobieNumberReturnApiFormModel = new CheckStoreMobieNumberReturnApiFormModel();
                 var storeDetails = await storeService.CheckStoreMobileNoExists(0, model.MobileNo);
-                checkStoreMobieNumberReturnApiFormModel.StoreId = storeDetails.StoreId;
-                apiModel = APIStatusHelper.Success(checkStoreMobieNumberReturnApiFormModel, DealSeResource.RecordExists.Replace("{0}", "User"));
+                if (storeDetails == null)
+                    checkStoreMobieNumberReturnApiFormModel.StoreId = null;
+                else
+                    checkStoreMobieNumberReturnApiFormModel.StoreId = storeDetails.StoreId;
+
+                var areaList = areaService.GetMany(c => c.Active == true).OrderBy(c => c.Name).ToList();
+                checkStoreMobieNumberReturnApiFormModel.areaListModel = mapper.Map<List<Area>, List<AreaListModel>>(areaList);
+                var storeList = storeTypeService.GetMany(c => c.Active == true && c.Deleted == false).OrderBy(c => c.Name).ToList();
+                checkStoreMobieNumberReturnApiFormModel.storeTypeApiModel = mapper.Map<List<StoreType>, List<StoreTypeApiModel>>(storeList);
+                apiModel = APIStatusHelper.Success(checkStoreMobieNumberReturnApiFormModel, DealSeResource.RecordExists.Replace("{0}", "Store"));
                 return Ok(apiModel);
             }
             return StatusCode((int)HttpStatusCode.Forbidden, APIStatusHelper.Forbidden("Model not valid"));
         }
 
-        //[Route("AddRetailer")]
-        //[ProducesResponseType(404)]
-        //[ProducesResponseType(200)]
-        //[HttpPost]
-        //public async Task<IActionResult> AddRetailer(RetailerParamApiFormModel model)
-        //{
-        //    ApiOkResponse apiModel = new ApiOkResponse();
-        //    if (ModelState.IsValid)
-        //    {
-        //        RetailerApiModel RetailerApiModel = new RetailerApiModel();
-        //        Retailer Retailer = new Retailer();
-        //        if (model.RegistrationType == (int)RetailerRegistrationType.Google)
-        //            Retailer = await RetailerService.CheckRetailerExists(model.RegistrationType, model.GooglePlusId);
-        //        else
-        //            Retailer = await RetailerService.CheckRetailerExists(model.RegistrationType, model.FacebookId);
+        [Route("AddStore")]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(200)]
+        [HttpPost]
+        public async Task<IActionResult> AddStore([FromForm] AddStoreParamApiFormModel model)
+        {
+            ApiOkResponse apiModel = new ApiOkResponse();
+            if (ModelState.IsValid)
+            {
+                AddStoreReturnApiFormModel addStoreReturnApiFormModel = new AddStoreReturnApiFormModel();
+                string logo = "";
 
-        //        if (Retailer == null)
-        //        {
-        //            var mappedResult = mapper.Map<RetailerParamApiFormModel, Retailer>(model);
-        //            mappedResult.Active = true;
-        //            mappedResult.AddedDate = DateTime.Now;
-        //            //mappedResult.DeviceType = (int)RetailerDeviceType.Android;
-        //            await RetailerService.Create(mappedResult);
-        //            RetailerApiModel.RetailerId = mappedResult.RetailerId;
-        //            apiModel = APIStatusHelper.Success(RetailerApiModel, DealSeResource.InsertMessage.Replace("{0}", "Retailer"));
-        //            return Ok(apiModel);
-        //        }
+                // Getting Image
+                var image = model.Logo;
+                // Saving Image on Server
+                if (image != null)
+                {
+                    string targetDirectory = Path.Combine(hostingEnvironment.WebRootPath, "Upload/Store/Logo");
 
-        //        RetailerApiModel.RetailerId = Retailer.RetailerId;
-        //        apiModel = APIStatusHelper.Success(RetailerApiModel, DealSeResource.RecordExists.Replace("{0}", "Retailer"));
-        //        return Ok(apiModel);
-        //    }
-        //    return StatusCode((int)HttpStatusCode.Forbidden, APIStatusHelper.Forbidden("Model not valid"));
-        //}
+                    if (!Directory.Exists(targetDirectory))
+                        Directory.CreateDirectory(targetDirectory);
+
+                    string extension = Path.GetExtension(image.FileName);
+                    logo = DateTime.Now.Ticks.ToString() + extension;
+                    var imagePath = Path.Combine(targetDirectory, logo);
+
+                    using (var fileStream = new FileStream(imagePath, FileMode.Create))
+                    {
+                        image.CopyTo(fileStream);
+                    }
+                }
+
+                var mappedResult = mapper.Map<AddStoreParamApiFormModel, Store>(model);
+                mappedResult.Logo = logo;
+                mappedResult.Active = true;
+                mappedResult.AddedDate = DateTime.Now;
+                await storeService.Create(mappedResult);
+                addStoreReturnApiFormModel.StoreId = mappedResult.StoreId;
+                apiModel = APIStatusHelper.Success(addStoreReturnApiFormModel, DealSeResource.InsertMessage.Replace("{0}", "Store"));
+                return Ok(apiModel);
+            }
+            return StatusCode((int)HttpStatusCode.Forbidden, APIStatusHelper.Forbidden("Model not valid"));
+        }
     }
 }

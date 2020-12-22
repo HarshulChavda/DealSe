@@ -221,6 +221,9 @@ namespace DealSe
             services.AddScoped<IEmailTemplateService, EmailTemplateService>();
             services.AddScoped<ICountryService, CountryService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IStoreService, StoreService>();
+            services.AddScoped<IAreaService, AreaService>();
+            services.AddScoped<IStoreTypeService, StoreTypeService>();
         }
     }
 }

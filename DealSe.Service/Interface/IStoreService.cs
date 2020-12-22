@@ -8,7 +8,7 @@ namespace DealSe.Service.Interface
     public interface IStoreService : IGenericRepository<Store>
     {
         /// <summary>
-        /// Check store Mobileno is exist or not
+        /// Check store mobile no. is exist or not
         /// </summary>
         /// <param name="id"></param>
         /// <param name="mobileNo"></param>

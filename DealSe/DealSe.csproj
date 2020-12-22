@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>DealSe</AssemblyName>
     <RootNamespace>DealSe</RootNamespace>
+    <UserSecretsId>767f0810-d58a-48dc-99fa-d2c44989df8f</UserSecretsId>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
