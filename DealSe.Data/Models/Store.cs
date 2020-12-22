@@ -12,17 +12,23 @@ namespace DealSe.Data.Models
         {
             Offer = new HashSet<Offer>();
             StoreSuggestedOffer = new HashSet<StoreSuggestedOffer>();
+            StoreTime = new HashSet<StoreTime>();
         }
 
         [Key]
         public int StoreId { get; set; }
         public int StoreTypeId { get; set; }
-        public int CityId { get; set; }
+        public int AreaId { get; set; }
         [Required]
         [StringLength(100)]
         public string Name { get; set; }
         [StringLength(100)]
         public string Email { get; set; }
+        [StringLength(50)]
+        public string Logo { get; set; }
+        public byte RegistrationType { get; set; }
+        public string GoogleId { get; set; }
+        public string FacebookId { get; set; }
         [StringLength(10)]
         public string MobileNo1 { get; set; }
         [StringLength(10)]
@@ -34,12 +40,6 @@ namespace DealSe.Data.Models
         public string Address2 { get; set; }
         [StringLength(500)]
         public string Address3 { get; set; }
-        [Required]
-        [StringLength(5)]
-        public string OpenTime { get; set; }
-        [Required]
-        [StringLength(5)]
-        public string CloseTime { get; set; }
         [Column(TypeName = "decimal(11, 8)")]
         public decimal Latitude { get; set; }
         [Column(TypeName = "decimal(11, 8)")]
@@ -60,9 +60,9 @@ namespace DealSe.Data.Models
         [Column(TypeName = "datetime")]
         public DateTime? DeletedDate { get; set; }
 
-        [ForeignKey(nameof(CityId))]
+        [ForeignKey(nameof(AreaId))]
         [InverseProperty("Store")]
-        public virtual City City { get; set; }
+        public virtual Area Area { get; set; }
         [ForeignKey(nameof(StoreTypeId))]
         [InverseProperty("Store")]
         public virtual StoreType StoreType { get; set; }
@@ -70,5 +70,7 @@ namespace DealSe.Data.Models
         public virtual ICollection<Offer> Offer { get; set; }
         [InverseProperty("Store")]
         public virtual ICollection<StoreSuggestedOffer> StoreSuggestedOffer { get; set; }
+        [InverseProperty("Store")]
+        public virtual ICollection<StoreTime> StoreTime { get; set; }
     }
 }

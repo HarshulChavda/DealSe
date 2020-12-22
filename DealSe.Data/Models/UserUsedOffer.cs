@@ -12,14 +12,18 @@ namespace DealSe.Data.Models
         public int UserUsedOfferId { get; set; }
         public int UserId { get; set; }
         public int OfferId { get; set; }
-        [StringLength(100)]
-        public string OfferQRCode { get; set; }
-        [StringLength(100)]
-        public string OfferCouponCode { get; set; }
+        [Required]
+        [StringLength(50)]
+        public string CouponCode { get; set; }
         [Column(TypeName = "decimal(11, 8)")]
-        public decimal Latitude { get; set; }
+        public decimal? Latitude { get; set; }
         [Column(TypeName = "decimal(11, 8)")]
-        public decimal Longitude { get; set; }
+        public decimal? Longitude { get; set; }
+        [Column(TypeName = "datetime")]
+        public DateTime? ScanDateTime { get; set; }
+        public bool IsRedeem { get; set; }
+        [Column(TypeName = "datetime")]
+        public DateTime? RedeemDate { get; set; }
         public bool Active { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime AddedDate { get; set; }

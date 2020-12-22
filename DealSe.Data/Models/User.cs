@@ -15,7 +15,7 @@ namespace DealSe.Data.Models
 
         [Key]
         public int UserId { get; set; }
-        public int? CityId { get; set; }
+        public int AreaId { get; set; }
         [StringLength(50)]
         public string FirstName { get; set; }
         [StringLength(50)]
@@ -26,9 +26,7 @@ namespace DealSe.Data.Models
         [StringLength(150)]
         public string Email { get; set; }
         public byte RegistrationType { get; set; }
-        [StringLength(50)]
         public string GoogleId { get; set; }
-        [StringLength(50)]
         public string FacebookId { get; set; }
         [StringLength(50)]
         public string Photo { get; set; }
@@ -50,9 +48,9 @@ namespace DealSe.Data.Models
         [Column(TypeName = "datetime")]
         public DateTime? DeletedDate { get; set; }
 
-        [ForeignKey(nameof(CityId))]
+        [ForeignKey(nameof(AreaId))]
         [InverseProperty("User")]
-        public virtual City City { get; set; }
+        public virtual Area Area { get; set; }
         [InverseProperty("User")]
         public virtual ICollection<UserUsedOffer> UserUsedOffer { get; set; }
     }

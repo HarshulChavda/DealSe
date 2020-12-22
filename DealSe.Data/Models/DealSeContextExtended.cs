@@ -11,6 +11,7 @@ namespace DealSe.Data.Models
 		#region AdminEnd 
         public virtual DbSet<GetAllCountry> GetAllCountry { get; set; }
         public virtual DbSet<UsersSPModel> GetAllUsers { get; set; }
+        public virtual DbSet<GetUserUsedOfferListByStoreSPModel> GetUserUsedOfferListByStore { get; set; }
         #endregion
     }
 }
