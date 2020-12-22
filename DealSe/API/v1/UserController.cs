@@ -41,7 +41,7 @@ namespace DealSe.API.v1
             {
                 UserApiModel userApiModel = new UserApiModel();
                 User user = new User();
-                if (model.RegistrationType == (int)UserRegistrationType.Google)
+                if (model.RegistrationType == (int)RegistrationType.Google)
                     user = await userService.CheckUserExists(model.RegistrationType, model.GooglePlusId);
                 else
                     user = await userService.CheckUserExists(model.RegistrationType, model.FacebookId);

@@ -11,8 +11,6 @@ namespace DealSe.Data.Models
         public City()
         {
             Area = new HashSet<Area>();
-            Store = new HashSet<Store>();
-            User = new HashSet<User>();
         }
 
         [Key]
@@ -32,9 +30,5 @@ namespace DealSe.Data.Models
         public virtual State State { get; set; }
         [InverseProperty("City")]
         public virtual ICollection<Area> Area { get; set; }
-        [InverseProperty("City")]
-        public virtual ICollection<Store> Store { get; set; }
-        [InverseProperty("City")]
-        public virtual ICollection<User> User { get; set; }
     }
 }

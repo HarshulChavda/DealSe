@@ -1,7 +1,6 @@
 D:\Company Running Projects\DealSe\Project\DealSe\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\Company Running Projects\DealSe\Project\DealSe\bin\Debug\netcoreapp3.1\web.config
 D:\Company Running Projects\DealSe\Project\DealSe\bin\Debug\netcoreapp3.1\appsettings.json
-D:\Company Running Projects\DealSe\Project\DealSe\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 D:\Company Running Projects\DealSe\Project\DealSe\bin\Debug\netcoreapp3.1\DealSe.exe
 D:\Company Running Projects\DealSe\Project\DealSe\bin\Debug\netcoreapp3.1\DealSe.deps.json
 D:\Company Running Projects\DealSe\Project\DealSe\bin\Debug\netcoreapp3.1\DealSe.runtimeconfig.json
@@ -475,3 +474,4 @@ D:\Company Running Projects\DealSe\Project\DealSe\obj\Debug\netcoreapp3.1\static
 D:\Company Running Projects\DealSe\Project\DealSe\obj\Debug\netcoreapp3.1\DealSe.dll
 D:\Company Running Projects\DealSe\Project\DealSe\obj\Debug\netcoreapp3.1\DealSe.pdb
 D:\Company Running Projects\DealSe\Project\DealSe\obj\Debug\netcoreapp3.1\DealSe.genruntimeconfig.cache
+D:\Company Running Projects\DealSe\Project\DealSe\obj\Debug\netcoreapp3.1\scopedcss\bundle\DealSe.styles.css

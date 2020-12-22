@@ -26,8 +26,7 @@ namespace DealSe.Mappings
             CreateMap<EmailTemplate, EmailTemplateFormModel>().ReverseMap();
             CreateMap<Country, CountryFormModel>().ReverseMap();
             CreateMap<User, UserFormModel>()
-                .ForMember(dest => dest.RegistrationType, opt => opt.MapFrom(src => src.RegistrationType == (int)UserRegistrationType.Facebook ? "Facebook" : src.RegistrationType == (int)UserRegistrationType.Google ? "Google+" : "Guest"))
-                //.ForMember(dest => dest.DeviceType, opt => opt.MapFrom(src => src.DeviceType == (int)UserDeviceType.Android ? "Android" : "IOS"))
+                .ForMember(dest => dest.RegistrationType, opt => opt.MapFrom(src => src.RegistrationType == (int)RegistrationType.Facebook ? "Facebook" : src.RegistrationType == (int)RegistrationType.Google ? "Google+" : "Guest"))
                 .ForMember(dest => dest.Gender, opt => opt.MapFrom(src => src.Gender == (int)Gender.Male ? "Male" : src.Gender == (int)Gender.Female ? "Female" : "-"))
                 .ForMember(dest => dest.MobileNo, opt => opt.MapFrom(src => string.IsNullOrEmpty(src.MobileNo) ? "-" : src.MobileNo))
                 .ForMember(dest => dest.FacebookId, opt => opt.MapFrom(src => string.IsNullOrEmpty(src.FacebookId) ? "-" : src.FacebookId))
@@ -48,6 +47,16 @@ namespace DealSe.Mappings
 
             #region API Mapping
             CreateMap<User, UserParamApiFormModel>().ReverseMap();
+            CreateMap<AddStoreParamApiFormModel, User>().ReverseMap();
+            CreateMap<GetUserUsedOfferListByStoreSPModel, GetUserUsedOfferListByStoreReturnApiModel>().ReverseMap();
+            CreateMap<Area, AreaListModel>()
+                 .ForMember(dest => dest.areaId, opt => opt.MapFrom(src => src.AreaId))
+                 .ForMember(dest => dest.areaName, opt => opt.MapFrom(src => src.Name))
+                .ReverseMap();
+            CreateMap<StoreType, StoreTypeApiModel>()
+                 .ForMember(dest => dest.storeTypeId, opt => opt.MapFrom(src => src.StoreTypeId))
+                 .ForMember(dest => dest.storeTypeName, opt => opt.MapFrom(src => src.Name))
+                 .ReverseMap();
             #endregion
         }
     }

@@ -27,6 +27,7 @@ namespace DealSe.Data.Models
         public virtual DbSet<State> State { get; set; }
         public virtual DbSet<Store> Store { get; set; }
         public virtual DbSet<StoreSuggestedOffer> StoreSuggestedOffer { get; set; }
+        public virtual DbSet<StoreTime> StoreTime { get; set; }
         public virtual DbSet<StoreType> StoreType { get; set; }
         public virtual DbSet<SuggestedOffer> SuggestedOffer { get; set; }
         public virtual DbSet<User> User { get; set; }
@@ -86,11 +87,11 @@ namespace DealSe.Data.Models
 
             modelBuilder.Entity<Store>(entity =>
             {
-                entity.HasOne(d => d.City)
+                entity.HasOne(d => d.Area)
                     .WithMany(p => p.Store)
-                    .HasForeignKey(d => d.CityId)
+                    .HasForeignKey(d => d.AreaId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Store_City");
+                    .HasConstraintName("FK_Store_Area");
 
                 entity.HasOne(d => d.StoreType)
                     .WithMany(p => p.Store)
@@ -116,6 +117,15 @@ namespace DealSe.Data.Models
                     .HasConstraintName("FK_StoreSuggestedOffer_SuggestedOffer");
             });
 
+            modelBuilder.Entity<StoreTime>(entity =>
+            {
+                entity.HasOne(d => d.Store)
+                    .WithMany(p => p.StoreTime)
+                    .HasForeignKey(d => d.StoreId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_StoreTime_Store");
+            });
+
             modelBuilder.Entity<SuggestedOffer>(entity =>
             {
                 entity.Property(e => e.OfferImage).IsFixedLength();
@@ -129,10 +139,11 @@ namespace DealSe.Data.Models
 
             modelBuilder.Entity<User>(entity =>
             {
-                entity.HasOne(d => d.City)
+                entity.HasOne(d => d.Area)
                     .WithMany(p => p.User)
-                    .HasForeignKey(d => d.CityId)
-                    .HasConstraintName("FK_User_City");
+                    .HasForeignKey(d => d.AreaId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_User_Area");
             });
 
             modelBuilder.Entity<UserUsedOffer>(entity =>
