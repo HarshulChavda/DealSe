@@ -14,6 +14,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\Upload\Admin\**" />
+    <Content Remove="wwwroot\Upload\Admin\**" />
+    <EmbeddedResource Remove="wwwroot\Upload\Admin\**" />
+    <None Remove="wwwroot\Upload\Admin\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="API\v1\OrganiserController.cs" />
     <Compile Remove="Common\CustomIDataProtector.cs" />
     <Compile Remove="Common\DisplayNameFromEnum.cs" />
@@ -48,7 +55,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\Upload\Admin\Logo\" />
     <Folder Include="wwwroot\Upload\Company\Icon\" />
     <Folder Include="wwwroot\Upload\HomeScreenBanner\" />
     <Folder Include="wwwroot\Upload\ReportProblem\" />

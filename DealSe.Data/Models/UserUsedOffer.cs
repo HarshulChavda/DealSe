@@ -19,8 +19,6 @@ namespace DealSe.Data.Models
         public decimal? Latitude { get; set; }
         [Column(TypeName = "decimal(11, 8)")]
         public decimal? Longitude { get; set; }
-        [Column(TypeName = "datetime")]
-        public DateTime? ScanDateTime { get; set; }
         public bool IsRedeem { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime? RedeemDate { get; set; }

@@ -4,6 +4,7 @@ using DealSe.Areas.Admin.FormModels;
 using DealSe.Areas.Admin.ViewModels;
 using DealSe.Data.Models;
 using DealSe.Data.SPModel;
+using DealSe.Utils.Common;
 using DealSe.Utils.Enum;
 
 namespace DealSe.Mappings
@@ -47,13 +48,19 @@ namespace DealSe.Mappings
 
             #region API Mapping
             CreateMap<User, UserParamApiFormModel>().ReverseMap();
-            CreateMap<AddStoreParamApiFormModel, User>().ReverseMap();
+            CreateMap<AddStoreParamApiFormModel, Store>().ReverseMap();
+            CreateMap<UpdateStoreParamApiFormModel, Store>().ReverseMap();
+            CreateMap<AddOfferBannerParamApiFormModel, OfferBanner>().ReverseMap();
+            CreateMap<AddOfferParamApiFormModel, Offer>().ReverseMap();
+            CreateMap<AddOfferReturnApiFormModel, Offer>().ReverseMap();
+            CreateMap<UpdateOfferParamApiFormModel, Offer>().ReverseMap();
+            CreateMap<GetOfferListByStoreIdSPModel, GetOfferListByStoreIdReturnApiFormModel>().ReverseMap();
             CreateMap<GetUserUsedOfferListByStoreSPModel, GetUserUsedOfferListByStoreReturnApiModel>().ReverseMap();
             CreateMap<Area, AreaListModel>()
                  .ForMember(dest => dest.areaId, opt => opt.MapFrom(src => src.AreaId))
                  .ForMember(dest => dest.areaName, opt => opt.MapFrom(src => src.Name))
                 .ReverseMap();
-            CreateMap<StoreType, StoreTypeApiModel>()
+            CreateMap<StoreType, StoreTypeListApiModel>()
                  .ForMember(dest => dest.storeTypeId, opt => opt.MapFrom(src => src.StoreTypeId))
                  .ForMember(dest => dest.storeTypeName, opt => opt.MapFrom(src => src.Name))
                  .ReverseMap();
