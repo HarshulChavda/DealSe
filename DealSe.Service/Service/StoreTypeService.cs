@@ -12,12 +12,12 @@ namespace DealSe.Service.Service
         public StoreTypeService(DealSeContext dbContext) : base(dbContext) { }
 
         /// <summary>
-        /// Check store name is exist or not
+        /// Check store type name is exist or not
         /// </summary>
         /// <param name="id"></param>
         /// <param name="name"></param>
         /// <returns></returns>
-        public async Task<StoreType> CheckStoreMobileNoExists(int id, string name)
+        public async Task<StoreType> CheckStoreTypeNameExists(int id, string name)
         {
             if (id == 0)
                 return await Get(top => top.Name.Trim() == name.Trim());
