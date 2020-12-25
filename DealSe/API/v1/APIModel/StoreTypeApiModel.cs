@@ -2,7 +2,7 @@
 
 namespace DealSe.API.v1.APIModel
 {
-    public class StoreTypeApiModel
+    public class StoreTypeListApiModel
     {
        public int storeTypeId { get; set; }
        public string storeTypeName { get; set; }

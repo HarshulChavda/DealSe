@@ -5,16 +5,16 @@ using System.Threading.Tasks;
 
 namespace DealSe.Service.Interface
 {
-    //Interface service of Store
+    //Interface service of store type
     public interface IStoreTypeService : IGenericRepository<StoreType>
     {
         /// <summary>
-        /// Check store name is exist or not
+        /// Check store type name is exist or not
         /// </summary>
         /// <param name="id"></param>
         /// <param name="name"></param>
         /// <returns></returns>
-        Task<StoreType> CheckStoreMobileNoExists(int id, string name);
+        Task<StoreType> CheckStoreTypeNameExists(int id, string name);
 
         /// <summary>
         /// Create store type

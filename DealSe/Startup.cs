@@ -224,6 +224,8 @@ namespace DealSe
             services.AddScoped<IStoreService, StoreService>();
             services.AddScoped<IAreaService, AreaService>();
             services.AddScoped<IStoreTypeService, StoreTypeService>();
+            services.AddScoped<IOfferService, OfferService>();
+            services.AddScoped<IOfferBannerService, OfferBannerService>();
         }
     }
 }

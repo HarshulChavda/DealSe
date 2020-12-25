@@ -56,6 +56,8 @@ namespace DealSe.Data.Models
         public bool Active { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime AddedDate { get; set; }
+        [Column(TypeName = "datetime")]
+        public DateTime? UpdatedDate { get; set; }
         public bool Deleted { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime? DeletedDate { get; set; }
