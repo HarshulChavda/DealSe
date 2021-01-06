@@ -1,6 +1,6 @@
 USE [DealSe]
 GO
-/****** Object:  Table [dbo].[Admin]    Script Date: 23-12-2020 00:53:11 ******/
+/****** Object:  Table [dbo].[Admin]    Script Date: 07-01-2021 00:21:35 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -24,7 +24,7 @@ CREATE TABLE [dbo].[Admin](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Area]    Script Date: 23-12-2020 00:53:11 ******/
+/****** Object:  Table [dbo].[Area]    Script Date: 07-01-2021 00:21:35 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -42,7 +42,7 @@ CREATE TABLE [dbo].[Area](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[City]    Script Date: 23-12-2020 00:53:11 ******/
+/****** Object:  Table [dbo].[City]    Script Date: 07-01-2021 00:21:35 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -60,7 +60,7 @@ CREATE TABLE [dbo].[City](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Country]    Script Date: 23-12-2020 00:53:11 ******/
+/****** Object:  Table [dbo].[Country]    Script Date: 07-01-2021 00:21:35 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -77,7 +77,7 @@ CREATE TABLE [dbo].[Country](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[EmailTemplate]    Script Date: 23-12-2020 00:53:11 ******/
+/****** Object:  Table [dbo].[EmailTemplate]    Script Date: 07-01-2021 00:21:35 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -95,7 +95,7 @@ CREATE TABLE [dbo].[EmailTemplate](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Offer]    Script Date: 23-12-2020 00:53:11 ******/
+/****** Object:  Table [dbo].[Offer]    Script Date: 07-01-2021 00:21:35 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -113,15 +113,17 @@ CREATE TABLE [dbo].[Offer](
 	[Approved] [bit] NOT NULL,
 	[Active] [bit] NOT NULL,
 	[AddedDate] [datetime] NOT NULL,
+	[UpdatedDate] [datetime] NULL,
 	[Deleted] [bit] NOT NULL,
 	[DeletedDate] [datetime] NULL,
+	[UserRedeemLimit] [int] NULL,
  CONSTRAINT [PK_Offer] PRIMARY KEY CLUSTERED 
 (
 	[OfferId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[OfferBanner]    Script Date: 23-12-2020 00:53:11 ******/
+/****** Object:  Table [dbo].[OfferBanner]    Script Date: 07-01-2021 00:21:35 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -141,7 +143,7 @@ CREATE TABLE [dbo].[OfferBanner](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SiteSetting]    Script Date: 23-12-2020 00:53:11 ******/
+/****** Object:  Table [dbo].[SiteSetting]    Script Date: 07-01-2021 00:21:35 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -160,7 +162,7 @@ CREATE TABLE [dbo].[SiteSetting](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[State]    Script Date: 23-12-2020 00:53:11 ******/
+/****** Object:  Table [dbo].[State]    Script Date: 07-01-2021 00:21:35 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -178,7 +180,7 @@ CREATE TABLE [dbo].[State](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Store]    Script Date: 23-12-2020 00:53:11 ******/
+/****** Object:  Table [dbo].[Store]    Script Date: 07-01-2021 00:21:35 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -206,6 +208,7 @@ CREATE TABLE [dbo].[Store](
 	[Approved] [bit] NOT NULL,
 	[Active] [bit] NOT NULL,
 	[AddedDate] [datetime] NOT NULL,
+	[UpdatedDate] [datetime] NULL,
 	[Deleted] [bit] NOT NULL,
 	[DeletedDate] [datetime] NULL,
  CONSTRAINT [PK_Store] PRIMARY KEY CLUSTERED 
@@ -214,7 +217,7 @@ CREATE TABLE [dbo].[Store](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[StoreSuggestedOffer]    Script Date: 23-12-2020 00:53:11 ******/
+/****** Object:  Table [dbo].[StoreSuggestedOffer]    Script Date: 07-01-2021 00:21:35 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -234,7 +237,7 @@ CREATE TABLE [dbo].[StoreSuggestedOffer](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[StoreTime]    Script Date: 23-12-2020 00:53:11 ******/
+/****** Object:  Table [dbo].[StoreTime]    Script Date: 07-01-2021 00:21:35 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -266,7 +269,7 @@ CREATE TABLE [dbo].[StoreTime](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[StoreType]    Script Date: 23-12-2020 00:53:11 ******/
+/****** Object:  Table [dbo].[StoreType]    Script Date: 07-01-2021 00:21:35 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -284,7 +287,7 @@ CREATE TABLE [dbo].[StoreType](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SuggestedOffer]    Script Date: 23-12-2020 00:53:11 ******/
+/****** Object:  Table [dbo].[SuggestedOffer]    Script Date: 07-01-2021 00:21:35 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -307,7 +310,7 @@ CREATE TABLE [dbo].[SuggestedOffer](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[User]    Script Date: 23-12-2020 00:53:11 ******/
+/****** Object:  Table [dbo].[User]    Script Date: 07-01-2021 00:21:35 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -340,7 +343,7 @@ CREATE TABLE [dbo].[User](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[UserUsedOffer]    Script Date: 23-12-2020 00:53:11 ******/
+/****** Object:  Table [dbo].[UserUsedOffer]    Script Date: 07-01-2021 00:21:35 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -366,7 +369,7 @@ CREATE TABLE [dbo].[UserUsedOffer](
 GO
 SET IDENTITY_INSERT [dbo].[Admin] ON 
 GO
-INSERT [dbo].[Admin] ([AdminId], [FirstName], [LastName], [Email], [MobileNo], [Logo], [Password], [AddedDate], [UpdatedDate], [PasswordResetToken], [InvalidLoginAttemptCount], [LastInvalidLoginAttemptDate]) VALUES (1, N'admin', N'admin', N'admin@gmail.com', N'9876543210', NULL, N'7f2765757d527eaeeb14fb706039bac7', CAST(N'2020-12-14T00:00:00.000' AS DateTime), NULL, NULL, 0, NULL)
+INSERT [dbo].[Admin] ([AdminId], [FirstName], [LastName], [Email], [MobileNo], [Logo], [Password], [AddedDate], [UpdatedDate], [PasswordResetToken], [InvalidLoginAttemptCount], [LastInvalidLoginAttemptDate]) VALUES (1, N'admin', N'admin', N'admin@gmail.com', N'9876543210', NULL, N'7f2765757d527eaeeb14fb706039bac7', CAST(N'2020-12-14T00:00:00.000' AS DateTime), CAST(N'2020-12-31T00:55:18.000' AS DateTime), NULL, 0, NULL)
 GO
 SET IDENTITY_INSERT [dbo].[Admin] OFF
 GO
@@ -424,11 +427,19 @@ SET IDENTITY_INSERT [dbo].[Country] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Offer] ON 
 GO
-INSERT [dbo].[Offer] ([OfferId], [StoreId], [Name], [StartDate], [EndDate], [SortDescription], [LongDescription], [TermsAndConditions], [LimitedTimeOffer], [Approved], [Active], [AddedDate], [Deleted], [DeletedDate]) VALUES (2, 2, N'Get 50% Off ', CAST(N'2020-12-22T00:00:00.000' AS DateTime), CAST(N'2021-12-22T00:00:00.000' AS DateTime), N'Get 50% Off ', N'Get 50% Off ', N'Get 50% Off ', 0, 1, 1, CAST(N'2020-12-22T00:00:00.000' AS DateTime), 0, NULL)
+INSERT [dbo].[Offer] ([OfferId], [StoreId], [Name], [StartDate], [EndDate], [SortDescription], [LongDescription], [TermsAndConditions], [LimitedTimeOffer], [Approved], [Active], [AddedDate], [UpdatedDate], [Deleted], [DeletedDate], [UserRedeemLimit]) VALUES (2, 2, N'Get 50% Off ', CAST(N'2020-12-22T00:00:00.000' AS DateTime), CAST(N'2021-12-22T00:00:00.000' AS DateTime), N'Get 50% Off ', N'Get 50% Off ', N'Get 50% Off ', 0, 1, 1, CAST(N'2020-12-22T00:00:00.000' AS DateTime), NULL, 0, NULL, NULL)
 GO
-INSERT [dbo].[Offer] ([OfferId], [StoreId], [Name], [StartDate], [EndDate], [SortDescription], [LongDescription], [TermsAndConditions], [LimitedTimeOffer], [Approved], [Active], [AddedDate], [Deleted], [DeletedDate]) VALUES (3, 2, N'Get 1 On 1', CAST(N'2020-12-22T00:00:00.000' AS DateTime), CAST(N'2021-12-22T00:00:00.000' AS DateTime), N'Get 1 On 1', N'Get 1 On 1', N'Get 1 On 1', 0, 1, 1, CAST(N'2020-12-22T00:00:00.000' AS DateTime), 0, NULL)
+INSERT [dbo].[Offer] ([OfferId], [StoreId], [Name], [StartDate], [EndDate], [SortDescription], [LongDescription], [TermsAndConditions], [LimitedTimeOffer], [Approved], [Active], [AddedDate], [UpdatedDate], [Deleted], [DeletedDate], [UserRedeemLimit]) VALUES (3, 2, N'Get 1 On 1', CAST(N'2020-12-22T00:00:00.000' AS DateTime), CAST(N'2021-12-22T00:00:00.000' AS DateTime), N'Get 1 On 1', N'Get 1 On 1', N'Get 1 On 1', 0, 1, 1, CAST(N'2020-12-22T00:00:00.000' AS DateTime), NULL, 0, NULL, NULL)
+GO
+INSERT [dbo].[Offer] ([OfferId], [StoreId], [Name], [StartDate], [EndDate], [SortDescription], [LongDescription], [TermsAndConditions], [LimitedTimeOffer], [Approved], [Active], [AddedDate], [UpdatedDate], [Deleted], [DeletedDate], [UserRedeemLimit]) VALUES (6, 2, N'Get 40% Off', CAST(N'2020-12-26T00:00:00.000' AS DateTime), CAST(N'2021-12-26T00:00:00.000' AS DateTime), N'Get 40% Off', N'Get 40% Off', N'Get 40% Off', 0, 0, 1, CAST(N'2020-12-26T00:05:29.367' AS DateTime), NULL, 0, NULL, NULL)
 GO
 SET IDENTITY_INSERT [dbo].[Offer] OFF
+GO
+SET IDENTITY_INSERT [dbo].[OfferBanner] ON 
+GO
+INSERT [dbo].[OfferBanner] ([OfferBannerId], [OfferId], [Image], [Approved], [Active], [AddedDate], [Deleted], [DeletedDate]) VALUES (1, 6, N'637445380484734528.jpg', 0, 1, CAST(N'2020-12-26T00:07:36.140' AS DateTime), 0, NULL)
+GO
+SET IDENTITY_INSERT [dbo].[OfferBanner] OFF
 GO
 SET IDENTITY_INSERT [dbo].[SiteSetting] ON 
 GO
@@ -472,7 +483,9 @@ SET IDENTITY_INSERT [dbo].[State] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Store] ON 
 GO
-INSERT [dbo].[Store] ([StoreId], [StoreTypeId], [AreaId], [Name], [Email], [Logo], [RegistrationType], [GoogleId], [FacebookId], [MobileNo1], [MobileNo2], [Address1], [Address2], [Address3], [Latitude], [Longitude], [OwnerName], [OwnerMobileNo], [About], [Approved], [Active], [AddedDate], [Deleted], [DeletedDate]) VALUES (2, 1, 1, N'Jai Ambe', N'JaiAmbe@gmail.com', NULL, 3, NULL, NULL, N'9876543210', NULL, N'Test', NULL, NULL, CAST(1.11111111 AS Decimal(11, 8)), CAST(2.22222222 AS Decimal(11, 8)), N'Harshul', N'8460403453', NULL, 1, 1, CAST(N'2020-12-22T00:00:00.000' AS DateTime), 0, NULL)
+INSERT [dbo].[Store] ([StoreId], [StoreTypeId], [AreaId], [Name], [Email], [Logo], [RegistrationType], [GoogleId], [FacebookId], [MobileNo1], [MobileNo2], [Address1], [Address2], [Address3], [Latitude], [Longitude], [OwnerName], [OwnerMobileNo], [About], [Approved], [Active], [AddedDate], [UpdatedDate], [Deleted], [DeletedDate]) VALUES (2, 1, 1, N'Jai Ambe', N'JaiAmbe@gmail.com', NULL, 3, NULL, NULL, N'9876543210', NULL, N'Test', NULL, NULL, CAST(1.11111111 AS Decimal(11, 8)), CAST(2.22222222 AS Decimal(11, 8)), N'Harshul', N'8460403453', NULL, 1, 1, CAST(N'2020-12-22T00:00:00.000' AS DateTime), NULL, 0, NULL)
+GO
+INSERT [dbo].[Store] ([StoreId], [StoreTypeId], [AreaId], [Name], [Email], [Logo], [RegistrationType], [GoogleId], [FacebookId], [MobileNo1], [MobileNo2], [Address1], [Address2], [Address3], [Latitude], [Longitude], [OwnerName], [OwnerMobileNo], [About], [Approved], [Active], [AddedDate], [UpdatedDate], [Deleted], [DeletedDate]) VALUES (3, 1, 1, N'TEst', N'Test@gmail.com', N'637444464140821552.jpg', 0, NULL, NULL, N'1234567890', N'1234567890', N'67 AVNISH SOCIETY C.T.M CROSS ROAD', N'CTM', NULL, CAST(1.11111111 AS Decimal(11, 8)), CAST(1.11111111 AS Decimal(11, 8)), N'HH', N'8460403453', NULL, 0, 1, CAST(N'2020-12-24T22:40:43.010' AS DateTime), NULL, 0, NULL)
 GO
 SET IDENTITY_INSERT [dbo].[Store] OFF
 GO
@@ -612,7 +625,39 @@ REFERENCES [dbo].[User] ([UserId])
 GO
 ALTER TABLE [dbo].[UserUsedOffer] CHECK CONSTRAINT [FK_UserUsedOffer_User]
 GO
-/****** Object:  StoredProcedure [dbo].[GetUserUsedOfferListByStore]    Script Date: 23-12-2020 00:53:11 ******/
+/****** Object:  StoredProcedure [dbo].[GetOfferListByStoreId]    Script Date: 07-01-2021 00:21:35 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+--GetOfferListByStoreId 2,1,10
+CREATE PROCEDURE [dbo].[GetOfferListByStoreId]
+(	
+	@StoreId int,
+	@PageIndex int,
+	@PageSize int
+)
+AS
+BEGIN
+	
+	Select *,
+	(Select Top 1 Image From OfferBanner OB Where OB.Deleted = 0 And Result.OfferId = OB.OfferId order by OB.AddedDate Desc) 'OfferListImage'
+	From(Select 
+	O.OfferId,
+	O.[Name] 'Name',
+	(Select (convert(varchar, O.StartDate, 106) + ' - ' + convert(varchar, O.EndDate, 106))) 'EffectiveDateRange',
+	O.SortDescription,
+	O.Active
+	From Offer O
+	where O.Deleted = 0
+	order by O.AddedDate Desc
+	OFFSET @PageSize * (@PageIndex - 1) ROWS
+	FETCH NEXT @PageSize ROWS ONLY) as Result
+	    
+END
+GO
+/****** Object:  StoredProcedure [dbo].[GetUserUsedOfferListByStore]    Script Date: 07-01-2021 00:21:35 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -621,6 +666,7 @@ GO
 --GetUserUsedOfferListByStore 2,1,10
 CREATE PROCEDURE [dbo].[GetUserUsedOfferListByStore]
 (	
+	@StoreId int,
 	@PageIndex int,
 	@PageSize int
 )
@@ -635,7 +681,7 @@ BEGIN
 	from UserUsedOffer UUO
 	inner join [User] U on U.UserId = UUO.UserId
 	inner join [Offer] O on O.OfferId = UUO.OfferId
-	where UUO.IsRedeem = 1 and UUO.Active = 1 and UUO.Deleted = 0
+	where O.StoreId = @StoreId and UUO.IsRedeem = 1 and UUO.Active = 1 and UUO.Deleted = 0
 	order by UUo.AddedDate
 	OFFSET @PageSize * (@PageIndex - 1) ROWS
 	FETCH NEXT @PageSize ROWS ONLY
