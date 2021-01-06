@@ -1736,6 +1736,7 @@ D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubT
 D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\lib\jquery\dist\jquery.min.js
 D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\lib\jquery\dist\jquery.min.map
 D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\lib\jquery\LICENSE.txt
+D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\Upload\Offer\6\637445380484734528.jpg
 D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\web.config
 D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\appsettings.Development.json
 D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\appsettings.json

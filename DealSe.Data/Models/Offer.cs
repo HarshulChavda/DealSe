@@ -39,6 +39,7 @@ namespace DealSe.Data.Models
         public bool Deleted { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime? DeletedDate { get; set; }
+        public int? UserRedeemLimit { get; set; }
 
         [ForeignKey(nameof(StoreId))]
         [InverseProperty("Offer")]
