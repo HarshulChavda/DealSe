@@ -1,5 +1,5 @@
-﻿@*View to show country details*@
-@model DealSe.Areas.Admin.ViewModels.CountryViewModel
+﻿@*View to show state details*@
+@model DealSe.Areas.Admin.ViewModels.StateViewModel
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -9,10 +9,10 @@
         <a href="@Url.Action("Index", "Home",new { Area = "Admin" })"><i class="entypo-home"></i>Home</a>
     </li>
     <li>
-        <i class="entypo-globe"></i>Countries
+        <i class="entypo-globe"></i>States
     </li>
 </ol>
-<h2>Countries</h2>
+<h2>States</h2>
 <br />
 @if (TempData["Error"] != null)
 {
@@ -30,7 +30,39 @@ else if (TempData["Success"] != null)
         </div>
     </div>
 }
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default panel-shadow" data-collapsed="0">
+            <!-- to apply shadow add class "panel-shadow" -->
+            <!-- panel head -->
+            <div class="panel-heading">
+                <div class="panel-title"><i class="entypo-search"></i> Search</div>
+                <div class="panel-options">
+                    <a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
+                </div>
+            </div>
 
+            <!-- panel body -->
+            <div class="panel-body search-panel">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label" for="status">Country Name</label>
+                            @Html.DropDownListFor(Model => Model.CountryId, new SelectList(ViewBag.CountryList, "Value", "Text"), "Select Country", new { @class = "select2" })
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row center">
+                    <button type="button" id="btnsearch" class="btn btn-success">
+                        <i class="entypo entypo-search"></i>
+                        Search
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="row user-dactive">
     <div class="col-xs-12 col-sm-8">
         <a href="#" class="btn btn-green btn-sm btn-icon icon-left statusbutton" data-statuslabel="Active">
@@ -43,27 +75,35 @@ else if (TempData["Success"] != null)
         </a>
     </div>
     <div class="col-xs-12 col-sm-4">
-        <a href="@Url.Action("AddCountry", "Country", new { Area = "Admin" })" class="btn btn-primary btn-sm btn-icon icon-left adminaddbutton">
+        <a href="@Url.Action("AddState", "State", new { Area = "Admin" })" class="btn btn-primary btn-sm btn-icon icon-left adminaddbutton">
             <i class="entypo-plus"></i>
-            Add Country
+            Add State
         </a>
     </div>
 </div>
 <br class="clear" />
-@await Html.PartialAsync("_CountryDetails")
+@await Html.PartialAsync("_StateDetails")
 @await Html.PartialAsync("_DatatableCSSJSView")
 <script type="text/javascript">
     $(document).ready(function () {
-        loadData();
+        var countryId = $("#CountryId").val();
+        if (countryId != "") {
+            loadData();
+        }
     });
     var responsiveHelper;
     var breakpointDefinition = {
         tablet: 1024,
         phone: 480
     };
+    $("#btnsearch").click(function () {
+        loadData();
+    });
     function loadData() {
+        var countryId = $("#CountryId").val();
         var tableContainer;
-        tableContainer = $("#CountryDetails");
+        tableContainer = $("#StateDetails");
+
         tableContainer.dataTable(
             {
                 "destroy": true,
@@ -76,8 +116,9 @@ else if (TempData["Success"] != null)
                 },
                 "serverSide": true,
                 "ajax": {
-                    "url": '/Admin/Country/LoadData',
+                    "url": '/Admin/State/LoadData',
                     "type": "POST",
+                    "data": { countryId: countryId},
                     "datatype": "json"
                 },
 
@@ -85,7 +126,7 @@ else if (TempData["Success"] != null)
                     {
                         mData: null, "bSortable": false, "bSearchable": false, "width": "5%",
                         "mRender": function (data, type, row) {
-                            return "<div class='checkbox checkbox-replace itemclass'><input type='checkbox' id=" + row.countryId + "></div>";
+                            return "<div class='checkbox checkbox-replace itemclass'><input type='checkbox' id=" + row.stateId + "></div>";
                         }
                     },
                     {
@@ -110,7 +151,7 @@ else if (TempData["Success"] != null)
                     {
                         "mData": "Activated", "bSearchable": false, "bSortable": false, "autoWidth": true, "width": "13%",
                         "mRender": function (data, type, row) {
-                            return '<a class="btn btn-blue btn-sm btn-icon icon-left" href="/Admin/Country/EditCountry/' + row.countryId + '"><i class="entypo-pencil"></i>Edit</a>';
+                            return '<a class="btn btn-blue btn-sm btn-icon icon-left" href="/Admin/State/EditState/' + row.stateId + '"><i class="entypo-pencil"></i>Edit</a>';
                         }, "sClass": "view-more"
                     }
                 ],
@@ -123,7 +164,7 @@ else if (TempData["Success"] != null)
                     replaceCheckboxes();
                     responsivePaginationDesign();
                     checkAllCheckboxes();
-                    addresponsiveTableDiv("#CountryDetails");
+                    addresponsiveTableDiv("#StateDetails");
                 },
             });
             $(".dataTables_wrapper select").select2({
@@ -132,14 +173,14 @@ else if (TempData["Success"] != null)
     }
     $(window).resize(function () {
         if (window.matchMedia('(max-width: 768px)').matches) {
-            responsiveTableColumn('#CountryDetails');
+            responsiveTableColumn('#StateDetails');
         }
     })
 
      $(".statusbutton").click(function () {
             $("#preloader").show();
             var checkedrecord = new Array();
-            var checkactivestatus = $('#CountryDetails tbody tr').find(':checkbox:checked').length;
+            var checkactivestatus = $('#StateDetails tbody tr').find(':checkbox:checked').length;
             if (checkactivestatus == 0) {
 
                 $.alert({
@@ -149,11 +190,11 @@ else if (TempData["Success"] != null)
             $("#preloader").hide();
             $(".checkbox-replace").removeClass("checked");
             $("#chk-1").removeAttr("checked");
-            $('#CountryDetails th input[type="checkbox"]').prop("checked", false);
-            $('#CountryDetails td input[type="checkbox"]').prop("checked", false);
+            $('#StateDetails th input[type="checkbox"]').prop("checked", false);
+            $('#StateDetails td input[type="checkbox"]').prop("checked", false);
             return false;
             }
-            $('#CountryDetails tbody tr').find(':checkbox:checked').each(function (i, row) {
+            $('#StateDetails tbody tr').find(':checkbox:checked').each(function (i, row) {
                 var $actualrow = $(row);
                 $checkbox = $actualrow;
                 if ($checkbox.attr('id') != 'chk-1') {
@@ -175,10 +216,10 @@ else if (TempData["Success"] != null)
                 content: alertMessage,
                 buttons: {
                     confirm: function () {
-                        $.post('@Url.Action("CountryOperation", "Country", new {area="Admin"})', { checkedrecord: checkedrecord, status: status }, function (data) {
+                        $.post('@Url.Action("StateOperation", "State", new {area="Admin"})', { checkedrecord: checkedrecord, status: status, countryId : $("#CountryId").val() }, function (data) {
                             if (data == "Success") {
                                 $("#preloader").hide();
-                                window.location.href = "/admin/Country";
+                                window.location.href = "/admin/State";
                             } else {
                                 $("#preloader").hide();
                             }
@@ -187,8 +228,8 @@ else if (TempData["Success"] != null)
                     cancel: function () {
                         $(".checkbox-replace").removeClass("checked");
                         $("#chk-1").removeAttr("checked");
-                        $('#CountryDetails th input[type="checkbox"]').prop("checked", false);
-                        $('#CountryDetails td input[type="checkbox"]').prop("checked", false);
+                        $('#StateDetails th input[type="checkbox"]').prop("checked", false);
+                        $('#StateDetails td input[type="checkbox"]').prop("checked", false);
                         $("#preloader").hide();
                     }
                 }

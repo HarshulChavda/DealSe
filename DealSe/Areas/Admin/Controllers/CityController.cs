@@ -14,58 +14,82 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using DealSe.ActionFilter;
+using DealSe.Common;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace DealSe.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [AdminAuthorizeFilter]
-    public class CountryController : Controller
+    public class CityController : Controller
     {
         private readonly DealSeContext dataContext;
         private readonly ICountryService countryService;
+        private readonly IStateService stateService;
+        private readonly ICityService cityService;
         private readonly IMapper mapper;
 
-        public CountryController(DealSeContext dataContext, IMapper mapper, ICountryService countryService)
+        public CityController(DealSeContext dataContext, IMapper mapper, ICityService cityService, ICountryService countryService, IStateService stateService)
         {
             this.dataContext = dataContext;
             this.countryService = countryService;
+            this.stateService = stateService;
+            this.cityService = cityService;
             this.mapper = mapper;
         }
         public IActionResult Index()
         {
-            return View();
+            CityViewModel CityViewModel = new CityViewModel();
+            CityViewModel.CountryId = Convert.ToInt32(TempData["CountryId"]);
+            CityViewModel.StateId = Convert.ToInt32(TempData["StateId"]);
+            ViewBag.CountryList = FillDropdownList.FillCountryList(countryService);
+            ViewBag.StateList = FillDropdownList.FillStateList(stateService, CityViewModel.CountryId);
+            return View(CityViewModel);
         }
 
         //Method for load data on listing page from database
         [HttpPost]
-        public JsonResult LoadData(DTParameters param)
+        public JsonResult LoadData(DTParameters param,int stateId)
         {
-            DTResult<CountryViewModel> finalResult = new DTResult<CountryViewModel>();
-            int start = Convert.ToInt32(param.Start);
-            int pagesize = Convert.ToInt32(param.Length);
-            var result = dataContext.GetAllCountry.FromSqlRaw("GetAllCountry").ToList();
-            var mappedResult = mapper.Map<IEnumerable<GetAllCountry>, IEnumerable<CountryViewModel>>(result);
-            if (!string.IsNullOrEmpty(param.Search.Value))
+            try
             {
-                var searchvalue = param.Search.Value.ToLower().Trim();
-                var columnsSearchValue = param.Columns.Where(a => a.Name != "" && a.Searchable == false && a.Name != null).Select(a => a.Name.ToLower()).ToArray();
-                mappedResult = mappedResult.AsQueryable().FullTextSearch(searchvalue, columnsSearchValue);
+                DTResult<CityViewModel> finalResult = new DTResult<CityViewModel>();
+                int start = Convert.ToInt32(param.Start);
+                int pagesize = Convert.ToInt32(param.Length);
+                //Get filtered product list
+                SqlParameter[] parameters = new SqlParameter[1];
+                parameters[0] = new SqlParameter("@StateId", stateId);
+
+                var result = dataContext.GetAllCity.FromSqlRaw("GetAllCity @StateId", parameters).ToList();
+                var mappedResult = mapper.Map<IEnumerable<GetAllCity>, IEnumerable<CityViewModel>>(result);
+                if (!string.IsNullOrEmpty(param.Search.Value))
+                {
+                    var searchvalue = param.Search.Value.ToLower().Trim();
+                    var columnsSearchValue = param.Columns.Where(a => a.Name != "" && a.Searchable == false && a.Name != null).Select(a => a.Name.ToLower()).ToArray();
+                    mappedResult = mappedResult.AsQueryable().FullTextSearch(searchvalue, columnsSearchValue);
+                }
+                int filterCount = mappedResult.Count();
+                mappedResult = mappedResult.Skip(start).Take(pagesize);
+                mappedResult = ApplySorting(param, mappedResult);
+                finalResult = new DTResult<CityViewModel>
+                {
+                    draw = param.Draw,
+                    data = mappedResult.ToList(),
+                    recordsFiltered = filterCount,
+                    recordsTotal = result.Count()
+                };
+                return Json(finalResult);
             }
-            int filterCount = mappedResult.Count();
-            mappedResult = mappedResult.Skip(start).Take(pagesize);
-            mappedResult = ApplySorting(param, mappedResult);
-            finalResult = new DTResult<CountryViewModel>
+            catch (Exception ex)
             {
-                draw = param.Draw,
-                data = mappedResult.ToList(),
-                recordsFiltered = filterCount,
-                recordsTotal = result.Count()
-            };
-            return Json(finalResult);
+                return Json(ex);
+                throw;
+            }
+            
         }
 
         //Method for apply sorting
-        private static IEnumerable<CountryViewModel> ApplySorting(DTParameters param, IEnumerable<CountryViewModel> mappingResult)
+        private static IEnumerable<CityViewModel> ApplySorting(DTParameters param, IEnumerable<CityViewModel> mappingResult)
         {
             if (param.Order != null)
             {
@@ -95,33 +119,39 @@ namespace DealSe.Areas.Admin.Controllers
             return mappingResult;
         }
 
-        //Get method of add country
-        public IActionResult AddCountry()
+        //Get method of add City
+        public IActionResult AddCity()
         {
-            CountryFormModel model = new CountryFormModel();
+            CityFormModel model = new CityFormModel();
             model.Active = true;
+            ViewBag.CountryList = FillDropdownList.FillCountryList(countryService);
+            ViewBag.StateList = new List<SelectListItem>();
             return View(model);
         }
 
-        //Post method of add country
+        //Post method of add City
         [HttpPost]
-        public async Task<IActionResult> AddCountry(CountryFormModel model)
+        public async Task<IActionResult> AddCity(CityFormModel model)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    var checkExist = await countryService.CheckCountryExists(0, model.Name);
+                    var checkExist = await cityService.CheckCityExists(0, model.Name, model.StateId);
                     if (checkExist != null)
                     {
                         var message = DealSeResource.RecordExists;
                         ViewBag.Error = message.Replace("{0}", model.Name);
+                        ViewBag.CountryList = FillDropdownList.FillCountryList(countryService);
+                        ViewBag.StateList = FillDropdownList.FillStateList(stateService, model.CountryId);
                         return View(model);
                     }
-                    var mappedResult = mapper.Map<CountryFormModel, Country>(model);
+                    var mappedResult = mapper.Map<CityFormModel, City>(model);
                     mappedResult.AddedDate = DateTime.Now;
-                    await countryService.Create(mappedResult);
+                    await cityService.Create(mappedResult);
                     TempData["Success"] = DealSeResource.InsertMessage;
+                    TempData["CountryId"] = model.CountryId;
+                    TempData["StateId"] = model.StateId;
                     return RedirectToAction("Index");
                 }
                 ViewBag.Error = DealSeResource.InternalServerError;
@@ -134,38 +164,45 @@ namespace DealSe.Areas.Admin.Controllers
             }
         }
 
-        //Get method of edit country
-        public async Task<IActionResult> EditCountry(int id)
+        //Get method of edit City
+        public async Task<IActionResult> EditCity(int id)
         {
-            var eventTicketType = await countryService.GetById(id);
-            if (eventTicketType != null)
+            var city = await cityService.GetById(id);
+            if (city != null)
             {
-                var mappedResult = mapper.Map<Country, CountryFormModel>(eventTicketType);
+                ViewBag.CountryList = FillDropdownList.FillCountryList(countryService);
+                ViewBag.StateList = FillDropdownList.FillStateList(stateService, city.State.CountryId);
+                var mappedResult = mapper.Map<City, CityFormModel>(city);
+                mappedResult.CountryId = city.State.CountryId;
                 return View(mappedResult);
             }
             TempData["Error"] = DealSeResource.NoRecordFound;
             return RedirectToAction("Index");
         }
 
-        //Post method of edit country
+        //Post method of edit City
         [HttpPost]
-        public async Task<IActionResult> EditCountry(CountryFormModel model)
+        public async Task<IActionResult> EditCity(CityFormModel model)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    var checkExist = await countryService.CheckCountryExists(model.CountryId, model.Name);
+                    var checkExist = await cityService.CheckCityExists(model.CityId, model.Name,model.StateId);
                     if (checkExist != null)
                     {
                         var message = DealSeResource.RecordExists;
                         ViewBag.Error = message.Replace("{0}", model.Name);
+                        ViewBag.CountryList = FillDropdownList.FillCountryList(countryService);
+                        ViewBag.StateList = FillDropdownList.FillStateList(stateService, model.CountryId);
                         return View(model);
                     }
-                    var mappedResult = mapper.Map<CountryFormModel, Country>(model);
+                    var mappedResult = mapper.Map<CityFormModel, City>(model);
                     mappedResult.UpdatedDate = DateTime.Now;
-                    await countryService.Update(mappedResult);
+                    await cityService.Update(mappedResult);
                     TempData["Success"] = DealSeResource.UpdateMessage;
+                    TempData["CountryId"] = model.CountryId;
+                    TempData["StateId"] = model.StateId;
                     return RedirectToAction("Index");
                 }
                 ViewBag.Error = DealSeResource.InternalServerError;
@@ -178,20 +215,20 @@ namespace DealSe.Areas.Admin.Controllers
             }
         }
 
-        //Active/InActive/Delete country
-        public IActionResult CountryOperation(string status, int[] checkedRecord)
+        //Active/InActive/Delete City
+        public IActionResult CityOperation(string status, int[] checkedRecord,int countryId,int stateId)
         {
             try
             {
                 if (checkedRecord != null && checkedRecord.Length > 0 && !string.IsNullOrEmpty(status))
                 {
-                    string stateIds = string.Join(',', checkedRecord);
+                    string CityIds = string.Join(',', checkedRecord);
                     SqlParameter[] parameters = new SqlParameter[2];
 
-                    parameters[0] = new SqlParameter("@CountryIds", stateIds);
+                    parameters[0] = new SqlParameter("@CityIds", CityIds);
                     parameters[1] = new SqlParameter("@Status", status);
 
-                    int result = dataContext.Database.ExecuteSqlRaw("UpdateCountryStatusByIDs @CountryIds,@Status", parameters);
+                    int result = dataContext.Database.ExecuteSqlRaw("UpdateCityStatusByIDs @CityIds,@Status", parameters);
                     if (result > 0)
                         TempData["Success"] = DealSeResource.UpdateMessage;
                     else
@@ -201,6 +238,8 @@ namespace DealSe.Areas.Admin.Controllers
                 {
                     TempData["Error"] = DealSeResource.InternalServerError;
                 }
+                TempData["CountryId"] = countryId;
+                TempData["StateId"] = stateId;
             }
             catch (Exception ex)
             {

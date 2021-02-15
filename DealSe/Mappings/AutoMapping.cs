@@ -26,6 +26,9 @@ namespace DealSe.Mappings
                 .ReverseMap();
             CreateMap<EmailTemplate, EmailTemplateFormModel>().ReverseMap();
             CreateMap<Country, CountryFormModel>().ReverseMap();
+            CreateMap<State, StateFormModel>().ReverseMap();
+            CreateMap<City, CityFormModel>().ReverseMap();
+            CreateMap<Area, AreaFormModel>().ReverseMap();
             CreateMap<User, UserFormModel>()
                 .ForMember(dest => dest.RegistrationType, opt => opt.MapFrom(src => src.RegistrationType == (int)RegistrationType.Facebook ? "Facebook" : src.RegistrationType == (int)RegistrationType.Google ? "Google+" : "Guest"))
                 .ForMember(dest => dest.Gender, opt => opt.MapFrom(src => src.Gender == (int)Gender.Male ? "Male" : src.Gender == (int)Gender.Female ? "Female" : "-"))
@@ -41,6 +44,12 @@ namespace DealSe.Mappings
             CreateMap<EmailTemplate, EmailTemplateViewModel>()
                 .ForMember(dest => dest.AddedDate, opt => opt.MapFrom(src => src.AddedDate.ToString("dd/MM/yyyy hh:mm tt")));
             CreateMap<GetAllCountry, CountryViewModel>()
+               .ForMember(dest => dest.DisplayAddedDate, opt => opt.MapFrom(src => src.AddedDate.ToString("dd/MM/yyyy hh:mm tt")));
+            CreateMap<GetAllState, StateViewModel>()
+               .ForMember(dest => dest.DisplayAddedDate, opt => opt.MapFrom(src => src.AddedDate.ToString("dd/MM/yyyy hh:mm tt")));
+            CreateMap<GetAllCity, CityViewModel>()
+               .ForMember(dest => dest.DisplayAddedDate, opt => opt.MapFrom(src => src.AddedDate.ToString("dd/MM/yyyy hh:mm tt")));
+            CreateMap<GetAllArea, AreaViewModel>()
                .ForMember(dest => dest.DisplayAddedDate, opt => opt.MapFrom(src => src.AddedDate.ToString("dd/MM/yyyy hh:mm tt")));
             CreateMap<UsersSPModel, UserViewModel>()
                 .ForMember(dest => dest.AddedDate, opt => opt.MapFrom(src => src.AddedDate.ToString("dd/MM/yyyy hh:mm tt")));
