@@ -16,12 +16,13 @@ namespace DealSe.Service.Service
         /// </summary>
         /// <param name="id"></param>
         /// <param name="name"></param>
+        /// <param name="cityId"></param>
         /// <returns></returns>
-        public async Task<Area> CheckAreaNameExists(int id, string name)
+        public async Task<Area> CheckAreaExists(int id, string name,int cityId)
         {
             if (id == 0)
-                return await Get(top => top.Name.Trim() == name.Trim());
-            return await Get(top => top.Name.Trim() == name.Trim() && top.AreaId != id);
+                return await Get(top => top.Name.Trim() == name.Trim() && top.CityId == cityId);
+            return await Get(top => top.Name.Trim() == name.Trim() && top.AreaId != id && top.CityId == cityId);
         }
 
         /// <summary>

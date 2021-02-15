@@ -1,0 +1,29 @@
+﻿@*View to add area*@
+@model DealSe.Areas.Admin.FormModels.AreaFormModel
+@{
+    ViewData["Title"] = "AddArea";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<ol class="breadcrumb">
+    <li>
+        <a href="@Url.Action("Index", "Home" , new {Area="Admin" })"><i class="entypo-home"></i>Home</a>
+    </li>
+    <li><a href="@Url.Action("Index", "Area" , new { Area="Admin" })"><i class="entypo-globe"></i>Areas</a></li>
+    <li class="active">
+        <strong>Add Area</strong>
+    </li>
+</ol>
+<h2>Add Area</h2>
+<br />
+@if (ViewBag.Error != null)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger"><strong>Oops!</strong> @ViewBag.Error</div>
+        </div>
+    </div>
+}
+@using (Html.BeginForm("AddArea", "Area", FormMethod.Post))
+{
+    @await Html.PartialAsync("_AreaInfo", Model)
+}

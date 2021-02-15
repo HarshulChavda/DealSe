@@ -4,7 +4,7 @@
         <!-- logo -->
         <div class="logo">
             <a href="/Admin" style="font-size: 35px;color:dimgray">
-                <img src="~/images/Logo.jpeg" alt="DealSe" style="height:50px;vertical-align:middle">
+                DealSe
             </a>
         </div>
         <!-- logo collapse icon -->
@@ -27,70 +27,11 @@
                 <span>Dashboard</span>
             </a>
         </li>
-        <li id="lihomescreenbanner">
-            <a asp-area="Admin" asp-controller="HomeScreenBanner" asp-action="Index">
-                <i class="entypo-picture"></i>
-                <span>Home Screen Banner</span>
-            </a>
-        </li>
-        <li id="lidomain">
-            <a asp-area="Admin" asp-controller="Domain" asp-action="Index">
-                <i class="entypo-database"></i>
-                <span>Domain</span>
-            </a>
-        </li>
-        <li id="licolorcode">
-            <a asp-area="Admin" asp-controller="ColorCode" asp-action="Index">
-                <i class="entypo-code"></i>
-                <span>Color Code</span>
-            </a>
-        </li>
-        <li id="licompany">
-            <a asp-area="Admin" asp-controller="Company" asp-action="Index">
+        <li id="listore">
+            <a asp-area="Admin" asp-controller="Store" asp-action="Index">
                 <i class="entypo-home"></i>
-                <span>Company</span>
+                <span>Store</span>
             </a>
-        </li>
-        <li id="liproducts">
-            <a href="#"><i class="entypo-reply-all"></i><span>Products</span></a>
-            <ul>
-                <li id="liproductcategory">
-                    <a asp-area="Admin" asp-controller="ProductCategory" asp-action="Index">
-                        <i class="entypo-reply"></i><span>Product Category</span>
-                    </a>
-                </li>
-                <li id="liproductsubcategory">
-                    <a asp-area="Admin" asp-controller="ProductSubCategory" asp-action="Index">
-                        <i class="entypo-reply"></i><span>Product Sub Category</span>
-                    </a>
-                </li>
-                <li id="liproduct">
-                    <a asp-area="Admin" asp-controller="Product" asp-action="Index">
-                        <i class="entypo-reply"></i><span>Product</span>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li id="liuser">
-            <a asp-area="Admin" asp-controller="User" asp-action="Index">
-                <i class="entypo-users"></i>
-                <span>Users</span>
-            </a>
-        </li>
-        <li id="lireportproblemandbug">
-            <a href="#"><i class="entypo-reply-all"></i><span>Report Problem & Bug</span></a>
-            <ul>
-                <li id="lireportproblem">
-                    <a asp-area="Admin" asp-controller="ReportProblem" asp-action="Index">
-                        <i class="entypo-reply"></i><span>Problem</span>
-                    </a>
-                </li>
-                <li id="lireportbug">
-                    <a asp-area="Admin" asp-controller="ReportBug" asp-action="Index">
-                        <i class="entypo-reply"></i><span>Bug</span>
-                    </a>
-                </li>
-            </ul>
         </li>
         <li id="liothers">
             <a href="#"><i class="entypo-cog"></i><span>Others</span></a>
@@ -98,6 +39,21 @@
                 <li id="licountry">
                     <a asp-area="Admin" asp-controller="Country" asp-action="Index">
                         <i class="entypo-globe"></i><span>Countries</span>
+                    </a>
+                </li>
+                <li id="licountry">
+                    <a asp-area="Admin" asp-controller="State" asp-action="Index">
+                        <i class="entypo-globe"></i><span>States</span>
+                    </a>
+                </li>
+                <li id="licountry">
+                    <a asp-area="Admin" asp-controller="City" asp-action="Index">
+                        <i class="entypo-globe"></i><span>Cities</span>
+                    </a>
+                </li>
+                <li id="licountry">
+                    <a asp-area="Admin" asp-controller="Area" asp-action="Index">
+                        <i class="entypo-globe"></i><span>Areas</span>
                     </a>
                 </li>
                 <li id="liemailtemplate">

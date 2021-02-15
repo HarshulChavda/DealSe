@@ -14,58 +14,77 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using DealSe.ActionFilter;
+using DealSe.Common;
 
 namespace DealSe.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [AdminAuthorizeFilter]
-    public class CountryController : Controller
+    public class StateController : Controller
     {
         private readonly DealSeContext dataContext;
         private readonly ICountryService countryService;
+        private readonly IStateService stateService;
         private readonly IMapper mapper;
 
-        public CountryController(DealSeContext dataContext, IMapper mapper, ICountryService countryService)
+        public StateController(DealSeContext dataContext, IMapper mapper, IStateService stateService, ICountryService countryService)
         {
             this.dataContext = dataContext;
             this.countryService = countryService;
+            this.stateService = stateService;
             this.mapper = mapper;
         }
         public IActionResult Index()
         {
-            return View();
+            StateViewModel stateViewModel = new StateViewModel();
+            ViewBag.CountryList = FillDropdownList.FillCountryList(countryService);
+            stateViewModel.CountryId = Convert.ToInt32(TempData["CountryId"]);
+            return View(stateViewModel);
         }
 
         //Method for load data on listing page from database
         [HttpPost]
-        public JsonResult LoadData(DTParameters param)
+        public JsonResult LoadData(DTParameters param,int countryId)
         {
-            DTResult<CountryViewModel> finalResult = new DTResult<CountryViewModel>();
-            int start = Convert.ToInt32(param.Start);
-            int pagesize = Convert.ToInt32(param.Length);
-            var result = dataContext.GetAllCountry.FromSqlRaw("GetAllCountry").ToList();
-            var mappedResult = mapper.Map<IEnumerable<GetAllCountry>, IEnumerable<CountryViewModel>>(result);
-            if (!string.IsNullOrEmpty(param.Search.Value))
+            try
             {
-                var searchvalue = param.Search.Value.ToLower().Trim();
-                var columnsSearchValue = param.Columns.Where(a => a.Name != "" && a.Searchable == false && a.Name != null).Select(a => a.Name.ToLower()).ToArray();
-                mappedResult = mappedResult.AsQueryable().FullTextSearch(searchvalue, columnsSearchValue);
+                DTResult<StateViewModel> finalResult = new DTResult<StateViewModel>();
+                int start = Convert.ToInt32(param.Start);
+                int pagesize = Convert.ToInt32(param.Length);
+                //Get filtered product list
+                SqlParameter[] parameters = new SqlParameter[1];
+                parameters[0] = new SqlParameter("@CountryId", countryId);
+
+                var result = dataContext.GetAllState.FromSqlRaw("GetAllState @CountryId", parameters).ToList();
+                var mappedResult = mapper.Map<IEnumerable<GetAllState>, IEnumerable<StateViewModel>>(result);
+                if (!string.IsNullOrEmpty(param.Search.Value))
+                {
+                    var searchvalue = param.Search.Value.ToLower().Trim();
+                    var columnsSearchValue = param.Columns.Where(a => a.Name != "" && a.Searchable == false && a.Name != null).Select(a => a.Name.ToLower()).ToArray();
+                    mappedResult = mappedResult.AsQueryable().FullTextSearch(searchvalue, columnsSearchValue);
+                }
+                int filterCount = mappedResult.Count();
+                mappedResult = mappedResult.Skip(start).Take(pagesize);
+                mappedResult = ApplySorting(param, mappedResult);
+                finalResult = new DTResult<StateViewModel>
+                {
+                    draw = param.Draw,
+                    data = mappedResult.ToList(),
+                    recordsFiltered = filterCount,
+                    recordsTotal = result.Count()
+                };
+                return Json(finalResult);
             }
-            int filterCount = mappedResult.Count();
-            mappedResult = mappedResult.Skip(start).Take(pagesize);
-            mappedResult = ApplySorting(param, mappedResult);
-            finalResult = new DTResult<CountryViewModel>
+            catch (Exception ex)
             {
-                draw = param.Draw,
-                data = mappedResult.ToList(),
-                recordsFiltered = filterCount,
-                recordsTotal = result.Count()
-            };
-            return Json(finalResult);
+                return Json(ex);
+                throw;
+            }
+            
         }
 
         //Method for apply sorting
-        private static IEnumerable<CountryViewModel> ApplySorting(DTParameters param, IEnumerable<CountryViewModel> mappingResult)
+        private static IEnumerable<StateViewModel> ApplySorting(DTParameters param, IEnumerable<StateViewModel> mappingResult)
         {
             if (param.Order != null)
             {
@@ -95,33 +114,36 @@ namespace DealSe.Areas.Admin.Controllers
             return mappingResult;
         }
 
-        //Get method of add country
-        public IActionResult AddCountry()
+        //Get method of add State
+        public IActionResult AddState()
         {
-            CountryFormModel model = new CountryFormModel();
+            StateFormModel model = new StateFormModel();
             model.Active = true;
+            ViewBag.CountryList = FillDropdownList.FillCountryList(countryService);
             return View(model);
         }
 
-        //Post method of add country
+        //Post method of add State
         [HttpPost]
-        public async Task<IActionResult> AddCountry(CountryFormModel model)
+        public async Task<IActionResult> AddState(StateFormModel model)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    var checkExist = await countryService.CheckCountryExists(0, model.Name);
+                    var checkExist = await stateService.CheckStateExists(0, model.Name);
                     if (checkExist != null)
                     {
                         var message = DealSeResource.RecordExists;
                         ViewBag.Error = message.Replace("{0}", model.Name);
+                        ViewBag.CountryList = FillDropdownList.FillCountryList(countryService);
                         return View(model);
                     }
-                    var mappedResult = mapper.Map<CountryFormModel, Country>(model);
+                    var mappedResult = mapper.Map<StateFormModel, State>(model);
                     mappedResult.AddedDate = DateTime.Now;
-                    await countryService.Create(mappedResult);
+                    await stateService.Create(mappedResult);
                     TempData["Success"] = DealSeResource.InsertMessage;
+                    TempData["CountryId"] = model.CountryId;
                     return RedirectToAction("Index");
                 }
                 ViewBag.Error = DealSeResource.InternalServerError;
@@ -134,38 +156,41 @@ namespace DealSe.Areas.Admin.Controllers
             }
         }
 
-        //Get method of edit country
-        public async Task<IActionResult> EditCountry(int id)
+        //Get method of edit State
+        public async Task<IActionResult> EditState(int id)
         {
-            var eventTicketType = await countryService.GetById(id);
+            var eventTicketType = await stateService.GetById(id);
             if (eventTicketType != null)
             {
-                var mappedResult = mapper.Map<Country, CountryFormModel>(eventTicketType);
+                ViewBag.CountryList = FillDropdownList.FillCountryList(countryService);
+                var mappedResult = mapper.Map<State, StateFormModel>(eventTicketType);
                 return View(mappedResult);
             }
             TempData["Error"] = DealSeResource.NoRecordFound;
             return RedirectToAction("Index");
         }
 
-        //Post method of edit country
+        //Post method of edit State
         [HttpPost]
-        public async Task<IActionResult> EditCountry(CountryFormModel model)
+        public async Task<IActionResult> EditState(StateFormModel model)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    var checkExist = await countryService.CheckCountryExists(model.CountryId, model.Name);
+                    var checkExist = await stateService.CheckStateExists(model.StateId, model.Name);
                     if (checkExist != null)
                     {
                         var message = DealSeResource.RecordExists;
                         ViewBag.Error = message.Replace("{0}", model.Name);
+                        ViewBag.CountryList = FillDropdownList.FillCountryList(countryService);
                         return View(model);
                     }
-                    var mappedResult = mapper.Map<CountryFormModel, Country>(model);
+                    var mappedResult = mapper.Map<StateFormModel, State>(model);
                     mappedResult.UpdatedDate = DateTime.Now;
-                    await countryService.Update(mappedResult);
+                    await stateService.Update(mappedResult);
                     TempData["Success"] = DealSeResource.UpdateMessage;
+                    TempData["CountryId"] = model.CountryId;
                     return RedirectToAction("Index");
                 }
                 ViewBag.Error = DealSeResource.InternalServerError;
@@ -178,8 +203,8 @@ namespace DealSe.Areas.Admin.Controllers
             }
         }
 
-        //Active/InActive/Delete country
-        public IActionResult CountryOperation(string status, int[] checkedRecord)
+        //Active/InActive/Delete State
+        public IActionResult StateOperation(string status, int[] checkedRecord,int countryId)
         {
             try
             {
@@ -188,10 +213,10 @@ namespace DealSe.Areas.Admin.Controllers
                     string stateIds = string.Join(',', checkedRecord);
                     SqlParameter[] parameters = new SqlParameter[2];
 
-                    parameters[0] = new SqlParameter("@CountryIds", stateIds);
+                    parameters[0] = new SqlParameter("@StateIds", stateIds);
                     parameters[1] = new SqlParameter("@Status", status);
 
-                    int result = dataContext.Database.ExecuteSqlRaw("UpdateCountryStatusByIDs @CountryIds,@Status", parameters);
+                    int result = dataContext.Database.ExecuteSqlRaw("UpdateStateStatusByIDs @StateIds,@Status", parameters);
                     if (result > 0)
                         TempData["Success"] = DealSeResource.UpdateMessage;
                     else
@@ -201,6 +226,7 @@ namespace DealSe.Areas.Admin.Controllers
                 {
                     TempData["Error"] = DealSeResource.InternalServerError;
                 }
+                TempData["CountryId"] = countryId;
             }
             catch (Exception ex)
             {

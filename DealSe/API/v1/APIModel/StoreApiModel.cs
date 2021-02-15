@@ -66,6 +66,8 @@ namespace DealSe.API.v1.APIModel
     {
         public int StoreId { get; set; }
         public string LogoUrl { get; set; }
+        public string Name { get; set; }
+        public string OwnerMobileNo { get; set; }
     }
 
     //Update Store Param Api FormModel

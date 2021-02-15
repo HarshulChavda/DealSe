@@ -1,0 +1,30 @@
+﻿@*View to edit state*@
+@model DealSe.Areas.Admin.FormModels.StateFormModel
+@{
+    ViewData["Title"] = "EditState";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<ol class="breadcrumb">
+    <li>
+        <a href="@Url.Action("Index", "Home" , new {Area="Admin" })"><i class="entypo-home"></i>Home</a>
+    </li>
+    <li><a href="@Url.Action("Index", "State" , new { Area="Admin" })"><i class="entypo-globe"></i>States</a></li>
+    <li class="active">
+        <strong>Edit State</strong>
+    </li>
+</ol>
+<h2>Edit State</h2>
+<br />
+@if (ViewBag.Error != null)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger"><strong>Oops!</strong> @ViewBag.Error</div>
+        </div>
+    </div>
+}
+@using (Html.BeginForm("EditState", "State", FormMethod.Post))
+{
+    @await Html.PartialAsync("_StateInfo", Model)
+}

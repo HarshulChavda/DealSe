@@ -1,0 +1,50 @@
+﻿<script type="text/javascript">
+    $("#CountryId").change(function () {
+        var countryId = $(this).val();
+        $("#StateId").val("");
+        $("#StateId").html('<option value="">Select State</option>');
+        $("#CityId").html('<option value="">Select City</option>');
+        if (countryId == null || countryId == "") {
+            $("#StateId").trigger('change');
+            $("#CityId").trigger('change');
+            return false;
+        }
+        $.ajax({
+            url: '/Admin/FillCommonDropdownList/GetStateListByCountryId/',
+            data: { countryId: countryId },
+            success: function (result) {
+                var items = '<option value="">Select State</option>';
+                $.each(result, function (i, us) {
+                    items += "<option value='" + us.value + "'>" + us.text + "</option>";
+                });
+                $('#StateId').html(items);
+            },
+            error: function (ex) {
+                alert("Opps! Something went wrong.." + ex);
+            },
+        });
+    });
+
+    $("#StateId").change(function () {
+        var stateId = $(this).val();
+        $("#CityId").html('<option value="">Select City</option>');
+        if (stateId == null || stateId == "") {
+            $("#CityId").trigger('change');
+            return false;
+        }
+        $.ajax({
+            url: '/Admin/FillCommonDropdownList/GetCityListByStateId/',
+            data: { stateId: stateId },
+            success: function (result) {
+                var items = '<option value="">Select City</option>';
+                $.each(result, function (i, us) {
+                    items += "<option value='" + us.value + "'>" + us.text + "</option>";
+                });
+                $('#CityId').html(items);
+            },
+            error: function (ex) {
+                alert("Opps! Something went wrong.." + ex);
+            },
+        });
+    });
+</script>
