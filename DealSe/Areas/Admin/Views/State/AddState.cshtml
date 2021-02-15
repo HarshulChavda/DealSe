@@ -1,0 +1,29 @@
+﻿@*View to add state*@
+@model DealSe.Areas.Admin.FormModels.StateFormModel
+@{
+    ViewData["Title"] = "AddState";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<ol class="breadcrumb">
+    <li>
+        <a href="@Url.Action("Index", "Home" , new {Area="Admin" })"><i class="entypo-home"></i>Home</a>
+    </li>
+    <li><a href="@Url.Action("Index", "State" , new { Area="Admin" })"><i class="entypo-globe"></i>States</a></li>
+    <li class="active">
+        <strong>Add State</strong>
+    </li>
+</ol>
+<h2>Add State</h2>
+<br />
+@if (ViewBag.Error != null)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger"><strong>Oops!</strong> @ViewBag.Error</div>
+        </div>
+    </div>
+}
+@using (Html.BeginForm("AddState", "State", FormMethod.Post))
+{
+    @await Html.PartialAsync("_StateInfo", Model)
+}

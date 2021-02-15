@@ -10,6 +10,9 @@ namespace DealSe.Data.Models
         /// </summary>
 		#region AdminEnd 
         public virtual DbSet<GetAllCountry> GetAllCountry { get; set; }
+        public virtual DbSet<GetAllState> GetAllState { get; set; }
+        public virtual DbSet<GetAllCity> GetAllCity { get; set; }
+        public virtual DbSet<GetAllArea> GetAllArea { get; set; }
         public virtual DbSet<UsersSPModel> GetAllUsers { get; set; }
         public virtual DbSet<GetUserUsedOfferListByStoreSPModel> GetUserUsedOfferListByStore { get; set; }
         public virtual DbSet<GetOfferListByStoreIdSPModel> GetOfferListByStoreId { get; set; }

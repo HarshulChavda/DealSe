@@ -113,7 +113,9 @@ namespace DealSe.API.v1
                 if (System.IO.File.Exists(Path.Combine(hostingEnvironment.WebRootPath, "Upload/Store/Logo", logo)))
                     logoUrl = Path.Combine(baseURL + "Upload\\Store\\Logo", logo);
                 addStoreReturnApiFormModel.LogoUrl = logoUrl;
-                
+                addStoreReturnApiFormModel.Name = mappedResult.Name;
+                addStoreReturnApiFormModel.OwnerMobileNo = mappedResult.OwnerMobileNo;
+
                 apiModel = APIStatusHelper.Success(addStoreReturnApiFormModel, DealSeResource.InsertMessage.Replace("{0}", "Store"));
                 return Ok(apiModel);
             }

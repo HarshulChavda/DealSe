@@ -1,0 +1,44 @@
+﻿@model DealSe.Areas.Admin.FormModels.StateFormModel
+
+@Html.ValidationSummary(true)
+@Html.AntiForgeryToken()
+@Html.HiddenFor(Model => Model.AddedDate)
+@Html.HiddenFor(Model => Model.StateId)
+<div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label" for="status">Country Name</label>
+                @Html.DropDownList("CountryId", new SelectList(ViewBag.CountryList, "Value", "Text"), "Select Country", new { @class = "select2" })
+                @Html.ValidationMessageFor(model => model.CountryId)
+
+            </div>
+        </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label class="control-label">Name</label>
+            <label class="field-validation-error">*</label>
+            @Html.TextBoxFor(model => model.Name, new { @class = "form-control htmlvalid trimmed txtOnly", @maxlength = "50" })
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label class="control-label">Status</label>
+            <div class="form-group">
+                <div class="make-switch statusswitch" data-on="status" data-off="status" data-on-label="Active" data-off-label="Inactive">
+                    @Html.CheckBoxFor(Model => Model.Active, new { @checked = "checked" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row center">
+    <button type="submit" id="btnSubmit" class="btn btn-success">
+        <i class="glyphicon glyphicon-save"></i>
+        Save
+    </button>
+    <a href="@Url.Action("Index", "State", new { Area = "Admin" })" class="btn btn-default">
+        <i class="glyphicon glyphicon-remove"></i>
+        Cancel
+    </a>
+</div>

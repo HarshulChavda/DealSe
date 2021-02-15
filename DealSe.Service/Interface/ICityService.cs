@@ -5,23 +5,24 @@ using System.Threading.Tasks;
 
 namespace DealSe.Service.Interface
 {
-    //Interface service of area
-    public interface IAreaService : IGenericRepository<Area>
+    //Interface service of city
+    public interface ICityService : IGenericRepository<City>
     {
+
         /// <summary>
-        /// Check area name is exist or not
+        /// Check city exists
         /// </summary>
         /// <param name="id"></param>
         /// <param name="name"></param>
-        /// <param name="cityId"></param>
+        /// <param name="stateId"></param>
         /// <returns></returns>
-        Task<Area> CheckAreaExists(int id, string name,int cityId);
+        Task<City> CheckCityExists(int id,string name, int stateId);
 
         /// <summary>
-        /// Create area
+        /// Get city by id list
         /// </summary>
-        /// <param name="area"></param>
+        /// <param name="idList"></param>
         /// <returns></returns>
-        Task<int> CreateArea(Area area);
+        IEnumerable<City> GetCityByIdList(int[] idList);
     }
 }
