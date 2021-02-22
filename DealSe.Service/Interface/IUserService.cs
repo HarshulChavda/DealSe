@@ -1,5 +1,8 @@
 ﻿using DealSe.Data.Infrastructure;
 using DealSe.Data.Models;
+using DealSe.Service.Common;
+using System.Collections;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace DealSe.Service.Interface
@@ -14,6 +17,13 @@ namespace DealSe.Service.Interface
         /// <param name="mobileNo">The identifier.</param>
         /// <returns></returns>
         Task<User> CheckUserMobileNoExists(int id, string mobileNo);
+
+        /// <summary>
+        /// Check User Mobileno is exist or not
+        /// </summary>
+        /// <param name="mobileNo">The identifier.</param>
+        /// <returns></returns>
+        Task<User> CheckUserExistsBasedOnMobileNumber(string mobileNo);
 
         /// <summary>
         /// Check User Mobileno is exist or not

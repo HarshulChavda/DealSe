@@ -1,0 +1,29 @@
+﻿@*View to add store type*@
+@model DealSe.Areas.Admin.FormModels.StoreTypeFormModel
+@{
+    ViewData["Title"] = "AddStoreType";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<ol class="breadcrumb">
+    <li>
+        <a href="@Url.Action("Index", "Home" , new {Area="Admin" })"><i class="entypo-home"></i>Home</a>
+    </li>
+    <li><a href="@Url.Action("Index", "StoreType" , new { Area="Admin" })"><i class="entypo-globe"></i>Store Types</a></li>
+    <li class="active">
+        <strong>Add Store Type</strong>
+    </li>
+</ol>
+<h2>Add Store Type</h2>
+<br />
+@if (ViewBag.Error != null)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger"><strong>Oops!</strong> @ViewBag.Error</div>
+        </div>
+    </div>
+}
+@using (Html.BeginForm("AddStoreType", "StoreType", FormMethod.Post))
+{
+    @await Html.PartialAsync("_StoreTypeInfo", Model)
+}

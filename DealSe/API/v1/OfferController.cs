@@ -66,19 +66,22 @@ namespace DealSe.API.v1
 
                 var result = dataContext.GetOfferListByStoreId.FromSqlRaw("GetOfferListByStoreId @StoreId,@PageIndex,@PageSize", parameters).ToList();
                 var mappedResult = mapper.Map<IEnumerable<GetOfferListByStoreIdSPModel>, IEnumerable<GetOfferListByStoreIdReturnApiFormModel>>(result);
-                mappedResult = mappedResult.Select(s =>
+
+                foreach (var item in mappedResult)
                 {
-                    if (s.OfferListImage != null)
+                    foreach (var s in item.offerImagesLists)
                     {
-                        if (System.IO.File.Exists(Path.Combine(hostingEnvironment.WebRootPath, "Upload/Offer/" + s.OfferId, s.OfferListImage)))
-                            s.OfferListImage = Path.Combine(baseURL + "Upload\\Offer\\" + s.OfferId, s.OfferListImage);
+                        if (s.OfferImage != null)
+                        {
+                            if (System.IO.File.Exists(Path.Combine(hostingEnvironment.WebRootPath, "Upload/Offer/" + item.OfferId, s.OfferImage)))
+                                s.OfferImage = Path.Combine(baseURL + "Upload\\Offer\\" + item.OfferId, s.OfferImage);
+                            else
+                                s.OfferImage = Path.Combine(baseURL + "images", "icondefault.jpg");
+                        }
                         else
-                            s.OfferListImage = Path.Combine(baseURL + "images", "icondefault.jpg");
+                            s.OfferImage = Path.Combine(baseURL + "images", "icondefault.jpg");
                     }
-                    else
-                        s.OfferListImage = Path.Combine(baseURL + "images", "icondefault.jpg");
-                    return s;
-                }).ToList();
+                }
 
                 getOfferListByStoreIdReturnApiFormModel = mappedResult.ToList();
                 if (result.Any())

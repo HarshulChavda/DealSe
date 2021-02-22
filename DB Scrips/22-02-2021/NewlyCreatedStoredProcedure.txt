@@ -1,0 +1,166 @@
+
+GO
+/****** Object:  StoredProcedure [dbo].[GetNearByPlaces]    Script Date: 2/21/2021 6:26:05 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- exec GetNearByPlaces 6,1,1.11111111,2.22222222,0,0
+CREATE PROCEDURE [dbo].[GetNearByPlaces]
+@OfferID int,
+@CateGoryID int,
+@UserLatitude decimal(11,8),
+@UserLongitude decimal(11,8),
+@PageIndex int,
+@PageSize int 
+AS
+BEGIN
+
+	Declare @NearByPlaces as nvarchar(MAX)='';
+
+	IF (@PageIndex <> 0 and @PageSize <> 0)
+		 Begin
+			set @NearByPlaces = (Select  (Select 
+				O.OfferId as OfferID,
+				O.[Name] as Title,
+				S.[Logo] as StoreImage,
+				S.[Name] as StoreName,
+				A.[Name] as AreaName,
+				O.SortDescription as ShortDescription,
+				O.LongDescription as OfferNote 
+				from Offer O
+				inner join Store S on O.StoreId=S.StoreId and S.Active=1 and S.Deleted=0 and S.Approved=1
+				inner join StoreType ST on S.StoreTypeId=ST.StoreTypeId and ST.StoreTypeId=@CateGoryID and ST.Deleted=0 and ST.Active=1
+				inner join Area A on S.AreaId=A.AreaId and A.Active=1
+				where OfferId=@OfferID
+				and
+				O.Deleted=0 and O.Active=1 and O.Approved=1
+				and
+				(SELECT 
+				Cast(geography::Point(@UserLatitude,@UserLongitude, 4326).STDistance(geography::Point(S.Latitude,S.Longitude, 4326))/1000 As decimal)
+				) < 25 
+				order by O.AddedDate
+				OFFSET @PageSize * (@PageIndex - 1) ROWS
+				FETCH NEXT @PageSize ROWS ONLY
+				for json PATH
+				) as 'NearByPlaces')
+		 END
+	ELSE
+		 Begin
+			set @NearByPlaces =	(Select (Select 
+				O.OfferId as OfferID,
+				O.[Name] as Title,
+				S.[Logo] as StoreImage,
+				S.[Name] as StoreName,
+				A.[Name] as AreaName,
+				O.SortDescription as ShortDescription,
+				O.LongDescription as OfferNote 
+				from Offer O
+				inner join Store S on O.StoreId=S.StoreId and S.Active=1 and S.Deleted=0 and S.Approved=1
+				inner join StoreType ST on S.StoreTypeId=ST.StoreTypeId and ST.StoreTypeId=@CateGoryID and ST.Deleted=0 and ST.Active=1
+				inner join Area A on S.AreaId=A.AreaId and A.Active=1
+				where OfferId=@OfferID
+				and
+				O.Deleted=0 and O.Active=1 and O.Approved=1
+				and
+				(SELECT 
+				Cast(geography::Point(@UserLatitude,@UserLongitude, 4326).STDistance(geography::Point(S.Latitude,S.Longitude, 4326))/1000 As decimal)
+				) < 25 
+				for json PATH
+				) as 'NearByPlaces')
+		 End
+
+		 
+		select ROW_NUMBER() OVER (Order By @NearByPlaces) SrNo,
+		@NearByPlaces as 'NearByPlaces'
+END
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[GetOfferDetails]    Script Date: 2/21/2021 6:26:01 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- exec GetOfferDetails 6
+CREATE PROCEDURE [dbo].[GetOfferDetails]
+@OfferID int
+AS
+BEGIN
+	
+	Select 
+	O.OfferId as OfferID,
+	O.[Name] as Title,
+	S.[Name] as StoreName,
+	S.Address1 as StoreAddress,
+	O.StartDate as StartDate,
+	O.EndDate as EndDate,
+	S.MobileNo1 as StoreContact,
+	S.OwnerMobileNo as StoreOwnerContact,
+	O.SortDescription as ShortDescription,
+	S.Latitude as StoreLatitude,
+	S.Longitude as StoreLongitude,
+	O.TermsAndConditions as TermsAndConditions,
+	(select OB.OfferBannerId,[Image] from OfferBanner OB 
+	where OB.OfferId=@OfferID and OB.Active=1 and OB.Approved=1 and OB.Deleted=0 for json PATH) as 'OfferImages',
+	(select (
+		select
+			MondayOpenHours,
+			MondayCloseHours,
+			TuesdayOpenHours,
+			TuesdayCloseHours,
+			WednesdayOpenHours,
+			WednesdayCloseHours,
+			ThursdayOpenHours,
+			ThursdayCloseHours,
+			FridayOpenHours,
+			FridayCloseHours,
+			SaturdayOpenHours,
+			SaturdayCloseHours,
+			SundayOpenHours,
+			SundayCloseHours 
+		from StoreTime ST where ST.Active=1 and ST.Deleted=0 for Json PATH) 
+	) as 'StoreTimes'
+	from Offer O 
+	inner join Store S on O.StoreId=S.StoreId and S.Active=1 and S.Deleted=0 and S.Approved=1
+	where O.OfferId=@OfferID and
+	O.Deleted=0 and O.Active=1 and O.Approved=1
+END
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[GetUserUsedOfferHistory]    Script Date: 2/21/2021 6:25:55 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- exec GetUserUsedOfferHistory 1
+ALTER PROCEDURE [dbo].[GetUserUsedOfferHistory]
+(@UserID int,
+@PageIndex int,
+@PageSize int
+)
+AS
+BEGIN
+
+select * from (Select 
+USO.OfferId as OfferID,
+O.[Name] as Title,
+S.Logo as [Image],
+S.[Name] as StoreName,
+A.[Name] as AreaName,
+S.Address1 as StoreAddress,
+O.SortDescription as ShortDescription,
+O.LongDescription as OfferNote
+from UserUsedOffer USO 
+inner join Offer O on USO.OfferId=O.OfferId  and O.Deleted=0  
+inner join Store S on O.StoreId=S.StoreId and S.Deleted=0
+inner join Area A on S.AreaId=A.AreaId
+where USO.Active=1 and USO.IsRedeem=1 and USO.Deleted=0 
+order by O.AddedDate Desc
+OFFSET @PageSize * (@PageIndex - 1) ROWS
+FETCH NEXT @PageSize ROWS ONLY) as Result
+
+END
+
