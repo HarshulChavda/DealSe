@@ -1,6 +1,10 @@
 ﻿using DealSe.Data.Infrastructure;
 using DealSe.Data.Models;
+using DealSe.Service.Common;
 using DealSe.Service.Interface;
+using Microsoft.Data.SqlClient;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace DealSe.Service.Service
@@ -61,6 +65,16 @@ namespace DealSe.Service.Service
         {
             await Create(user);
             return user.UserId;
+        }
+
+        /// <summary>
+        /// Check User Mobileno is exist or not
+        /// </summary>
+        /// <param name="mobileNo">The identifier.</param>
+        /// <returns></returns>
+        public Task<User> CheckUserExistsBasedOnMobileNumber(string mobileNo)
+        {
+            return Get(top => top.MobileNo.Equals(mobileNo));
         }
     }
 }

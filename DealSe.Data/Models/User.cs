@@ -3,6 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
+
+#nullable disable
 
 namespace DealSe.Data.Models
 {
@@ -47,6 +50,12 @@ namespace DealSe.Data.Models
         public bool Deleted { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime? DeletedDate { get; set; }
+        public string DeviceID { get; set; }
+        public string DeviceType { get; set; }
+        [Column(TypeName = "decimal(18, 10)")]
+        public decimal? Latitude { get; set; }
+        [Column(TypeName = "decimal(18, 10)")]
+        public decimal? Longitude { get; set; }
 
         [ForeignKey(nameof(AreaId))]
         [InverseProperty("User")]
