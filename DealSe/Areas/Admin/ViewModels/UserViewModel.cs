@@ -11,5 +11,6 @@
         public string GooglePlusId { get; set; }
         public bool Active { get; set; }
         public string AddedDate { get; set; }
+        public string DisplayAddedDate { get; set; }
     }
 }

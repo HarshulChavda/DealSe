@@ -3,6 +3,8 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
+#nullable disable
+
 namespace DealSe.Data.Models
 {
     public partial class DealSeContext : DbContext
@@ -35,8 +37,12 @@ namespace DealSe.Data.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
+
             modelBuilder.Entity<Area>(entity =>
             {
+                entity.Property(e => e.Name).UseCollation("Latin1_General_CI_AI");
+
                 entity.HasOne(d => d.City)
                     .WithMany(p => p.Area)
                     .HasForeignKey(d => d.CityId)
@@ -46,11 +52,18 @@ namespace DealSe.Data.Models
 
             modelBuilder.Entity<City>(entity =>
             {
+                entity.Property(e => e.Name).UseCollation("Latin1_General_CI_AI");
+
                 entity.HasOne(d => d.State)
                     .WithMany(p => p.City)
                     .HasForeignKey(d => d.StateId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_City_State");
+            });
+
+            modelBuilder.Entity<Country>(entity =>
+            {
+                entity.Property(e => e.Name).UseCollation("Latin1_General_CI_AI");
             });
 
             modelBuilder.Entity<Offer>(entity =>
@@ -78,6 +91,8 @@ namespace DealSe.Data.Models
 
             modelBuilder.Entity<State>(entity =>
             {
+                entity.Property(e => e.Name).UseCollation("Latin1_General_CI_AI");
+
                 entity.HasOne(d => d.Country)
                     .WithMany(p => p.State)
                     .HasForeignKey(d => d.CountryId)
@@ -102,7 +117,7 @@ namespace DealSe.Data.Models
 
             modelBuilder.Entity<StoreSuggestedOffer>(entity =>
             {
-                entity.Property(e => e.OfferImage).IsFixedLength();
+                entity.Property(e => e.OfferImage).IsFixedLength(true);
 
                 entity.HasOne(d => d.Store)
                     .WithMany(p => p.StoreSuggestedOffer)
@@ -128,7 +143,7 @@ namespace DealSe.Data.Models
 
             modelBuilder.Entity<SuggestedOffer>(entity =>
             {
-                entity.Property(e => e.OfferImage).IsFixedLength();
+                entity.Property(e => e.OfferImage).IsFixedLength(true);
 
                 entity.HasOne(d => d.StoreType)
                     .WithMany(p => p.SuggestedOffer)
@@ -139,6 +154,10 @@ namespace DealSe.Data.Models
 
             modelBuilder.Entity<User>(entity =>
             {
+                entity.Property(e => e.DeviceID).IsUnicode(false);
+
+                entity.Property(e => e.DeviceType).IsUnicode(false);
+
                 entity.HasOne(d => d.Area)
                     .WithMany(p => p.User)
                     .HasForeignKey(d => d.AreaId)

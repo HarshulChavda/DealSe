@@ -6,6 +6,8 @@ using DealSe.Data.Models;
 using DealSe.Data.SPModel;
 using DealSe.Utils.Common;
 using DealSe.Utils.Enum;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace DealSe.Mappings
 {
@@ -38,6 +40,7 @@ namespace DealSe.Mappings
                 .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => string.IsNullOrEmpty(src.FirstName) ? "-" : src.FirstName))
                 .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => string.IsNullOrEmpty(src.LastName) ? "-" : src.LastName))
                 .ReverseMap();
+            CreateMap<StoreType, StoreTypeFormModel>().ReverseMap();
             // ================= View Model =======================
             CreateMap<SiteSetting, SiteSettingViewModel>()
               .ForMember(dest => dest.AddedDate, opt => opt.MapFrom(src => src.AddedDate.ToString("dd/MM/yyyy hh:mm tt")));
@@ -52,18 +55,24 @@ namespace DealSe.Mappings
             CreateMap<GetAllArea, AreaViewModel>()
                .ForMember(dest => dest.DisplayAddedDate, opt => opt.MapFrom(src => src.AddedDate.ToString("dd/MM/yyyy hh:mm tt")));
             CreateMap<UsersSPModel, UserViewModel>()
-                .ForMember(dest => dest.AddedDate, opt => opt.MapFrom(src => src.AddedDate.ToString("dd/MM/yyyy hh:mm tt")));
+                .ForMember(dest => dest.DisplayAddedDate, opt => opt.MapFrom(src => src.AddedDate.ToString("dd/MM/yyyy hh:mm tt")));
+            CreateMap<GetAllStoreType, StoreTypeViewModel>()
+                .ForMember(dest => dest.DisplayAddedDate, opt => opt.MapFrom(src => src.AddedDate.ToString("dd/MM/yyyy hh:mm tt")));
             #endregion
 
             #region API Mapping
             CreateMap<User, UserParamApiFormModel>().ReverseMap();
             CreateMap<AddStoreParamApiFormModel, Store>().ReverseMap();
+            CreateMap<Store, AddStoreReturnApiFormModel>().ReverseMap();
+            CreateMap<Store, AddStoreReturnApiFormModel>().ReverseMap();
             CreateMap<UpdateStoreParamApiFormModel, Store>().ReverseMap();
             CreateMap<AddOfferBannerParamApiFormModel, OfferBanner>().ReverseMap();
             CreateMap<AddOfferParamApiFormModel, Offer>().ReverseMap();
             CreateMap<AddOfferReturnApiFormModel, Offer>().ReverseMap();
             CreateMap<UpdateOfferParamApiFormModel, Offer>().ReverseMap();
-            CreateMap<GetOfferListByStoreIdSPModel, GetOfferListByStoreIdReturnApiFormModel>().ReverseMap();
+            CreateMap<GetOfferListByStoreIdSPModel, GetOfferListByStoreIdReturnApiFormModel>()
+                .ForMember(dest => dest.offerImagesLists, opt => opt.MapFrom(src => JsonConvert.DeserializeObject<List<OfferImagesList>>(src.OfferImagesList)))
+                .ReverseMap();
             CreateMap<GetUserUsedOfferListByStoreSPModel, GetUserUsedOfferListByStoreReturnApiModel>().ReverseMap();
             CreateMap<Area, AreaListModel>()
                  .ForMember(dest => dest.areaId, opt => opt.MapFrom(src => src.AreaId))
@@ -73,6 +82,11 @@ namespace DealSe.Mappings
                  .ForMember(dest => dest.storeTypeId, opt => opt.MapFrom(src => src.StoreTypeId))
                  .ForMember(dest => dest.storeTypeName, opt => opt.MapFrom(src => src.Name))
                  .ReverseMap();
+            CreateMap<UserUsedOfferHistorySPModel, GetUserUsedOfferHistoryReturnAPIModel>().ReverseMap();
+            CreateMap<GetOfferDetailsSPModel, GetOfferDetailsReturnAPIModel>()
+                  .ForMember(dest => dest.OfferImages, opt => opt.Ignore())
+                  .ForMember(dest => dest.StoreTimes, opt => opt.Ignore())
+                  .ForMember(dest => dest.NearByPlaces, opt => opt.Ignore()).ReverseMap();
             #endregion
         }
     }

@@ -112,10 +112,8 @@ namespace DealSe.API.v1
                 string logoUrl = Path.Combine(baseURL + "images", "default.jpg");
                 if (System.IO.File.Exists(Path.Combine(hostingEnvironment.WebRootPath, "Upload/Store/Logo", logo)))
                     logoUrl = Path.Combine(baseURL + "Upload\\Store\\Logo", logo);
+                addStoreReturnApiFormModel = mapper.Map<Store, AddStoreReturnApiFormModel>(mappedResult);
                 addStoreReturnApiFormModel.LogoUrl = logoUrl;
-                addStoreReturnApiFormModel.Name = mappedResult.Name;
-                addStoreReturnApiFormModel.OwnerMobileNo = mappedResult.OwnerMobileNo;
-
                 apiModel = APIStatusHelper.Success(addStoreReturnApiFormModel, DealSeResource.InsertMessage.Replace("{0}", "Store"));
                 return Ok(apiModel);
             }
@@ -160,7 +158,17 @@ namespace DealSe.API.v1
                 mappedResult.Logo = logo;
                 mappedResult.UpdatedDate = DateTime.Now;
                 await storeService.Update(mappedResult);
-                apiModel = APIStatusHelper.Success(null, DealSeResource.UpdateMessage.Replace("{0}", "Store"));
+
+                AddStoreReturnApiFormModel addStoreReturnApiFormModel = new AddStoreReturnApiFormModel();
+                string baseURL = config.Value.BaseUrl;
+                string logoUrl = Path.Combine(baseURL + "images", "default.jpg");
+                if (System.IO.File.Exists(Path.Combine(hostingEnvironment.WebRootPath, "Upload/Store/Logo", logo)))
+                    logoUrl = Path.Combine(baseURL + "Upload\\Store\\Logo", logo);
+                addStoreReturnApiFormModel.LogoUrl = logoUrl;
+
+                addStoreReturnApiFormModel = mapper.Map<Store, AddStoreReturnApiFormModel>(mappedResult);
+
+                apiModel = APIStatusHelper.Success(addStoreReturnApiFormModel, DealSeResource.UpdateMessage.Replace("{0}", "Store"));
                 return Ok(apiModel);
             }
             return StatusCode((int)HttpStatusCode.Forbidden, APIStatusHelper.Forbidden("Model not valid"));

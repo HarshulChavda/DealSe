@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace DealSe.API.v1.APIModel
@@ -16,11 +17,21 @@ namespace DealSe.API.v1.APIModel
     {
         public int OfferId { get; set; }
         public string Name { get; set; }
-        public string OfferListImage { get; set; }
         public string EffectiveDateRange { get; set; }
         public string SortDescription { get; set; }
         public bool Active { get; set; }
+        public List<OfferImagesList> offerImagesLists { get; set; }
 
+        public GetOfferListByStoreIdReturnApiFormModel() {
+            offerImagesLists = new List<OfferImagesList>();
+        }
+
+
+    }
+    public class OfferImagesList
+    {
+        public int OfferBannerId { get; set; }
+        public string OfferImage { get; set; }
     }
 
     public class AddOfferParamApiFormModel
