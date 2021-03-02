@@ -89,7 +89,7 @@ else if (TempData["Success"] != null)
                     {
                         mData: null, "bSortable": false, "bSearchable": false, "width": "5%",
                         "mRender": function (data, type, row) {
-                            return "<div class='checkbox checkbox-replace itemclass'><input type='checkbox' id=" + row.StoreTypeId + "></div>";
+                            return "<div class='checkbox checkbox-replace itemclass'><input type='checkbox' id=" + row.storeTypeId + "></div>";
                         }
                     },
                     {
@@ -114,7 +114,7 @@ else if (TempData["Success"] != null)
                     {
                         "mData": "Activated", "bSearchable": false, "bSortable": false, "autoWidth": true, "width": "13%",
                         "mRender": function (data, type, row) {
-                            return '<a class="btn btn-blue btn-sm btn-icon icon-left" href="/Admin/StoreType/EditStoreType/' + row.StoreTypeId + '"><i class="entypo-pencil"></i>Edit</a>';
+                            return '<a class="btn btn-blue btn-sm btn-icon icon-left" href="/Admin/StoreType/EditStoreType/' + row.storeTypeId + '"><i class="entypo-pencil"></i>Edit</a>';
                         }, "sClass": "view-more"
                     }
                 ],

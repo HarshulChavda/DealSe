@@ -64,6 +64,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DealSe.Data\DealSe.Data.csproj" />
+    <ProjectReference Include="..\DealSe.IoC\DealSe.IoC.csproj" />
     <ProjectReference Include="..\DealSe.Service\DealSe.Service.csproj" />
     <ProjectReference Include="..\DealSe.Utils\DealSe.Utils.csproj" />
   </ItemGroup>
