@@ -39,5 +39,13 @@ namespace DealSe.Common
             areaList.AddRange(areaService.GetMany(c => c.Active == true && c.CityId == cityId).OrderBy(c => c.Name).ToList().Select(c => new SelectListItem { Text = c.Name, Value = c.CityId.ToString() }).OrderBy(c => c.Text).ToList());
             return areaList;
         }
+
+        //Method for fill area list
+        public static object FillStoreTypeList(IStoreTypeService storeTypeService)
+        {
+            List<SelectListItem> areaList = new List<SelectListItem>();
+            areaList.AddRange(storeTypeService.GetMany(c => c.Active == true && c.Deleted == false).OrderBy(c => c.Name).ToList().Select(c => new SelectListItem { Text = c.Name, Value = c.StoreTypeId.ToString() }).OrderBy(c => c.Text).ToList());
+            return areaList;
+        }
     }
 }

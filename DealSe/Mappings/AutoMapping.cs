@@ -86,7 +86,10 @@ namespace DealSe.Mappings
             CreateMap<GetOfferDetailsSPModel, GetOfferDetailsReturnAPIModel>()
                   .ForMember(dest => dest.OfferImages, opt => opt.Ignore())
                   .ForMember(dest => dest.StoreTimes, opt => opt.Ignore())
-                  .ForMember(dest => dest.NearByPlaces, opt => opt.Ignore()).ReverseMap();
+                  .ForMember(dest => dest.UserNearByPlaces, opt => opt.Ignore()).ReverseMap();
+            CreateMap<Service.Common.GetUserNearByPlaces, UserNearByPlaces>().ReverseMap();
+            CreateMap<Service.Common.GetAreaList, AreaListModel>().ReverseMap();
+            CreateMap<Service.Common.GetStoreTypeList, StoreTypeListApiModel>().ReverseMap();
             #endregion
         }
     }

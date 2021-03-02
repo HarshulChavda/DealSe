@@ -1,5 +1,6 @@
 ﻿using DealSe.Data.Infrastructure;
 using DealSe.Data.Models;
+using DealSe.Service.Common;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -22,5 +23,12 @@ namespace DealSe.Service.Interface
         /// <param name="storeType"></param>
         /// <returns></returns>
         Task<int> CreateStoreType(StoreType storeType);
+
+        /// <summary>
+        /// Create store type
+        /// </summary>
+        /// <param name="PageIndex"></param>
+        /// <returns></returns>
+        List<GetStoreTypeList> GetAllStoreTypes(int PageIndex); 
     }
 }

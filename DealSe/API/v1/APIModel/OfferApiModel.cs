@@ -19,14 +19,17 @@ namespace DealSe.API.v1.APIModel
         public string Name { get; set; }
         public string EffectiveDateRange { get; set; }
         public string SortDescription { get; set; }
+        public string LongDescription { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public string TermsAndConditions { get; set; }
         public bool Active { get; set; }
+        public DateTime AddedDate { get; set; }
         public List<OfferImagesList> offerImagesLists { get; set; }
 
         public GetOfferListByStoreIdReturnApiFormModel() {
             offerImagesLists = new List<OfferImagesList>();
         }
-
-
     }
     public class OfferImagesList
     {
@@ -68,6 +71,7 @@ namespace DealSe.API.v1.APIModel
         public string LongDescription { get; set; }
         public string TermsAndConditions { get; set; }
         public bool Active { get; set; }
+        public DateTime AddedDate { get; set; }
     }
 
     public class AddOfferReturnApiFormModel

@@ -1,5 +1,6 @@
 ﻿using DealSe.Data.Infrastructure;
 using DealSe.Data.Models;
+using DealSe.Service.Common;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -23,5 +24,12 @@ namespace DealSe.Service.Interface
         /// <param name="area"></param>
         /// <returns></returns>
         Task<int> CreateArea(Area area);
+
+        /// <summary>
+        /// Get all areas
+        /// </summary>
+        /// <param name="PageIndex"></param>
+        /// <returns></returns>
+        List<GetAreaList> GetAllAreas(int PageIndex);
     }
 }

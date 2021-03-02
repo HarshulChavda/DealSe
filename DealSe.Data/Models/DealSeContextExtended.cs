@@ -19,7 +19,11 @@ namespace DealSe.Data.Models
         public virtual DbSet<GetAllStoreType> GetAllStoreType { get; set; }
  		public virtual DbSet<UserUsedOfferHistorySPModel> GetUserUsedOfferHistoryModel { get; set; }
         public virtual DbSet<GetOfferDetailsSPModel> GetOfferDetailsModel { get; set; }
-        public virtual DbSet<GetNearByPlaces> GetNearByPlacesModel { get; set; }
+        public virtual DbSet<GetUserNearByPlaces> GetUserNearByPlaces { get; set; }
+        public virtual DbSet<GetAllStore> GetAllStore { get; set; }
+        public virtual DbSet<GetLimitedTimeOffers> GetLimitedTimeOffers { get; set; }
+		 public virtual DbSet<GetAreas> GetAllAreas { get; set; }
+        public virtual DbSet<GetStoreTypes> GetAllStoreTypes { get; set; }
         #endregion
     }
 }
