@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DealSe.Service", "DealSe.Se
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DealSe", "DealSe\DealSe.csproj", "{83C5D9A0-0036-42D2-AC08-A52F457DFAE0}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DealSe.IoC", "DealSe.IoC\DealSe.IoC.csproj", "{CA048D80-7AEF-4F22-A306-CBA7CEB96C15}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{83C5D9A0-0036-42D2-AC08-A52F457DFAE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83C5D9A0-0036-42D2-AC08-A52F457DFAE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83C5D9A0-0036-42D2-AC08-A52F457DFAE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA048D80-7AEF-4F22-A306-CBA7CEB96C15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA048D80-7AEF-4F22-A306-CBA7CEB96C15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA048D80-7AEF-4F22-A306-CBA7CEB96C15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA048D80-7AEF-4F22-A306-CBA7CEB96C15}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

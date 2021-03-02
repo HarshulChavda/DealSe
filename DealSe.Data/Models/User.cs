@@ -51,6 +51,7 @@ namespace DealSe.Data.Models
         [Column(TypeName = "datetime")]
         public DateTime? DeletedDate { get; set; }
         public string DeviceID { get; set; }
+        [StringLength(50)]
         public string DeviceType { get; set; }
         [Column(TypeName = "decimal(18, 10)")]
         public decimal? Latitude { get; set; }

@@ -1,7 +1,12 @@
 ﻿using DealSe.Data.Infrastructure;
 using DealSe.Data.Models;
+using DealSe.Service.Common;
 using DealSe.Service.Interface;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace DealSe.Service.Service
@@ -9,7 +14,10 @@ namespace DealSe.Service.Service
     //Service of Store
     public class StoreTypeService : GenericRepository<StoreType>, IStoreTypeService
     {
-        public StoreTypeService(DealSeContext dbContext) : base(dbContext) { }
+        private DealSeContext dataContext;
+        public StoreTypeService(DealSeContext dbContext) : base(dbContext) {
+            this.dataContext = dbContext;
+        }
 
         /// <summary>
         /// Check store type name is exist or not
@@ -33,6 +41,26 @@ namespace DealSe.Service.Service
         {
             await Create(storeType);
             return storeType.StoreTypeId;
+        }
+
+        /// <summary>
+        /// Create store type
+        /// </summary>
+        /// <param name="PageIndex"></param>
+        /// <returns></returns>
+        public List<GetStoreTypeList> GetAllStoreTypes(int PageIndex)
+        {
+            int pagesize = 10;
+            SqlParameter[] parameters = new SqlParameter[2];
+            parameters[0] = new SqlParameter("@PageIndex", PageIndex==0 ? 1 : PageIndex);
+            parameters[1] = new SqlParameter("@PageSize", pagesize);
+            var spResult = dataContext.GetAllStoreTypes.FromSqlRaw("GetAllStoreTypes @PageIndex,@PageSize", parameters).ToList();
+            List<GetStoreTypeList> storeTypes = new List<GetStoreTypeList>();
+            if(spResult.FirstOrDefault().StoreTyes!=null)
+            {
+                storeTypes= JsonConvert.DeserializeObject<List<GetStoreTypeList>>(spResult.FirstOrDefault().StoreTyes.ToString());
+            }
+            return storeTypes;
         }
     }
 }

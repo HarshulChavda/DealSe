@@ -96,13 +96,13 @@ namespace DealSe.API.v1.APIModel
         [Required]
         public string StoreLongitude { get; set; }
         public string TermsAndConditions { get; set; }
-        public List<NearByPlaces> NearByPlaces { get; set; }
+        public List<UserNearByPlaces> UserNearByPlaces { get; set; }
 
         public GetOfferDetailsReturnAPIModel()
         {
             OfferImages = new List<OfferImages>();
             StoreTimes = new List<StoreTimes>();
-            NearByPlaces = new List<NearByPlaces>();
+            UserNearByPlaces = new List<UserNearByPlaces>();
         }
     }
 
@@ -142,7 +142,7 @@ namespace DealSe.API.v1.APIModel
         public string SundayCloseHours { get; set; }
     }
 
-    public class NearByPlaces
+    public class UserNearByPlaces
     {
         [Required]
         public int OfferID { get; set; }
@@ -158,4 +158,15 @@ namespace DealSe.API.v1.APIModel
         public string OfferNote { get; set; }
     }
 
+    public class GetUserNearByPlacesByPagingParamAPIModel
+    {
+        [Required]
+        public int CategoryID { get; set; }
+        [Required]
+        public decimal UserLatitude { get; set; }
+        [Required]
+        public decimal UserLongitude { get; set; }
+        [Required]
+        public int PageIndex { get; set; }
+    }
 }

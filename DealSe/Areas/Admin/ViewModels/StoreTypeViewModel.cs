@@ -2,7 +2,7 @@
 
 namespace DealSe.Areas.Admin.ViewModels
 {
-    //StoreType viewModel
+    //StoreType view model
     public class StoreTypeViewModel
     {
         public int StoreTypeId { get; set; }

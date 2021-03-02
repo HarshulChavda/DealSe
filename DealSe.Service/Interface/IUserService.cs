@@ -47,5 +47,18 @@ namespace DealSe.Service.Interface
         /// <param name="user"></param>
         /// <returns></returns>
         Task<int> CreateUser(User user);
+
+        /// <summary>
+        /// Create user
+        /// </summary>
+        /// <param name="CategoryID"></param>
+        /// <param name="UserLatitude"></param>
+        /// <param name="UserLongitude"></param>
+        /// <param name="PageIndex"></param>
+        /// <param name="baseURL"></param>
+        /// <returns></returns>
+        List<GetUserNearByPlaces> GetUserNearByPlaces(int CategoryID, decimal UserLatitude, decimal UserLongitude, int PageIndex, string baseURL);
+
+
     }
 }

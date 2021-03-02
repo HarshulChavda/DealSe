@@ -33,18 +33,14 @@ namespace DealSe.API.v1
         private readonly IUserService userService;
         private readonly IMapper mapper;
         private readonly DealSeContext dataContext;
-        private readonly IWebHostEnvironment hostingEnvironment;
         private readonly IOptions<CustomSettings> config;
-        private readonly IOfferBannerService offerBannerService;
 
-        public UserController(IUserService userService, IMapper mapper, DealSeContext dataContext, IWebHostEnvironment hostingEnvironment, IOptions<CustomSettings> config, IOfferBannerService offerBannerService)
+        public UserController(IUserService userService, IMapper mapper, DealSeContext dataContext, IOptions<CustomSettings> config)
         {
             this.userService = userService;
             this.mapper = mapper;
             this.dataContext = dataContext;
-            this.hostingEnvironment = hostingEnvironment;
             this.config = config;
-            this.offerBannerService = offerBannerService;
         }
 
         //User Login API
@@ -133,13 +129,13 @@ namespace DealSe.API.v1
                 parameters[1] = new SqlParameter("@PageIndex", model.PageIndex);
                 parameters[2] = new SqlParameter("@PageSize", pagesize);
                 var spResult = dataContext.GetUserUsedOfferHistoryModel.FromSqlRaw("GetUserUsedOfferHistory @UserID,@PageIndex,@PageSize", parameters).ToList();
-                
-                if(spResult.Count() > 0)
+
+                if (spResult.Count() > 0)
                 {
                     var baseURL = config.Value.BaseUrl;
                     var mappedData = mapper.Map<IEnumerable<UserUsedOfferHistorySPModel>, IEnumerable<GetUserUsedOfferHistoryReturnAPIModel>>(spResult);
-                    //mappedData = mappedData.Select(top => { top.Image = baseURL + "Upload/Store/Logo" + top.Image; return top; }).ToList();
-                    mappedData = mappedData.Select(top => {
+                    mappedData = mappedData.Select(top =>
+                    {
                         if (!(string.IsNullOrEmpty(top.Image)))
                         {
                             top.Image = baseURL + "Upload/Store/Logo/" + top.Image;
@@ -149,8 +145,8 @@ namespace DealSe.API.v1
                             top.Image = "";
                         }; return top;
                     }).ToList();
-                    apiOkResponse = APIStatusHelper.Success(mappedData, DealSeResource.DetailsLoaded.Replace("{0}", "user used offer history"));
-                    
+                    apiOkResponse = APIStatusHelper.Success(mappedData, DealSeResource.DetailsLoaded.Replace("{0}", "User used offer history"));
+
                     return Ok(apiOkResponse);
                 }
                 else
@@ -181,54 +177,46 @@ namespace DealSe.API.v1
                 if (spResult != null)
                 {
                     var mappedData = mapper.Map<GetOfferDetailsSPModel, GetOfferDetailsReturnAPIModel>(spResult.FirstOrDefault());
-                    if (!string.IsNullOrEmpty(spResult.FirstOrDefault().OfferImages))
+                    if (mappedData != null)
                     {
-                        mappedData.OfferImages = JsonConvert.DeserializeObject<List<OfferImages>>(spResult.FirstOrDefault().OfferImages.ToString());
-                        mappedData.OfferImages = mappedData.OfferImages.Select(top => { top.Image = baseURL + "Upload/Offer/" + mappedData.OfferID + "/" + top.Image; return top; }).ToList();
+                        if (!string.IsNullOrEmpty(spResult.FirstOrDefault().OfferImages))
+                        {
+                            mappedData.OfferImages = JsonConvert.DeserializeObject<List<OfferImages>>(spResult.FirstOrDefault().OfferImages.ToString());
+                            mappedData.OfferImages = mappedData.OfferImages.Select(top => { top.Image = baseURL + "Upload/Offer/" + mappedData.OfferID + "/" + top.Image; return top; }).ToList();
+                        }
+                        if (!string.IsNullOrEmpty(spResult.FirstOrDefault().StoreTimes))
+                        {
+                            mappedData.StoreTimes = JsonConvert.DeserializeObject<List<StoreTimes>>(spResult.FirstOrDefault().StoreTimes.ToString());
+                        }
+                        var nearByPlaces = userService.GetUserNearByPlaces(model.CategoryID, model.UserLatitude, model.UserLogitude, 0, baseURL);
+                        mappedData.UserNearByPlaces = mapper.Map<List<Service.Common.GetUserNearByPlaces>, List<UserNearByPlaces>>(nearByPlaces);
+                        apiOkResponse = APIStatusHelper.Success(mappedData, DealSeResource.DetailsLoaded.Replace("{0}", "Offer details"));
+                        return Ok(apiOkResponse);
                     }
-                    if(!string.IsNullOrEmpty(spResult.FirstOrDefault().StoreTimes))
-                    {
-                        mappedData.StoreTimes = JsonConvert.DeserializeObject<List<StoreTimes>>(spResult.FirstOrDefault().StoreTimes.ToString());
-                    }
-                    var nearByPlaces = GetNearByPlaces(model.OfferID, model.CategoryID, model.UserLatitude, model.UserLogitude, 0);
-                    mappedData.NearByPlaces = nearByPlaces;
-                    apiOkResponse = APIStatusHelper.Success(mappedData, DealSeResource.DetailsLoaded.Replace("{0}", "offer details"));
-                    return Ok(apiOkResponse);
                 }
-                else
-                {
-                    return NotFound(APIStatusHelper.NotFound());
-                }
-
+                return NotFound(APIStatusHelper.NotFound());
             }
             return StatusCode((int)HttpStatusCode.Forbidden, APIStatusHelper.Forbidden("Model not valid"));
         }
 
-        //Get near by places
-        [ApiExplorerSettings(IgnoreApi = true)]
-        public List<NearByPlaces> GetNearByPlaces(int OfferID, int CategoryID,decimal UserLatitude, decimal UserLongitude,int PageIndex)
+        //Get near by places by Paging
+        [Route("GetUserOfferDetailsNearByPlacesByPaging")]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(typeof(List<UserNearByPlaces>), 200)]
+        [HttpPost]
+        public IActionResult GetUserOfferDetailsNearByPlacesByPaging([FromQuery] GetUserNearByPlacesByPagingParamAPIModel model)
         {
             var baseURL = config.Value.BaseUrl;
-            int pagesize = 10;
-            SqlParameter[] parameters = new SqlParameter[6];
-            parameters[0] = new SqlParameter("@OfferID", OfferID);
-            parameters[1] = new SqlParameter("@CateGoryID", CategoryID);
-            parameters[2] = new SqlParameter("@UserLatitude", UserLatitude);
-            parameters[3] = new SqlParameter("@UserLongitude", UserLongitude);
-            parameters[4] = new SqlParameter("@PageIndex", PageIndex);
-            parameters[5] = new SqlParameter("@PageSize", pagesize);
-            var spResult = dataContext.GetNearByPlacesModel.FromSqlRaw("GetNearByPlaces @OfferID,@CateGoryID,@UserLatitude,@UserLongitude,@PageIndex,@PageSize", parameters).ToList();
-            var nearByPlaces= JsonConvert.DeserializeObject<List<NearByPlaces>>(spResult.FirstOrDefault().NearByPlaces.ToString());
-            nearByPlaces = nearByPlaces.Select(top => {
-                if (!(string.IsNullOrEmpty(top.StoreImage)))
-                {
-                    top.StoreImage = baseURL + "Upload/Store/Logo/" + top.StoreImage;
-                }
-                else
-                {
-                    top.StoreImage = "";
-                }; return top; }).ToList();
-            return nearByPlaces;
+            ApiOkResponse apiOkResponse = new ApiOkResponse();
+            var nearByPlaces = userService.GetUserNearByPlaces(model.CategoryID, model.UserLatitude, model.UserLongitude, model.PageIndex, baseURL);
+            if(nearByPlaces.Count() > 0)
+            {
+                var mappedData = mapper.Map<List<Service.Common.GetUserNearByPlaces>, List<UserNearByPlaces>>(nearByPlaces);
+                apiOkResponse = APIStatusHelper.Success(mappedData, DealSeResource.DetailsLoaded.Replace("{0}", "User near by places"));
+                return Ok(apiOkResponse);
+            }
+            return NotFound(APIStatusHelper.NotFound());
         }
     }
 }

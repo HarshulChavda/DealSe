@@ -41,8 +41,6 @@ namespace DealSe.Data.Models
 
             modelBuilder.Entity<Area>(entity =>
             {
-                entity.Property(e => e.Name).UseCollation("Latin1_General_CI_AI");
-
                 entity.HasOne(d => d.City)
                     .WithMany(p => p.Area)
                     .HasForeignKey(d => d.CityId)
@@ -52,18 +50,11 @@ namespace DealSe.Data.Models
 
             modelBuilder.Entity<City>(entity =>
             {
-                entity.Property(e => e.Name).UseCollation("Latin1_General_CI_AI");
-
                 entity.HasOne(d => d.State)
                     .WithMany(p => p.City)
                     .HasForeignKey(d => d.StateId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_City_State");
-            });
-
-            modelBuilder.Entity<Country>(entity =>
-            {
-                entity.Property(e => e.Name).UseCollation("Latin1_General_CI_AI");
             });
 
             modelBuilder.Entity<Offer>(entity =>
@@ -91,8 +82,6 @@ namespace DealSe.Data.Models
 
             modelBuilder.Entity<State>(entity =>
             {
-                entity.Property(e => e.Name).UseCollation("Latin1_General_CI_AI");
-
                 entity.HasOne(d => d.Country)
                     .WithMany(p => p.State)
                     .HasForeignKey(d => d.CountryId)
@@ -154,10 +143,6 @@ namespace DealSe.Data.Models
 
             modelBuilder.Entity<User>(entity =>
             {
-                entity.Property(e => e.DeviceID).IsUnicode(false);
-
-                entity.Property(e => e.DeviceType).IsUnicode(false);
-
                 entity.HasOne(d => d.Area)
                     .WithMany(p => p.User)
                     .HasForeignKey(d => d.AreaId)

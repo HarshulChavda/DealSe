@@ -19,6 +19,7 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Text;
 using DealSe.Service;
+using DealSe.IoC;
 
 namespace DealSe
 {
@@ -107,7 +108,7 @@ namespace DealSe
             
             CustomSwagger(app);
             
-            app.UseCors("AllowOrigin");
+            app.UseCors("AllowAll");
             app.UseAuthentication();
             app.UseAuthorization();
 
@@ -125,19 +126,6 @@ namespace DealSe
             });
         }
 
-        //private static void ConfigureCors(IServiceCollection services)
-        //{
-        //    services.AddCors(options =>
-        //    {
-        //        options.AddPolicy("AllowOrigin",
-        //        builder => builder
-        //                    .AllowAnyMethod()
-        //                    .AllowAnyHeader()
-        //                    .AllowAnyOrigin()
-        //        );
-        //    });
-        //}
-        
         private void ConfigureSwagger(IServiceCollection services)
         {
             //Register the Swagger generator, defining 1 or more Swagger documents
@@ -216,18 +204,7 @@ namespace DealSe
         }
 		private void RegisterServices(IServiceCollection services)
         {
-            services.AddScoped<ILoginService, LoginService>();
-            services.AddScoped<ISiteSettingService, SiteSettingService>();
-            services.AddScoped<IEmailTemplateService, EmailTemplateService>();
-            services.AddScoped<ICountryService, CountryService>();
-            services.AddScoped<IStateService, StateService>();
-            services.AddScoped<ICityService, CityService>();
-            services.AddScoped<IAreaService, AreaService>();
-            services.AddScoped<IUserService, UserService>();
-            services.AddScoped<IStoreService, StoreService>();
-            services.AddScoped<IStoreTypeService, StoreTypeService>();
-            services.AddScoped<IOfferService, OfferService>();
-            services.AddScoped<IOfferBannerService, OfferBannerService>();
+            DependencyContainer.RegisterServices(services);
         }
     }
 }
