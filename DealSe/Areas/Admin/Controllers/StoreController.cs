@@ -259,6 +259,5 @@ namespace DealSe.Areas.Admin.Controllers
             }
             return Json("Success");
         }
-
     }
 }

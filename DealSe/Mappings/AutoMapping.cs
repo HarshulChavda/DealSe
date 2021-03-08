@@ -90,6 +90,7 @@ namespace DealSe.Mappings
             CreateMap<Service.Common.GetUserNearByPlaces, UserNearByPlaces>().ReverseMap();
             CreateMap<Service.Common.GetAreaList, AreaListModel>().ReverseMap();
             CreateMap<Service.Common.GetStoreTypeList, StoreTypeListApiModel>().ReverseMap();
+			 CreateMap<Store, CheckStoreMobieNumberReturnApiFormModel>().ReverseMap(); 
             #endregion
         }
     }

@@ -3,39 +3,8 @@ $(document).ready(function () {
     if (document.URL.toLowerCase().indexOf("admin/index") != -1 || document.URL.toLowerCase().indexOf("home") != -1 || document.URL.toLowerCase().match("admin$")) {
         $("#lidashboard").addClass("active");
     }
-    else if (document.URL.toLowerCase().indexOf("homescreenbanner") != -1) {
-        $("#lihomescreenbanner").addClass("active");
-    }
-    else if (document.URL.toLowerCase().indexOf("domain") != -1) {
-        $("#lidomain").addClass("active");
-    }
-    else if (document.URL.toLowerCase().indexOf("colorcode") != -1) {
-        $("#licolorcode").addClass("active");
-    }
-    else if (document.URL.toLowerCase().indexOf("company") != -1) {
-        $("#licompany").addClass("active");
-    }
-    else if (document.URL.toLowerCase().indexOf("productcategory") != -1 || document.URL.toLowerCase().indexOf("productsubcategory") != -1 || document.URL.toLowerCase().indexOf("product") != -1) {
-        $("#liproducts").addClass("active");
-        $("#liproducts > ul").addClass("active visible");
-        if (document.URL.toLowerCase().indexOf("productcategory") != -1)
-            $("#liproductcategory").addClass("active");
-        else if (document.URL.toLowerCase().indexOf("productsubcategory") != -1)
-            $("#liproductsubcategory").addClass("active");
-        else if (document.URL.toLowerCase().indexOf("product") != -1)
-            $("#liproduct").addClass("active");
-
-    }
-    else if (document.URL.toLowerCase().indexOf("user") != -1) {
-        $("#liuser").addClass("active");
-    }
-    else if (document.URL.toLowerCase().indexOf("reportproblem") != -1 || document.URL.toLowerCase().indexOf("reportbug") != -1) {
-        $("#lireportproblemandbug").addClass("active");
-        $("#lireportproblemandbug > ul").addClass("active visible");
-        if (document.URL.toLowerCase().indexOf("reportproblem") != -1)
-            $("#lireportproblem").addClass("active");
-        else if (document.URL.toLowerCase().indexOf("reportbug") != -1)
-            $("#lireportbug").addClass("active");
+    else if (document.URL.toLowerCase().indexOf("store") != -1) {
+        $("#listore").addClass("active");
     }
     else if (document.URL.toLowerCase().indexOf("country") != -1 || document.URL.toLowerCase().indexOf("emailtemplate") != -1 || document.URL.toLowerCase().indexOf("sitesetting") != -1) {
         $("#liothers").addClass("active");

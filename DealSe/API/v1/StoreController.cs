@@ -56,8 +56,15 @@ namespace DealSe.API.v1
                 var storeDetails = await storeService.CheckStoreMobileNoExists(0, model.MobileNo);
                 if (storeDetails == null)
                     checkStoreMobieNumberReturnApiFormModel.StoreId = null;
-                else
+                else { 
                     checkStoreMobieNumberReturnApiFormModel.StoreId = storeDetails.StoreId;
+                    string baseURL = config.Value.BaseUrl;
+                    string logoUrl = Path.Combine(baseURL + "images", "default.jpg");
+                    if (System.IO.File.Exists(Path.Combine(hostingEnvironment.WebRootPath, "Upload/Store/Logo", storeDetails.Logo)))
+                        logoUrl = Path.Combine(baseURL + "Upload\\Store\\Logo", storeDetails.Logo);
+                    checkStoreMobieNumberReturnApiFormModel = mapper.Map<Store, CheckStoreMobieNumberReturnApiFormModel>(storeDetails);
+                    checkStoreMobieNumberReturnApiFormModel.LogoUrl = logoUrl;
+                }
 
                 var areaList = areaService.GetMany(c => c.Active == true).OrderBy(c => c.Name).ToList();
                 checkStoreMobieNumberReturnApiFormModel.areaListModel = mapper.Map<List<Area>, List<AreaListModel>>(areaList);
