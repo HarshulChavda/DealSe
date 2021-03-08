@@ -17,6 +17,21 @@ namespace DealSe.API.v1.APIModel
     public class CheckStoreMobieNumberReturnApiFormModel
     {
         public int? StoreId { get; set; }
+        public string LogoUrl { get; set; }
+        public int AreaId { get; set; }
+        public int StoreTypeId { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string MobileNo1 { get; set; }
+        public string MobileNo2 { get; set; }
+        public string Address1 { get; set; }
+        public string Address2 { get; set; }
+        public string Address3 { get; set; }
+        public decimal Latitude { get; set; }
+        public decimal Longitude { get; set; }
+        public string OwnerName { get; set; }
+        public string OwnerMobileNo { get; set; }
+        public string About { get; set; }
         public List<AreaListModel> areaListModel { get; set; }
         public List<StoreTypeListApiModel> storeTypeApiModel { get; set; }
     }

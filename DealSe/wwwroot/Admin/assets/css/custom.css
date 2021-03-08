@@ -302,11 +302,6 @@ body {
     background: white;
 }
 
-.field-validation-error {
-    color: brown;
-    font-weight: bold;
-}
-
 .form-control {
     margin-bottom: 5px;
 }
