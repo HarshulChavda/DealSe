@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RfLM+zo7NMMMq5fLtV6XKczVIm//+ZNi3+HPoRHjSXmYcshG6Rrr6+raBFWsE5cOUibbCIGeAj1I8DNVqqZJ1g==",
+  "dgSpecHash": "5gxEaKVcEEYLD40/+157BJigrFLfLK9eZK0NvsL7jVx6YUBJzNAXNUKNBmCCeJbSRFiGe+PPDqOPMCysHLjNYg==",
   "success": true,
-  "projectFilePath": "D:\\Company Running Projects\\DealSe\\Project\\DealSe.Service\\DealSe.Service.csproj",
+  "projectFilePath": "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.Service\\DealSe.Service.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\A\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",
     "C:\\Users\\A\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",

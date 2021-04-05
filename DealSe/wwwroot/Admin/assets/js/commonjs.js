@@ -1,3 +1,18 @@
+var opts = {
+    "closeButton": true,
+    "debug": false,
+    "positionClass": "toast-bottom-right",
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "timeOut": "5000",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+};
+
 $(document).ready(function () {
 
     if (document.URL.toLowerCase().indexOf("admin/index") != -1 || document.URL.toLowerCase().indexOf("home") != -1 || document.URL.toLowerCase().match("admin$")) {
@@ -48,6 +63,27 @@ $(document).ready(function () {
     });
 });
 
+function StoreRegistrationToastrNotification(sendStoreRegistrationToastrNotificationHubDetails) {
+    debugger
+    var storeRegistrationMessage = "Store name is " + sendStoreRegistrationToastrNotificationHubDetails.name + " from " + sendStoreRegistrationToastrNotificationHubDetails.areaName + " area. Store owner mobile number is " + sendStoreRegistrationToastrNotificationHubDetails.ownerMobileNo + ".";
+    var storeId = sendStoreRegistrationToastrNotificationHubDetails.storeId;
+    var baseUrl = sendStoreRegistrationToastrNotificationHubDetails.baseUrl;
+    opts.onclick = function (event) {
+        window.location.href = baseUrl + "Admin/Store/EditStore/" + storeId;
+    }
+    toastr.success(storeRegistrationMessage, "New store registered.", opts);
+}
+
+function AddedOfferToastrNotificationHubDetails(sendAddedOfferToastrNotificationHubDetails) {
+    debugger
+    var storeRegistrationMessage = sendAddedOfferToastrNotificationHubDetails.storeName + " store added " + sendAddedOfferToastrNotificationHubDetails.name + " offer.";
+    var storeId = sendAddedOfferToastrNotificationHubDetails.offerId;
+    var baseUrl = sendAddedOfferToastrNotificationHubDetails.baseUrl;
+    opts.onclick = function (event) {
+        window.location.href = baseUrl + "Admin/Offer/EditOffer/" + offerId;
+    }
+    toastr.success(storeRegistrationMessage, "New offer added.", opts);
+}
 
 function trimmed() {
 

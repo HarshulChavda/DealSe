@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Company Running Projects\\DealSe\\Project\\DealSe\\DealSe.csproj": {}
+    "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe\\DealSe.csproj": {}
   },
   "projects": {
-    "D:\\Company Running Projects\\DealSe\\Project\\DealSe.Data\\DealSe.Data.csproj": {
+    "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.Data\\DealSe.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Company Running Projects\\DealSe\\Project\\DealSe.Data\\DealSe.Data.csproj",
+        "projectUniqueName": "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.Data\\DealSe.Data.csproj",
         "projectName": "DealSe.Data",
-        "projectPath": "D:\\Company Running Projects\\DealSe\\Project\\DealSe.Data\\DealSe.Data.csproj",
+        "projectPath": "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.Data\\DealSe.Data.csproj",
         "packagesPath": "C:\\Users\\A\\.nuget\\packages\\",
-        "outputPath": "D:\\Company Running Projects\\DealSe\\Project\\DealSe.Data\\obj\\",
+        "outputPath": "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\A\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -60,18 +60,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Company Running Projects\\DealSe\\Project\\DealSe.Service\\DealSe.Service.csproj": {
+    "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.IoC\\DealSe.IoC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Company Running Projects\\DealSe\\Project\\DealSe.Service\\DealSe.Service.csproj",
-        "projectName": "DealSe.Service",
-        "projectPath": "D:\\Company Running Projects\\DealSe\\Project\\DealSe.Service\\DealSe.Service.csproj",
+        "projectUniqueName": "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.IoC\\DealSe.IoC.csproj",
+        "projectName": "DealSe.IoC",
+        "projectPath": "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.IoC\\DealSe.IoC.csproj",
         "packagesPath": "C:\\Users\\A\\.nuget\\packages\\",
-        "outputPath": "D:\\Company Running Projects\\DealSe\\Project\\DealSe.Service\\obj\\",
+        "outputPath": "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.IoC\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\A\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -88,8 +88,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "D:\\Company Running Projects\\DealSe\\Project\\DealSe.Data\\DealSe.Data.csproj": {
-                "projectPath": "D:\\Company Running Projects\\DealSe\\Project\\DealSe.Data\\DealSe.Data.csproj"
+              "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.Service\\DealSe.Service.csproj": {
+                "projectPath": "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.Service\\DealSe.Service.csproj"
               }
             }
           }
@@ -118,18 +118,82 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Company Running Projects\\DealSe\\Project\\DealSe.Utils\\DealSe.Utils.csproj": {
+    "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.Service\\DealSe.Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Company Running Projects\\DealSe\\Project\\DealSe.Utils\\DealSe.Utils.csproj",
-        "projectName": "DealSe.Utils",
-        "projectPath": "D:\\Company Running Projects\\DealSe\\Project\\DealSe.Utils\\DealSe.Utils.csproj",
+        "projectUniqueName": "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.Service\\DealSe.Service.csproj",
+        "projectName": "DealSe.Service",
+        "projectPath": "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.Service\\DealSe.Service.csproj",
         "packagesPath": "C:\\Users\\A\\.nuget\\packages\\",
-        "outputPath": "D:\\Company Running Projects\\DealSe\\Project\\DealSe.Utils\\obj\\",
+        "outputPath": "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.Service\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\A\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.Data\\DealSe.Data.csproj": {
+                "projectPath": "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.Data\\DealSe.Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.Utils\\DealSe.Utils.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.Utils\\DealSe.Utils.csproj",
+        "projectName": "DealSe.Utils",
+        "projectPath": "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.Utils\\DealSe.Utils.csproj",
+        "packagesPath": "C:\\Users\\A\\.nuget\\packages\\",
+        "outputPath": "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.Utils\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\A\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -172,18 +236,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Company Running Projects\\DealSe\\Project\\DealSe\\DealSe.csproj": {
+    "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe\\DealSe.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Company Running Projects\\DealSe\\Project\\DealSe\\DealSe.csproj",
+        "projectUniqueName": "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe\\DealSe.csproj",
         "projectName": "DealSe",
-        "projectPath": "D:\\Company Running Projects\\DealSe\\Project\\DealSe\\DealSe.csproj",
+        "projectPath": "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe\\DealSe.csproj",
         "packagesPath": "C:\\Users\\A\\.nuget\\packages\\",
-        "outputPath": "D:\\Company Running Projects\\DealSe\\Project\\DealSe\\obj\\",
+        "outputPath": "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\A\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -200,14 +264,17 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "D:\\Company Running Projects\\DealSe\\Project\\DealSe.Data\\DealSe.Data.csproj": {
-                "projectPath": "D:\\Company Running Projects\\DealSe\\Project\\DealSe.Data\\DealSe.Data.csproj"
+              "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.Data\\DealSe.Data.csproj": {
+                "projectPath": "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.Data\\DealSe.Data.csproj"
               },
-              "D:\\Company Running Projects\\DealSe\\Project\\DealSe.Service\\DealSe.Service.csproj": {
-                "projectPath": "D:\\Company Running Projects\\DealSe\\Project\\DealSe.Service\\DealSe.Service.csproj"
+              "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.IoC\\DealSe.IoC.csproj": {
+                "projectPath": "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.IoC\\DealSe.IoC.csproj"
               },
-              "D:\\Company Running Projects\\DealSe\\Project\\DealSe.Utils\\DealSe.Utils.csproj": {
-                "projectPath": "D:\\Company Running Projects\\DealSe\\Project\\DealSe.Utils\\DealSe.Utils.csproj"
+              "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.Service\\DealSe.Service.csproj": {
+                "projectPath": "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.Service\\DealSe.Service.csproj"
+              },
+              "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.Utils\\DealSe.Utils.csproj": {
+                "projectPath": "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.Utils\\DealSe.Utils.csproj"
               }
             }
           }
@@ -297,7 +364,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

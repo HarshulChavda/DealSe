@@ -19,6 +19,9 @@ using Microsoft.Extensions.Options;
 using Microsoft.Data.SqlClient;
 using DealSe.Data.SPModel;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.SignalR;
+using DealSe.Hubs;
+using DealSe.Areas.Admin.ViewModels;
 
 namespace DealSe.API.v1
 {
@@ -31,14 +34,18 @@ namespace DealSe.API.v1
     public class OfferController : ControllerBase
     {
         private readonly DealSeContext dataContext;
-        private readonly IOfferService OfferService;
+        private readonly IOfferService offerService;
+        private readonly IStoreService storeService;
+        private readonly IHubContext<NotificationUserHub> notificationUserHubContext;
         private readonly IWebHostEnvironment hostingEnvironment;
         private readonly IOptions<CustomSettings> config;
         private readonly IMapper mapper;
-        public OfferController(DealSeContext dataContext, IOfferService OfferService, IWebHostEnvironment hostingEnvironment, IOptions<CustomSettings> config, IMapper mapper)
+        public OfferController(DealSeContext dataContext, IOfferService offerService, IStoreService storeService, IHubContext<NotificationUserHub> notificationUserHubContext, IWebHostEnvironment hostingEnvironment, IOptions<CustomSettings> config, IMapper mapper)
         {
             this.dataContext = dataContext;
-            this.OfferService = OfferService;
+            this.offerService = offerService;
+            this.storeService = storeService;
+            this.notificationUserHubContext = notificationUserHubContext;
             this.hostingEnvironment = hostingEnvironment;
             this.config = config;
             this.mapper = mapper;
@@ -101,21 +108,43 @@ namespace DealSe.API.v1
         [HttpPost]
         public async Task<IActionResult> AddOffer(AddOfferParamApiFormModel model)
         {
-            ApiOkResponse apiModel = new ApiOkResponse();
-            if (ModelState.IsValid)
+            try
             {
-                AddOfferReturnApiFormModel addOfferReturnApiFormModel = new AddOfferReturnApiFormModel();
-                var mappedResult = mapper.Map<AddOfferParamApiFormModel, Offer>(model);
-                mappedResult.LimitedTimeOffer = false;
-                mappedResult.Approved = false;
-                mappedResult.Active = true;
-                mappedResult.AddedDate = DateTime.Now;
-                await OfferService.Create(mappedResult);
-                addOfferReturnApiFormModel.OfferId = mappedResult.OfferId;
-                apiModel = APIStatusHelper.Success(addOfferReturnApiFormModel, DealSeResource.InsertMessage.Replace("{0}", "Offer"));
-                return Ok(apiModel);
+                ApiOkResponse apiModel = new ApiOkResponse();
+                if (ModelState.IsValid)
+                {
+                    var offerDetails = await offerService.CheckOfferExists(0, model.Name, model.StoreId);
+                    if (offerDetails != null)
+                    {
+                        apiModel = APIStatusHelper.Found(null, DealSeResource.RecordExists.Replace("{0}", "Offer"));
+                        return Ok(apiModel);
+                    }
+                    AddOfferReturnApiFormModel addOfferReturnApiFormModel = new AddOfferReturnApiFormModel();
+                    var mappedResult = mapper.Map<AddOfferParamApiFormModel, Offer>(model);
+                    mappedResult.LimitedTimeOffer = false;
+                    mappedResult.Approved = false;
+                    mappedResult.Active = true;
+                    mappedResult.AddedDate = DateTime.Now;
+                    await offerService.Create(mappedResult);
+                    addOfferReturnApiFormModel.OfferId = mappedResult.OfferId;
+                    apiModel = APIStatusHelper.Success(addOfferReturnApiFormModel, DealSeResource.InsertMessage.Replace("{0}", "Offer"));
+
+                    //Send new added store notification to admin
+                    var sendAddedOfferToastrNotificationHubDetails = mapper.Map<Offer, SendAddedOfferToastrNotificationHubViewModel>(mappedResult);
+                    sendAddedOfferToastrNotificationHubDetails.BaseUrl = config.Value.BaseUrl;
+                    var storeDetails =  await storeService.GetById(mappedResult.StoreId);
+                    sendAddedOfferToastrNotificationHubDetails.StoreName = storeDetails.Name;
+                    await notificationUserHubContext.Clients.Groups("group_1").SendAsync("SendAddedOfferToastrNotificationToAdmin", sendAddedOfferToastrNotificationHubDetails);
+
+                    return Ok(apiModel);
+                }
+                return StatusCode((int)HttpStatusCode.Forbidden, APIStatusHelper.Forbidden("Model not valid"));
             }
-            return StatusCode((int)HttpStatusCode.Forbidden, APIStatusHelper.Forbidden("Model not valid"));
+            catch (Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.Forbidden, APIStatusHelper.Forbidden("Model not valid"));
+            }
+            
         }
 
         [Route("UpdateOffer")]
@@ -127,10 +156,20 @@ namespace DealSe.API.v1
             ApiOkResponse apiModel = new ApiOkResponse();
             if (ModelState.IsValid)
             {
+                var offer = await offerService.CheckOfferExists(model.OfferId, model.Name, model.StoreId);
+                if (offer != null)
+                {
+                    apiModel = APIStatusHelper.Found(null, DealSeResource.RecordExists.Replace("{0}", "Offer"));
+                    return Ok(apiModel);
+                }
                 var mappedResult = mapper.Map<UpdateOfferParamApiFormModel, Offer>(model);
                 mappedResult.UpdatedDate = DateTime.Now;
-                await OfferService.Update(mappedResult);
-                apiModel = APIStatusHelper.Success(null, DealSeResource.UpdateMessage.Replace("{0}", "Offer"));
+                await offerService.Update(mappedResult);
+
+                AddOfferReturnApiFormModel addOfferReturnApiFormModel = new AddOfferReturnApiFormModel();
+                addOfferReturnApiFormModel.OfferId = mappedResult.OfferId;
+
+                apiModel = APIStatusHelper.Success(addOfferReturnApiFormModel, DealSeResource.UpdateMessage.Replace("{0}", "Offer"));
                 return Ok(apiModel);
             }
             return StatusCode((int)HttpStatusCode.Forbidden, APIStatusHelper.Forbidden("Model not valid"));

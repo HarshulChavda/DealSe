@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "IP7SSbbALzvhrrpihMfOu8mc3c6LscVxPOzAmJK7ojkVUxa+J/Bf9iblyi4oyvvfW+VkvopoOn0B8eVgHYpaTA==",
+  "dgSpecHash": "i60lxLZ5o6FlFucu1Jppb+4BIiXECXlWKGh+SH26/6NUApIKxGCPazA5sOgvvMfbzHzvtgLB2uJtrl0EVPtVEA==",
   "success": true,
-  "projectFilePath": "D:\\Company Running Projects\\DealSe\\Project\\DealSe\\DealSe.csproj",
+  "projectFilePath": "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe\\DealSe.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\A\\.nuget\\packages\\automapper\\9.0.0\\automapper.9.0.0.nupkg.sha512",
     "C:\\Users\\A\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\7.0.0\\automapper.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512",
@@ -67,7 +67,7 @@
     "C:\\Users\\A\\.nuget\\packages\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
     "C:\\Users\\A\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\A\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
-    "C:\\Users\\A\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
+    "C:\\Users\\A\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\A\\.nuget\\packages\\nuget.frameworks\\4.7.0\\nuget.frameworks.4.7.0.nupkg.sha512",
     "C:\\Users\\A\\.nuget\\packages\\qrcoder\\1.3.9\\qrcoder.1.3.9.nupkg.sha512",
     "C:\\Users\\A\\.nuget\\packages\\restsharp\\106.10.1\\restsharp.106.10.1.nupkg.sha512",

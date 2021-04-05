@@ -91,6 +91,9 @@ namespace DealSe.Mappings
             CreateMap<Service.Common.GetAreaList, AreaListModel>().ReverseMap();
             CreateMap<Service.Common.GetStoreTypeList, StoreTypeListApiModel>().ReverseMap();
 			 CreateMap<Store, CheckStoreMobieNumberReturnApiFormModel>().ReverseMap(); 
+			 CreateMap<UserUsedOfferFormModel, UserUsedOffer>().ReverseMap();
+            CreateMap<Store, SendStoreRegistrationToastrNotificationHubViewModel>();
+            CreateMap<Offer, SendAddedOfferToastrNotificationHubViewModel>();
             #endregion
         }
     }
