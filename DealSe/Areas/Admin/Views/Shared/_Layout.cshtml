@@ -1,4 +1,5 @@
 ﻿@*Partial view for layout*@
+@using Microsoft.AspNetCore.Http
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,6 +35,7 @@
             </div>
             <hr />
             <div id="preloader" class="loading" style="display:none"></div>
+            @Html.Hidden("admin", Context.Session.GetString("admin"))
             @RenderBody()
             @await Html.PartialAsync("_Footer")
         </div>
@@ -73,3 +75,5 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+<script src="/signalr/signalr.js"></script>
+<script src="/Admin/js/adminnotification.js"></script>

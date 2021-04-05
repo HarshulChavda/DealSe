@@ -9,10 +9,12 @@ namespace DealSe.Service.Interface
     public interface IOfferService : IGenericRepository<Offer>
     {
         /// <summary>
-        /// Create offer
+        /// Check offer name is exist or not
         /// </summary>
-        /// <param name="offer"></param>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
+        /// <param name="storeId"></param>
         /// <returns></returns>
-        Task<int> CreateOffer(Offer offer);
+        Task<Offer> CheckOfferExists(int id, string name, int storeId);
     }
 }

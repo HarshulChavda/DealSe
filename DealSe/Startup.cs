@@ -20,6 +20,7 @@ using System;
 using System.Text;
 using DealSe.Service;
 using DealSe.IoC;
+using DealSe.Hubs;
 
 namespace DealSe
 {
@@ -73,6 +74,7 @@ namespace DealSe
             services.AddSession(options => { options.IdleTimeout = TimeSpan.FromHours(8); options.Cookie.HttpOnly = true; });
             services.AddAutoMapper(typeof(Startup));
             services.AddTransient<UserService>();
+            services.AddSignalR();
             RegisterServices(services);
         }
 
@@ -123,6 +125,12 @@ namespace DealSe
                 endpoints.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
+
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<NotificationHub>("/NotificationHub");
+                routes.MapHub<NotificationUserHub>("/NotificationUserHub");
             });
         }
 

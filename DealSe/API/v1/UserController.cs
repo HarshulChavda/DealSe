@@ -105,7 +105,7 @@ namespace DealSe.API.v1
                 }
 
                 userApiModel.UserId = user.UserId;
-                apiModel = APIStatusHelper.Success(userApiModel, DealSeResource.RecordExists.Replace("{0}", "User"));
+                apiModel = APIStatusHelper.Found(userApiModel, DealSeResource.RecordExists.Replace("{0}", "User"));
                 return Ok(apiModel);
             }
             return StatusCode((int)HttpStatusCode.Forbidden, APIStatusHelper.Forbidden("Model not valid"));

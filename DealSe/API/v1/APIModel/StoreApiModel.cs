@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -32,6 +33,7 @@ namespace DealSe.API.v1.APIModel
         public string OwnerName { get; set; }
         public string OwnerMobileNo { get; set; }
         public string About { get; set; }
+        public DateTime AddedDate { get; set; }
         public List<AreaListModel> areaListModel { get; set; }
         public List<StoreTypeListApiModel> storeTypeApiModel { get; set; }
     }
@@ -81,6 +83,7 @@ namespace DealSe.API.v1.APIModel
     {
         public int StoreId { get; set; }
         public string LogoUrl { get; set; }
+        public string OldLogo { get; set; }
         public int AreaId { get; set; }
         public int StoreTypeId { get; set; }
         public string Name { get; set; }
@@ -95,6 +98,9 @@ namespace DealSe.API.v1.APIModel
         public string OwnerName { get; set; }
         public string OwnerMobileNo { get; set; }
         public string About { get; set; }
+        public DateTime AddedDate { get; set; }
+        public List<AreaListModel> areaListModel { get; set; }
+        public List<StoreTypeListApiModel> storeTypeApiModel { get; set; }
     }
 
     //Update Store Param Api FormModel
@@ -111,6 +117,7 @@ namespace DealSe.API.v1.APIModel
         public string Name { get; set; }
         [StringLength(100)]
         public string Email { get; set; }
+        public string OldLogo { get; set; }
         public IFormFile Logo { get; set; }
         [StringLength(10)]
         public string MobileNo1 { get; set; }
@@ -137,5 +144,21 @@ namespace DealSe.API.v1.APIModel
         public string OwnerMobileNo { get; set; }
         [StringLength(2000)]
         public string About { get; set; }
+        public DateTime AddedDate { get; set; }
+    }
+
+    public class UserUsedOfferFormModel
+    {
+        public int UserUsedOfferId { get; set; }
+        public int UserId { get; set; }
+        public int OfferId { get; set; }
+        public int StoreId { get; set; }
+        [Required]
+        [StringLength(50)]
+        public string CouponCode { get; set; }
+        [Column(TypeName = "decimal(11, 8)")]
+        public decimal? Latitude { get; set; }
+        [Column(TypeName = "decimal(11, 8)")]
+        public decimal? Longitude { get; set; }
     }
 }

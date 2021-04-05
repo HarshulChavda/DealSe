@@ -52,6 +52,7 @@
     <None Include="Views\Error\Index.cshtml" />
     <None Include="Views\Shared\Error.cshtml" />
     <None Include="Views\Shared\_Layout.cshtml" />
+    <None Include="wwwroot\signalr\signalr.js" />
   </ItemGroup>
 
   <ItemGroup>

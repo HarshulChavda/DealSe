@@ -900,7 +900,6 @@ D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubT
 D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\Admin\assets\js\codemirror\theme\xq-dark.css
 D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\Admin\assets\js\codemirror\theme\xq-light.css
 D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\Admin\assets\js\commonjs.js
-D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\Admin\assets\js\commonjs.min.js
 D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\Admin\assets\js\cookies.min.js
 D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\Admin\assets\js\datapicker.js
 D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\Admin\assets\js\datapicker.min.js
@@ -1737,6 +1736,10 @@ D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubT
 D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\lib\jquery\dist\jquery.min.map
 D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\lib\jquery\LICENSE.txt
 D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\Upload\Offer\6\637445380484734528.jpg
+D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\Upload\Store\Logo\637492077669632949.png
+D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\Upload\Store\Logo\637492080648612940.png
+D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\Upload\Store\Logo\637492080648612961.png
+D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\Upload\Store\Logo\637492080919256941.png
 D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\web.config
 D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\appsettings.Development.json
 D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\appsettings.json
@@ -2147,9 +2150,11 @@ D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubT
 D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\DealSe.Data.dll
+D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\DealSe.IoC.dll
 D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\DealSe.Service.dll
 D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\DealSe.Utils.dll
 D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\DealSe.Data.pdb
+D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\DealSe.IoC.pdb
 D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\DealSe.Service.pdb
 D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\DealSe.Utils.pdb
 D:\Company Running Projects\DealSe\Project\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\DealSe.Views.dll

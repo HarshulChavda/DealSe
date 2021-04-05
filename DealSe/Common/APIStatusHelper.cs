@@ -38,7 +38,22 @@ namespace DealSe.Common
             apiModel.Data = new object();
             return apiModel;
         }
-
+        public static ApiOkResponse Found(dynamic result, string message)
+        {
+            ApiOkResponse apiModel = new ApiOkResponse();
+            apiModel.Code = (int)HttpStatusCode.Found;
+            apiModel.Message = message;
+            apiModel.Data = result ?? new object();
+            return apiModel;
+        }
+        public static ApiOkResponse NotAcceptable(dynamic result, string message)
+        {
+            ApiOkResponse apiModel = new ApiOkResponse();
+            apiModel.Code = (int)HttpStatusCode.NotAcceptable;
+            apiModel.Message = message;
+            apiModel.Data = result ?? new object();
+            return apiModel;
+        }
 
     }
 }

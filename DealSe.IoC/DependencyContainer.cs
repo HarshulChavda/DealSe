@@ -19,6 +19,7 @@ namespace DealSe.IoC
             services.AddScoped<IStoreTypeService, StoreTypeService>();
             services.AddScoped<IOfferService, OfferService>();
             services.AddScoped<IOfferBannerService, OfferBannerService>();
+            services.AddScoped<IUserUsedOfferService, UserUsedOfferService>();
         }
     }
 }

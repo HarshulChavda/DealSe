@@ -12,14 +12,17 @@ namespace DealSe.Service.Service
         public OfferService(DealSeContext dbContext) : base(dbContext) { }
 
         /// <summary>
-        /// Create offer
+        /// Check offer name is exist or not
         /// </summary>
-        /// <param name="Offer"></param>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
+        /// <param name="storeId"></param>
         /// <returns></returns>
-        public async Task<int> CreateOffer(Offer Offer)
+        public async Task<Offer> CheckOfferExists(int id, string name, int storeId)
         {
-            await Create(Offer);
-            return Offer.OfferId;
+            if (id == 0)
+                return await Get(top => top.Name.Trim() == name.Trim() && top.StoreId == storeId && top.Active == true && top.Deleted == false);
+            return await Get(top => top.Name.Trim() == name.Trim() && top.OfferId != id && top.StoreId == storeId && top.Active == true && top.Deleted == false);
         }
     }
 }

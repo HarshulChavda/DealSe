@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Company Running Projects\\DealSe\\Project\\DealSe.Data\\DealSe.Data.csproj": {}
+    "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.Data\\DealSe.Data.csproj": {}
   },
   "projects": {
-    "D:\\Company Running Projects\\DealSe\\Project\\DealSe.Data\\DealSe.Data.csproj": {
+    "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.Data\\DealSe.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Company Running Projects\\DealSe\\Project\\DealSe.Data\\DealSe.Data.csproj",
+        "projectUniqueName": "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.Data\\DealSe.Data.csproj",
         "projectName": "DealSe.Data",
-        "projectPath": "D:\\Company Running Projects\\DealSe\\Project\\DealSe.Data\\DealSe.Data.csproj",
+        "projectPath": "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.Data\\DealSe.Data.csproj",
         "packagesPath": "C:\\Users\\A\\.nuget\\packages\\",
-        "outputPath": "D:\\Company Running Projects\\DealSe\\Project\\DealSe.Data\\obj\\",
+        "outputPath": "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\A\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -60,7 +60,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
