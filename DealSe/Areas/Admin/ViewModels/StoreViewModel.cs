@@ -12,6 +12,8 @@ namespace DealSe.Areas.Admin.ViewModels
         public int StateId { get; set; }
         public int CityId { get; set; }
         public string Name { get; set; }
+        public string AreaName { get; set; }
+        public string StoreTypeName { get; set; }
         public string Email { get; set; }
         public string OwnerName { get; set; }
         public string OwnerMobileNo { get; set; }

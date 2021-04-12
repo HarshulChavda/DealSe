@@ -1,5 +1,6 @@
 ﻿using DealSe.Data.Infrastructure;
-using DealSe.Data.Models;
+using DealSe.Domain.Interface;
+using DealSe.Domain.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

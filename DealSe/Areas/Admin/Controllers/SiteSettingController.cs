@@ -6,7 +6,7 @@ using AutoMapper;
 using DealSe.ActionFilter;
 using DealSe.Areas.Admin.FormModels;
 using DealSe.Areas.Admin.ViewModels;
-using DealSe.Data.Models;
+using DealSe.Domain.Models;
 using DealSe.Service.Common;
 using DealSe.Service.Interface;
 using DealSe.Utils;

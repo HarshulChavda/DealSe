@@ -1,0 +1,30 @@
+﻿@*View to edit store*@
+@model DealSe.Areas.Admin.FormModels.StoreFormModel
+@{
+    ViewData["Title"] = "EditStore";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<ol class="breadcrumb">
+    <li>
+        <a href="@Url.Action("Index", "Home" , new {Area="Admin" })"><i class="entypo-home"></i>Home</a>
+    </li>
+    <li><a href="@Url.Action("Index", "Store" , new { Area="Admin" })"><i class="entypo-globe"></i>Stores</a></li>
+    <li class="active">
+        <strong>Edit Store</strong>
+    </li>
+</ol>
+<h2>Edit Store</h2>
+<br />
+@if (ViewBag.Error != null)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger"><strong>Oops!</strong> @ViewBag.Error</div>
+        </div>
+    </div>
+}
+@using (Html.BeginForm("EditStore", "Store", FormMethod.Post))
+{
+    @await Html.PartialAsync("_StoreInfo", Model)
+}

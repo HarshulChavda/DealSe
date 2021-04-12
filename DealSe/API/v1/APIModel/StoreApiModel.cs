@@ -33,6 +33,7 @@ namespace DealSe.API.v1.APIModel
         public string OwnerName { get; set; }
         public string OwnerMobileNo { get; set; }
         public string About { get; set; }
+        public string OldLogo { get; set; }
         public DateTime AddedDate { get; set; }
         public List<AreaListModel> areaListModel { get; set; }
         public List<StoreTypeListApiModel> storeTypeApiModel { get; set; }

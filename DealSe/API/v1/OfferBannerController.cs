@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using DealSe.API.v1.APIModel;
 using DealSe.Common;
-using DealSe.Data.Models;
+using DealSe.Domain.Models;
 using DealSe.Service.Interface;
 using DealSe.Utils;
 using Microsoft.AspNetCore.Authorization;
@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Hosting;
 using System.Linq;
 using System.Collections.Generic;
 using Microsoft.Extensions.Options;
+using DealSe.Shared.Common;
 
 namespace DealSe.API.v1
 {

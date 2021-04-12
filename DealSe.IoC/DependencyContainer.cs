@@ -13,9 +13,11 @@ namespace DealSe.IoC
             services.AddScoped<ISiteSettingService, SiteSettingService>();
             services.AddScoped<IEmailTemplateService, EmailTemplateService>();
             services.AddScoped<ICountryService, CountryService>();
+            services.AddScoped<IStateService, StateService>();
+            services.AddScoped<ICityService, CityService>();
+            services.AddScoped<IAreaService, AreaService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IStoreService, StoreService>();
-            services.AddScoped<IAreaService, AreaService>();
             services.AddScoped<IStoreTypeService, StoreTypeService>();
             services.AddScoped<IOfferService, OfferService>();
             services.AddScoped<IOfferBannerService, OfferBannerService>();

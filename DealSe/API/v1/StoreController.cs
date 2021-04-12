@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using DealSe.API.v1.APIModel;
 using DealSe.Common;
-using DealSe.Data.Models;
+using DealSe.Domain.Models;
 using DealSe.Service.Interface;
 using DealSe.Utils;
 using Microsoft.AspNetCore.Authorization;
@@ -19,6 +19,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.SignalR;
 using DealSe.Hubs;
 using DealSe.Areas.Admin.ViewModels;
+using DealSe.Shared.Common;
 
 namespace DealSe.API.v1
 {
@@ -75,6 +76,7 @@ namespace DealSe.API.v1
                             logoUrl = Path.Combine(baseURL + "Upload\\Store\\Logo", storeDetails.Logo);
                     checkStoreMobieNumberReturnApiFormModel = mapper.Map<Store, CheckStoreMobieNumberReturnApiFormModel>(storeDetails);
                     checkStoreMobieNumberReturnApiFormModel.LogoUrl = logoUrl;
+                    checkStoreMobieNumberReturnApiFormModel.OldLogo = storeDetails.Logo;
                 }
 
                 var areaList = areaService.GetMany(c => c.Active == true).OrderBy(c => c.Name).ToList();

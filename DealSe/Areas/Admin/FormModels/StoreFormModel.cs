@@ -53,5 +53,6 @@ namespace DealSe.Areas.Admin.FormModels
         public bool Approved { get; set; }
         public bool Active { get; set; }
         public DateTime AddedDate { get; set; }
+        public string GoogleMapAPIKey { get; set; }
     }
 }

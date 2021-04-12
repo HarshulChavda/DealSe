@@ -2,8 +2,8 @@
 using DealSe.API.v1.APIModel;
 using DealSe.Areas.Admin.FormModels;
 using DealSe.Areas.Admin.ViewModels;
-using DealSe.Data.Models;
-using DealSe.Data.SPModel;
+using DealSe.Domain.Models;
+using DealSe.Domain.SPModel;
 using DealSe.Utils.Common;
 using DealSe.Utils.Enum;
 using Newtonsoft.Json;
@@ -41,6 +41,8 @@ namespace DealSe.Mappings
                 .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => string.IsNullOrEmpty(src.LastName) ? "-" : src.LastName))
                 .ReverseMap();
             CreateMap<StoreType, StoreTypeFormModel>().ReverseMap();
+            CreateMap<Store, StoreFormModel>().ReverseMap();
+            
             // ================= View Model =======================
             CreateMap<SiteSetting, SiteSettingViewModel>()
               .ForMember(dest => dest.AddedDate, opt => opt.MapFrom(src => src.AddedDate.ToString("dd/MM/yyyy hh:mm tt")));
@@ -57,6 +59,8 @@ namespace DealSe.Mappings
             CreateMap<UsersSPModel, UserViewModel>()
                 .ForMember(dest => dest.DisplayAddedDate, opt => opt.MapFrom(src => src.AddedDate.ToString("dd/MM/yyyy hh:mm tt")));
             CreateMap<GetAllStoreType, StoreTypeViewModel>()
+                .ForMember(dest => dest.DisplayAddedDate, opt => opt.MapFrom(src => src.AddedDate.ToString("dd/MM/yyyy hh:mm tt")));
+            CreateMap<GetAllStore, StoreViewModel>()
                 .ForMember(dest => dest.DisplayAddedDate, opt => opt.MapFrom(src => src.AddedDate.ToString("dd/MM/yyyy hh:mm tt")));
             #endregion
 
@@ -94,6 +98,8 @@ namespace DealSe.Mappings
 			 CreateMap<UserUsedOfferFormModel, UserUsedOffer>().ReverseMap();
             CreateMap<Store, SendStoreRegistrationToastrNotificationHubViewModel>();
             CreateMap<Offer, SendAddedOfferToastrNotificationHubViewModel>();
+            CreateMap<UserUpdateParamApiModel, User>().ReverseMap();
+            CreateMap<User, UserUpdateReturnApiModel>();
             #endregion
         }
     }

@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using AutoMapper;
 using DealSe.Areas.Admin.FormModels;
 using DealSe.Areas.Admin.ViewModels;
-using DealSe.Data.Models;
-using DealSe.Data.SPModel;
+using DealSe.Domain.Models;
+using DealSe.Domain.SPModel;
 using DealSe.Service.Common;
 using DealSe.Service.Interface;
 using DealSe.Utils;
@@ -64,7 +64,7 @@ namespace DealSe.Areas.Admin.Controllers
                 SqlParameter[] parameters = new SqlParameter[1];
                 parameters[0] = new SqlParameter("@CityId", cityId);
 
-                var result = dataContext.GetAllArea.FromSqlRaw("GetAllArea @CityId", parameters).ToList();
+                var result = dataContext.GetAllArea.FromSqlRaw("GetAllAreaForAdminListing @CityId", parameters).ToList();
                 var mappedResult = mapper.Map<IEnumerable<GetAllArea>, IEnumerable<AreaViewModel>>(result);
                 if (!string.IsNullOrEmpty(param.Search.Value))
                 {

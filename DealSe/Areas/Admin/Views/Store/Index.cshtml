@@ -1,0 +1,228 @@
+﻿@*View to show store details*@
+@model DealSe.Areas.Admin.ViewModels.StoreViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<ol class="breadcrumb">
+    <li>
+        <a href="@Url.Action("Index", "Home",new { Area = "Admin" })"><i class="entypo-home"></i>Home</a>
+    </li>
+    <li>
+        <i class="entypo-globe"></i>Stores
+    </li>
+</ol>
+<h2>Stores</h2>
+<br />
+@if (TempData["Error"] != null)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger"><strong>Oops!</strong><br /><span> @TempData["Error"]</span></div>
+        </div>
+    </div>
+}
+else if (TempData["Success"] != null)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success"><strong>Success!</strong> @TempData["Success"]</div>
+        </div>
+    </div>
+}
+
+<div class="row user-dactive">
+    <div class="col-xs-12 col-sm-8">
+        <a href="#" class="btn btn-green btn-sm btn-icon icon-left statusbutton" data-statuslabel="Active">
+            <i class="entypo-check"></i>
+            Active
+        </a>
+        <a href="#" class="btn btn-orange btn-sm btn-icon icon-left statusbutton" data-statuslabel="Inactive">
+            <i class="entypo-cancel"></i>
+            Inactive
+        </a>
+        <a href="#" class="btn btn-blue btn-sm btn-icon icon-left statusbutton" data-statuslabel="Approve">
+            <i class="entypo-check"></i>
+            Approve
+        </a>
+        <a href="#" class="btn btn-black btn-sm btn-icon icon-left statusbutton" data-statuslabel="DisApprove">
+            <i class="entypo-cancel"></i>
+            Dis Approve
+        </a>
+        <a href="#" class="btn btn-danger btn-sm btn-icon icon-left statusbutton" data-statuslabel="Delete">
+            <i class="entypo-trash"></i>
+            Delete
+        </a>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+        <a href="@Url.Action("AddStore", "Store", new { Area = "Admin" })" class="btn btn-primary btn-sm btn-icon icon-left adminaddbutton">
+            <i class="entypo-plus"></i>
+            Add Store
+        </a>
+    </div>
+</div>
+<br class="clear" />
+@await Html.PartialAsync("_StoreDetails")
+@await Html.PartialAsync("_DatatableCSSJSView")
+<script type="text/javascript">
+    $(document).ready(function () {
+        loadData();
+    });
+    var responsiveHelper;
+    var breakpointDefinition = {
+        tablet: 1024,
+        phone: 480
+    };
+    function loadData() {
+        var tableContainer;
+        tableContainer = $("#StoreDetails");
+        tableContainer.dataTable(
+            {
+                "destroy": true,
+                "aaSorting": [],
+                "pageLength": 10,
+                "bStateSave": false,
+                "processing": true,
+                oLanguage: {
+                    sProcessing: "<div id=preloader></div>"
+                },
+                "serverSide": true,
+                "ajax": {
+                    "url": '/Admin/Store/LoadData',
+                    "type": "POST",
+                    "datatype": "json"
+                },
+
+                "aoColumns": [
+                    {
+                        mData: null, "bSortable": false, "bSearchable": false, "width": "5%",
+                        "mRender": function (data, type, row) {
+                            return "<div class='checkbox checkbox-replace itemclass'><input type='checkbox' id=" + row.storeId + "></div>";
+                        }
+                    },
+                    {
+                        mData: null, "bSortable": false, "bSearchable": false, "width": "5%",
+                        "mRender": function (data, type, row) {
+                            return '';
+                        }
+                    },
+                    { "data": "storeTypeName", "name": "storeTypeName", "bSearchable": true, "autoWidth": true, "width": "8%" },
+                    { "data": "areaName", "name": "areaName", "bSearchable": true, "autoWidth": true, "width": "8%" },
+                    { "data": "name", "name": "name", "bSearchable": true, "autoWidth": true, "width": "14%" },
+                    { "data": "email", "name": "email", "bSearchable": true, "autoWidth": true, "width": "8%" },
+                    { "data": "ownerName", "name": "ownerName", "bSearchable": true, "autoWidth": true, "width": "8%" },
+                    { "data": "ownerMobileNo", "name": "ownerMobileNo", "bSearchable": true, "autoWidth": true, "width": "8%" },
+                    { "data": "displayAddedDate", "name": "displayAddedDate", "bSearchable": true,"bSortable": true, "autoWidth": true, "width": "8%" },
+                    {
+                        "mData": "approved", "name": "approved", "autoWidth": true, "width": "5%",
+                        "mRender": function (data, type, row) {
+                            if (row.approved == true) {
+                                return '<div class="label label-success">Yes</div>';
+                            }
+                            else {
+                                return '<div class="label label-danger">No</div>';
+                            }
+                        }
+                    },
+                    {
+                        "mData": "active", "name": "active", "autoWidth": true, "width": "8%",
+                        "mRender": function (data, type, row) {
+                            if (row.active == true) {
+                                return '<div class="label label-success">Active</div>';
+                            }
+                            else {
+                                return '<div class="label label-inactive">Inactive</div>';
+                            }
+                        }
+                    },
+                    {
+                        "mData": "Activated", "bSearchable": false, "bSortable": false, "autoWidth": true, "width": "8%",
+                        "mRender": function (data, type, row) {
+                            return '<a class="btn btn-blue btn-sm btn-icon icon-left" href="/Admin/Store/EditStore/' + row.storeId + '"><i class="entypo-pencil"></i>Edit</a>';
+                        }, "sClass": "view-more"
+                    }
+                ],
+                "fnRowCallback": function (nRow, aData, iDisplayIndex) {
+                    var info = $(this).DataTable().page.info();
+                    $("td:nth-child(2)", nRow).append(info.start + iDisplayIndex + 1);
+                    return nRow;
+                },
+                "fnDrawCallback": function () {
+                    replaceCheckboxes();
+                    responsivePaginationDesign();
+                    checkAllCheckboxes();
+                    addresponsiveTableDiv("#StoreDetails");
+                },
+            });
+            $(".dataTables_wrapper select").select2({
+                minimumResultsForSearch: -1
+            });
+    }
+    $(window).resize(function () {
+        if (window.matchMedia('(max-width: 768px)').matches) {
+            responsiveTableColumn('#StoreDetails');
+        }
+    })
+
+     $(".statusbutton").click(function () {
+            $("#preloader").show();
+            var checkedrecord = new Array();
+            var checkactivestatus = $('#StoreDetails tbody tr').find(':checkbox:checked').length;
+            if (checkactivestatus == 0) {
+
+                $.alert({
+                    title: 'Alert!',
+                    content: 'Please select atleast one record.',
+                });
+            $("#preloader").hide();
+            $(".checkbox-replace").removeClass("checked");
+            $("#chk-1").removeAttr("checked");
+            $('#StoreDetails th input[type="checkbox"]').prop("checked", false);
+            $('#StoreDetails td input[type="checkbox"]').prop("checked", false);
+            return false;
+            }
+            $('#StoreDetails tbody tr').find(':checkbox:checked').each(function (i, row) {
+                var $actualrow = $(row);
+                $checkbox = $actualrow;
+                if ($checkbox.attr('id') != 'chk-1') {
+                    checkedrecord.push($checkbox.attr('id'));
+                }
+            });
+
+        if (checkedrecord.length > 0) {
+            var status = $(this).data("statuslabel");
+            var alertMessage = '';
+
+            if (status == "Active")
+                alertMessage = 'Are you sure you want to active record(s)?';
+            else if(status == "Inactive")
+                alertMessage = 'Are you sure you want to inactive record(s)?';
+            else (status == "Delete")
+                alertMessage = 'Are you sure you want to delete record(s)?';
+
+            $.confirm({
+                title: 'Confirm!',
+                content: alertMessage,
+                buttons: {
+                    confirm: function () {
+                        $.post('@Url.Action("StoreOperation", "Store", new {area="Admin"})', { checkedrecord: checkedrecord, status: status }, function (data) {
+                            if (data == "Success") {
+                                $("#preloader").hide();
+                                window.location.href = "/admin/Store";
+                            } else {
+                                $("#preloader").hide();
+                            }
+                        });
+                    },
+                    cancel: function () {
+                        $(".checkbox-replace").removeClass("checked");
+                        $("#chk-1").removeAttr("checked");
+                        $('#StoreDetails th input[type="checkbox"]').prop("checked", false);
+                        $('#StoreDetails td input[type="checkbox"]').prop("checked", false);
+                        $("#preloader").hide();
+                    }
+                }
+            });
+        }
+    });
+</script>
