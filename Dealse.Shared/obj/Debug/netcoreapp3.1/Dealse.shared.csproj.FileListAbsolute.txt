@@ -1,0 +1,16 @@
+D:\jayul\DealSeHome\Dealse.shared\bin\Debug\netcoreapp3.1\Dealse.Shared.deps.json
+D:\jayul\DealSeHome\Dealse.shared\bin\Debug\netcoreapp3.1\Dealse.Shared.dll
+D:\jayul\DealSeHome\Dealse.shared\bin\Debug\netcoreapp3.1\Dealse.Shared.pdb
+D:\jayul\DealSeHome\Dealse.shared\obj\Debug\netcoreapp3.1\Dealse.Shared.AssemblyInfoInputs.cache
+D:\jayul\DealSeHome\Dealse.shared\obj\Debug\netcoreapp3.1\Dealse.Shared.AssemblyInfo.cs
+D:\jayul\DealSeHome\Dealse.shared\obj\Debug\netcoreapp3.1\Dealse.Shared.dll
+D:\jayul\DealSeHome\Dealse.shared\obj\Debug\netcoreapp3.1\Dealse.Shared.pdb
+D:\Company Running Projects\DealSe\Local Server\Dealse.shared\bin\Debug\netcoreapp3.1\Dealse.Shared.deps.json
+D:\Company Running Projects\DealSe\Local Server\Dealse.shared\bin\Debug\netcoreapp3.1\Dealse.Shared.dll
+D:\Company Running Projects\DealSe\Local Server\Dealse.shared\bin\Debug\netcoreapp3.1\Dealse.Shared.pdb
+D:\Company Running Projects\DealSe\Local Server\Dealse.shared\obj\Debug\netcoreapp3.1\Dealse.Shared.csprojAssemblyReference.cache
+D:\Company Running Projects\DealSe\Local Server\Dealse.shared\obj\Debug\netcoreapp3.1\Dealse.Shared.AssemblyInfoInputs.cache
+D:\Company Running Projects\DealSe\Local Server\Dealse.shared\obj\Debug\netcoreapp3.1\Dealse.Shared.AssemblyInfo.cs
+D:\Company Running Projects\DealSe\Local Server\Dealse.shared\obj\Debug\netcoreapp3.1\Dealse.Shared.csproj.CoreCompileInputs.cache
+D:\Company Running Projects\DealSe\Local Server\Dealse.shared\obj\Debug\netcoreapp3.1\Dealse.Shared.dll
+D:\Company Running Projects\DealSe\Local Server\Dealse.shared\obj\Debug\netcoreapp3.1\Dealse.Shared.pdb

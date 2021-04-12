@@ -24,7 +24,7 @@
         <div class="form-group">
             <label class="control-label" for="status">City Name</label>
             @Html.DropDownList("CityId", new SelectList(ViewBag.CityList, "Value", "Text"), "Select City", new { @class = "select2" })
-            @Html.ValidationMessageFor(model => model.StateId)
+            @Html.ValidationMessageFor(model => model.CityId)
         </div>
     </div>
     <div class="col-md-3">
@@ -35,7 +35,6 @@
             @Html.ValidationMessageFor(model => model.Name)
         </div>
     </div>
-
 </div>
 <div class="row">
     <div class="col-md-3">

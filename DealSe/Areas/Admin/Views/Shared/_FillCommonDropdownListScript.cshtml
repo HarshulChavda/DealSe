@@ -47,4 +47,27 @@
             },
         });
     });
+
+    $("#CityId").change(function () {
+        var cityId = $(this).val();
+        $("#AreaId").html('<option value="">Select Area</option>');
+        if (cityId == null || cityId == "") {
+            $("#AreaId").trigger('change');
+            return false;
+        }
+        $.ajax({
+            url: '/Admin/FillCommonDropdownList/GetAreaListByCityId/',
+            data: { cityId: cityId },
+            success: function (result) {
+                var items = '<option value="">Select City</option>';
+                $.each(result, function (i, us) {
+                    items += "<option value='" + us.value + "'>" + us.text + "</option>";
+                });
+                $('#AreaId').html(items);
+            },
+            error: function (ex) {
+                alert("Opps! Something went wrong.." + ex);
+            },
+        });
+    });
 </script>

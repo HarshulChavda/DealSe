@@ -1,6 +1,6 @@
 using AutoMapper;
 using DealSe.Common;
-using DealSe.Data.Models;
+using DealSe.Domain.Models;
 using DealSe.Service.Interface;
 using DealSe.Service.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -21,6 +21,7 @@ using System.Text;
 using DealSe.Service;
 using DealSe.IoC;
 using DealSe.Hubs;
+using DealSe.Shared.Common;
 
 namespace DealSe
 {
@@ -40,7 +41,8 @@ namespace DealSe
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DealSeContext>(options => options.UseLazyLoadingProxies().UseSqlServer(Configuration.GetConnectionString("DealSeContext")));
+            services.AddDbContext<DealSeContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DealSeContext")));
+            services.Configure<ConnectionStrings>(Configuration.GetSection("ConnectionStrings"));
             services.Configure<CustomSettings>(Configuration.GetSection("CustomSettings"));
             services.Configure<RazorViewEngineOptions>(options =>
             {
@@ -73,8 +75,8 @@ namespace DealSe
             services.AddOptions();
             services.AddSession(options => { options.IdleTimeout = TimeSpan.FromHours(8); options.Cookie.HttpOnly = true; });
             services.AddAutoMapper(typeof(Startup));
-            services.AddTransient<UserService>();
-            services.AddSignalR();
+            //services.AddTransient<UserService>();
+             services.AddSignalR();
             RegisterServices(services);
         }
 
@@ -114,7 +116,14 @@ namespace DealSe
             app.UseAuthentication();
             app.UseAuthorization();
 
-            //app.UseMvc(BuildRoutes());          
+            //app.UseMvc(BuildRoutes());       
+
+            app.UseEndpoints(routes =>
+            {
+                routes.MapHub<NotificationHub>("/NotificationHub");
+                routes.MapHub<NotificationUserHub>("/NotificationUserHub");
+            });
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapAreaControllerRoute(
@@ -127,11 +136,6 @@ namespace DealSe
                 pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            app.UseSignalR(routes =>
-            {
-                routes.MapHub<NotificationHub>("/NotificationHub");
-                routes.MapHub<NotificationUserHub>("/NotificationUserHub");
-            });
         }
 
         private void ConfigureSwagger(IServiceCollection services)

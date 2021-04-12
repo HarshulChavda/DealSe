@@ -1,5 +1,6 @@
 ﻿using DealSe.Data.Infrastructure;
-using DealSe.Data.Models;
+using DealSe.Domain.Interface;
+using DealSe.Domain.Models;
 using DealSe.Service.Common;
 using System.Collections;
 using System.Collections.Generic;
@@ -59,6 +60,11 @@ namespace DealSe.Service.Interface
         /// <returns></returns>
         List<GetUserNearByPlaces> GetUserNearByPlaces(int CategoryID, decimal UserLatitude, decimal UserLongitude, int PageIndex, string baseURL);
 
-
+        /// <summary>
+        /// Get user
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        Task<User> GetUser(int id);
     }
 }

@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using AutoMapper;
 using DealSe.Areas.Admin.FormModels;
 using DealSe.Common;
-using DealSe.Data.Models;
-using DealSe.Data.SPModel;
+using DealSe.Domain.Models;
+using DealSe.Domain.SPModel;
 using DealSe.Service.Common;
 using DealSe.Service.Interface;
 using DealSe.Utils;
@@ -16,6 +16,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using DealSe.Areas.Admin.ViewModels;
 using DealSe.ActionFilter;
+using DealSe.Shared.Common;
 
 namespace DealSe.Areas.Admin.Controllers
 {

@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using DealSe.Areas.Admin.FormModels;
+using DealSe.Shared.Common;
 
 namespace DealSe.Areas.Admin.Controllers
 {
@@ -128,7 +129,7 @@ namespace DealSe.Areas.Admin.Controllers
                 adminId = Convert.ToInt32(HttpContext.Session.GetString("admin"));
             }
             var adminResult = await loginService.GetById(adminId);
-            var mappedResult = mapper.Map<Data.Models.Admin, AdminFormModel>(adminResult);
+            var mappedResult = mapper.Map<Domain.Models.Admin, AdminFormModel>(adminResult);
             if (!System.IO.File.Exists(Path.Combine(hostingEnvironment.WebRootPath, "Upload/Admin", mappedResult.Logo == null ? "" : mappedResult.Logo)))
                 mappedResult.Logo = null;
             return View(mappedResult);

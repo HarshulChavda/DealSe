@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using AutoMapper;
 using DealSe.Areas.Admin.FormModels;
 using DealSe.Areas.Admin.ViewModels;
-using DealSe.Data.Models;
-using DealSe.Data.SPModel;
+using DealSe.Domain.Models;
+using DealSe.Domain.SPModel;
 using DealSe.Service.Common;
 using DealSe.Service.Interface;
 using DealSe.Utils;
@@ -43,7 +43,7 @@ namespace DealSe.Areas.Admin.Controllers
             DTResult<StoreTypeViewModel> finalResult = new DTResult<StoreTypeViewModel>();
             int start = Convert.ToInt32(param.Start);
             int pagesize = Convert.ToInt32(param.Length);
-            var result = dataContext.GetAllStoreType.FromSqlRaw("GetAllStoreType").ToList();
+            var result = dataContext.GetAllStoreType.FromSqlRaw("GetAllStoreTypeForAdminListing").ToList();
             var mappedResult = mapper.Map<IEnumerable<GetAllStoreType>, IEnumerable<StoreTypeViewModel>>(result);
             if (!string.IsNullOrEmpty(param.Search.Value))
             {

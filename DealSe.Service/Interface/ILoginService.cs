@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using DealSe.Data.Infrastructure;
-using DealSe.Data.Models;
+using DealSe.Domain.Interface;
+using DealSe.Domain.Models;
 namespace DealSe.Service.Interface
 {
     public interface ILoginService : IGenericRepository<Admin>

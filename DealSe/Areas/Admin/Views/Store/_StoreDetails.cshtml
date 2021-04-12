@@ -1,0 +1,65 @@
+﻿@*Partial view to show store details*@
+<table class="table table-bordered table-striped datatable scroll" id="StoreDetails">
+    <thead>
+        <tr>
+            <th class="searchcheck">
+                <div class="checkbox checkbox-replace">
+                    <input type="checkbox" id="chk-1" onclick="checkall(this);">
+                </div>
+            </th>
+            <th>Sr No.</th>
+            <th>Store Type</th>
+            <th>Area</th>
+            <th>Store</th>
+            <th>Email</th>
+            <th>Owner</th>
+            <th>Owner Mobile No</th>
+            <th>Added Date</th>
+            <th>Approved</th>
+            <th>Active</th>
+            <th class="actionedit view-more">
+                Actions
+            </th>
+        </tr>
+    </thead>
+</table>
+<script type="text/javascript">
+    function checkall(current) {
+        var status = $('#' + current.id).is(':checked');
+        if (status == true) {
+            $('#StoreDetails input[type="checkbox"]').each(function () {
+                $(this).prop('checked', true);
+                $(this).attr('checked', true);
+            });
+            $(".itemclass").addClass("checked");
+        }
+        else {
+            $('#StoreDetails input[type="checkbox"]').each(function () {
+                $(this).prop('checked', false);
+            });
+            $(".itemclass").removeClass("checked");
+        }
+    }
+    function checkchanged() {
+        $('#StoreDetails td input[type="checkbox"]').on("change", function () {
+            checkAllCheckboxes()
+        });
+    }
+    function checkAllCheckboxes() {
+        var total = $('#StoreDetails td input[type="checkbox"]').length;
+        var selected = 0;
+        $('#StoreDetails td input[type="checkbox"]').each(function () {
+            if ($(this).is(":checked")) {
+                selected += 1;
+            }
+        });
+        if ((selected == total) && (total != 0)) {
+            $('#StoreDetails th input[type="checkbox"]').prop("checked", true);
+            $('#StoreDetails th input[type="checkbox"]').trigger("change")
+        }
+        else {
+            $('#StoreDetails th input[type="checkbox"]').prop("checked", false);
+            $('#StoreDetails th input[type="checkbox"]').trigger("change")
+        }
+    }
+</script>

@@ -1,4 +1,6 @@
-﻿using DealSe.Data.Models;
+﻿using DealSe.Domain;
+using DealSe.Domain.Interface;
+using DealSe.Domain.Models;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -29,7 +31,7 @@ namespace DealSe.Data.Infrastructure
         }
         public async Task<TEntity> Get(Expression<Func<TEntity, bool>> expression)
         {
-            return await _dbContext.Set<TEntity>().Where(expression).FirstOrDefaultAsync();
+            return await _dbContext.Set<TEntity>().Where(expression).AsNoTracking().FirstOrDefaultAsync();
         }
         //T Get(Expression<Func<T, bool>> where);
         public async Task<TEntity> GetById(int id)

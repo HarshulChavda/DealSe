@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using AutoMapper;
 using DealSe.Areas.Admin.FormModels;
 using DealSe.Areas.Admin.ViewModels;
-using DealSe.Data.Models;
-using DealSe.Data.SPModel;
+using DealSe.Domain.Models;
+using DealSe.Domain.SPModel;
 using DealSe.Service.Common;
 using DealSe.Service.Interface;
 using DealSe.Utils;
@@ -15,6 +15,8 @@ using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using DealSe.ActionFilter;
 using DealSe.Common;
+using Microsoft.Extensions.Options;
+using DealSe.Shared.Common;
 
 namespace DealSe.Areas.Admin.Controllers
 {
@@ -29,9 +31,10 @@ namespace DealSe.Areas.Admin.Controllers
         private readonly IStateService stateService;
         private readonly ICityService cityService;
         private readonly IAreaService areaService;
+        private readonly IOptions<CustomSettings> config;
         private readonly IMapper mapper;
 
-        public StoreController(DealSeContext dataContext, IMapper mapper, IStoreService storeService, IStoreTypeService storeTypeService, ICountryService countryService, IStateService stateService, ICityService cityService, IAreaService areaService)
+        public StoreController(DealSeContext dataContext, IMapper mapper, IStoreService storeService, IStoreTypeService storeTypeService, ICountryService countryService, IStateService stateService, ICityService cityService, IAreaService areaService, IOptions<CustomSettings> config)
         {
             this.dataContext = dataContext;
             this.storeTypeService = storeTypeService;
@@ -40,6 +43,7 @@ namespace DealSe.Areas.Admin.Controllers
             this.stateService = stateService;
             this.cityService = cityService;
             this.areaService = areaService;
+            this.config = config;
             this.mapper = mapper;
         }
         public IActionResult Index()
@@ -68,11 +72,11 @@ namespace DealSe.Areas.Admin.Controllers
                 int start = Convert.ToInt32(param.Start);
                 int pagesize = Convert.ToInt32(param.Length);
                 //Get filtered product list
-                SqlParameter[] parameters = new SqlParameter[1];
+                SqlParameter[] parameters = new SqlParameter[2];
                 parameters[0] = new SqlParameter("@StoreTypeId", storeTypeId);
-                parameters[0] = new SqlParameter("@AreaId", areaId);
+                parameters[1] = new SqlParameter("@AreaId", areaId);
 
-                var result = dataContext.GetAllStore.FromSqlRaw("GetAllStore @StoreTypeId,@AreaId", parameters).ToList();
+                var result = dataContext.GetAllStore.FromSqlRaw("GetAllStoreForAdminListing @AreaId,@StoreTypeId", parameters).ToList();
                 var mappedResult = mapper.Map<IEnumerable<GetAllStore>, IEnumerable<StoreViewModel>>(result);
                 if (!string.IsNullOrEmpty(param.Search.Value))
                 {
@@ -137,6 +141,10 @@ namespace DealSe.Areas.Admin.Controllers
             StoreFormModel model = new StoreFormModel();
             model.Active = true;
             ViewBag.StoreTypeList = FillDropdownList.FillStoreTypeList(storeTypeService);
+            ViewBag.CountryList = FillDropdownList.FillCountryList(countryService);
+            ViewBag.StateList = FillDropdownList.FillStateList(stateService, 0);
+            ViewBag.CityList = FillDropdownList.FillCityList(cityService, 0);
+            ViewBag.AreaList = FillDropdownList.FillAreaList(areaService, 0);
             return View(model);
         }
 
@@ -185,6 +193,14 @@ namespace DealSe.Areas.Admin.Controllers
             {
                 ViewBag.StoreTypeList = FillDropdownList.FillStoreTypeList(storeTypeService);
                 var mappedResult = mapper.Map<Store, StoreFormModel>(eventTicketType);
+                mappedResult.CountryId = eventTicketType.Area.City.State.Country.CountryId;
+                mappedResult.StateId = eventTicketType.Area.City.State.StateId;
+                mappedResult.CityId = eventTicketType.Area.City.CityId;
+                ViewBag.CountryList = FillDropdownList.FillCountryList(countryService);
+                ViewBag.StateList = FillDropdownList.FillStateList(stateService, mappedResult.CountryId);
+                ViewBag.CityList = FillDropdownList.FillCityList(cityService, mappedResult.StateId);
+                ViewBag.AreaList = FillDropdownList.FillAreaList(areaService, mappedResult.CityId);
+                mappedResult.GoogleMapAPIKey = config.Value.GoogleMapAPIKey;
                 return View(mappedResult);
             }
             TempData["Error"] = DealSeResource.NoRecordFound;

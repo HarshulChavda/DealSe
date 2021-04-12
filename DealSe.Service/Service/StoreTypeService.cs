@@ -1,5 +1,5 @@
 ﻿using DealSe.Data.Infrastructure;
-using DealSe.Data.Models;
+using DealSe.Domain.Models;
 using DealSe.Service.Common;
 using DealSe.Service.Interface;
 using Microsoft.Data.SqlClient;

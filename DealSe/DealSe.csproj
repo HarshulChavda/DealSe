@@ -33,7 +33,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.3" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.3" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="4.1.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="3.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="5.0.4" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.3" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.3" />
     <PackageReference Include="QRCoder" Version="1.3.9" />
@@ -58,6 +58,7 @@
   <ItemGroup>
     <Folder Include="wwwroot\Upload\Company\Icon\" />
     <Folder Include="wwwroot\Upload\HomeScreenBanner\" />
+    <Folder Include="wwwroot\Upload\UserProfilePicture\" />
     <Folder Include="wwwroot\Upload\ReportProblem\" />
     <Folder Include="wwwroot\Upload\ProductSubCategory\" />
     <Folder Include="wwwroot\Upload\Product\" />

@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace DealSe.API.v1.APIModel
 {
     public class UserParamApiFormModel
     {
+        public int AreaID { get; set; }
         [StringLength(50)]
         public string FirstName { get; set; }
         [StringLength(50)]
@@ -13,9 +15,7 @@ namespace DealSe.API.v1.APIModel
         public string MobileNo { get; set; }
         [StringLength(100)]
         public string Email { get; set; }
-        public string Image { get; set; }
         [StringLength(255)]
-        public string Password { get; set; }
         public string FacebookId { get; set; }
         public string GooglePlusId { get; set; }
         [Required]
@@ -24,6 +24,16 @@ namespace DealSe.API.v1.APIModel
         public string DeviceType { get; set; }
         public decimal Latitude { get; set; }
         public decimal Longitude { get; set; }
+        public int Gender { get; set; }
+        public int MaritalStatus { get; set; }
+        public DateTime DOB { get; set; }
+        [StringLength(500)]
+        public string Address1 { get; set; }
+        [StringLength(500)]
+        public string Address2 { get; set; }
+        [StringLength(500)]
+        public string Address3 { get; set; }
+
     }
 
     public class UserApiModel
@@ -34,7 +44,10 @@ namespace DealSe.API.v1.APIModel
     public class LoginApiModel
     {
         [Required]
+        public int RegistrationType { get; set; }
         public string MobileNumber { get; set; }
+        public string FacebookId { get; set; }
+        public string GooglePlusId { get; set; }
     }
 
     public class GetProfileForm
@@ -76,7 +89,7 @@ namespace DealSe.API.v1.APIModel
         public int OfferID { get; set; }
         public List<OfferImages> OfferImages { get; set; }
         [Required]
-        public string Title { get; set; } 
+        public string Title { get; set; }
         [Required]
         public string StoreName { get; set; }
         [Required]
@@ -168,5 +181,49 @@ namespace DealSe.API.v1.APIModel
         public decimal UserLongitude { get; set; }
         [Required]
         public int PageIndex { get; set; }
+    }
+
+    public class UserUpdateParamApiModel
+    {
+        [Required]
+        public int UserID { get; set; }
+        [Required]
+        public int AreaID { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        [Required]
+        public string MobileNo { get; set; }
+        public string Email { get; set; }
+        public decimal Latitude { get; set; }
+        public decimal Longitude { get; set; }
+        public int Gender { get; set; }
+        public int MaritalStatus { get; set; }
+        public DateTime DOB { get; set; }
+        public string Address1 { get; set; }
+        public string Address2 { get; set; }
+        public string Address3 { get; set; }
+    }
+
+    public class UserUpdateReturnApiModel
+    {
+        public int UserID { get; set; }
+        public int AreaID { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string MobileNo { get; set; }
+        public string Email { get; set; }
+        public string FacebookId { get; set; }
+        public string GooglePlusId { get; set; }
+        public int RegistrationType { get; set; }
+        public string DeviceID { get; set; }
+        public string DeviceType { get; set; }
+        public decimal Latitude { get; set; }
+        public decimal Longitude { get; set; }
+        public int Gender { get; set; }
+        public int MaritalStatus { get; set; }
+        public DateTime DOB { get; set; }
+        public string Address1 { get; set; }
+        public string Address2 { get; set; }
+        public string Address3 { get; set; }
     }
 }

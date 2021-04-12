@@ -1,4 +1,4 @@
-﻿using DealSe.Data.Models;
+﻿using DealSe.Domain.Models;
 using DealSe.Service.Interface;
 using DealSe.Utils.Common;
 using System;

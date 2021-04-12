@@ -8,6 +8,7 @@ using System.Security.Claims;
 using System.Text;
 using DealSe.API.v1.APIModel;
 using DealSe.Common;
+using DealSe.Shared.Common;
 
 namespace DealSe.API.v1
 {

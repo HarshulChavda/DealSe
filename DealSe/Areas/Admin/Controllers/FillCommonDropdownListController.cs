@@ -11,11 +11,13 @@ namespace DealSe.Areas.Admin.Controllers
     {
         private readonly IStateService stateService;
         private readonly ICityService cityService;
+        private readonly IAreaService areaService;
 
-        public FillCommonDropdownListController(IStateService stateService, ICityService cityService)
+        public FillCommonDropdownListController(IStateService stateService, ICityService cityService, IAreaService areaService)
         {
             this.stateService = stateService;
             this.cityService = cityService;
+            this.areaService = areaService;
         }
 
         //Json method for get state dropdown list by countryId
@@ -30,6 +32,13 @@ namespace DealSe.Areas.Admin.Controllers
         {
             ViewBag.CityList = FillDropdownList.FillCityList(cityService, stateId);
             return Json(ViewBag.CityList);
+        }
+
+        //Json method for get area dropdown list by cityId
+        public JsonResult GetAreaListByCityId(int cityId)
+        {
+            ViewBag.AreaList = FillDropdownList.FillAreaList(areaService, cityId);
+            return Json(ViewBag.AreaList);
         }
     }
 }
