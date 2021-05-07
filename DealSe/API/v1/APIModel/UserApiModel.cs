@@ -36,9 +36,9 @@ namespace DealSe.API.v1.APIModel
 
     }
 
-    public class UserApiModel
+    public class UserUpdateImageReturnModel
     {
-        public int UserId { get; set; }
+        public string Photo { get; set; }
     }
 
     public class LoginApiModel
@@ -204,7 +204,7 @@ namespace DealSe.API.v1.APIModel
         public string Address3 { get; set; }
     }
 
-    public class UserUpdateReturnApiModel
+    public class UserAddUpdateReturnApiModel
     {
         public int UserID { get; set; }
         public int AreaID { get; set; }
@@ -225,5 +225,6 @@ namespace DealSe.API.v1.APIModel
         public string Address1 { get; set; }
         public string Address2 { get; set; }
         public string Address3 { get; set; }
+        public string Photo { get; set; }
     }
 }

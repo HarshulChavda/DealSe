@@ -17,6 +17,9 @@ using DealSe.ActionFilter;
 using DealSe.Common;
 using Microsoft.Extensions.Options;
 using DealSe.Shared.Common;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace DealSe.Areas.Admin.Controllers
 {
@@ -31,10 +34,11 @@ namespace DealSe.Areas.Admin.Controllers
         private readonly IStateService stateService;
         private readonly ICityService cityService;
         private readonly IAreaService areaService;
+        private readonly IWebHostEnvironment hostingEnvironment;
         private readonly IOptions<CustomSettings> config;
         private readonly IMapper mapper;
 
-        public StoreController(DealSeContext dataContext, IMapper mapper, IStoreService storeService, IStoreTypeService storeTypeService, ICountryService countryService, IStateService stateService, ICityService cityService, IAreaService areaService, IOptions<CustomSettings> config)
+        public StoreController(DealSeContext dataContext, IMapper mapper, IStoreService storeService, IStoreTypeService storeTypeService, ICountryService countryService, IStateService stateService, ICityService cityService, IAreaService areaService, IWebHostEnvironment hostingEnvironment, IOptions<CustomSettings> config)
         {
             this.dataContext = dataContext;
             this.storeTypeService = storeTypeService;
@@ -43,6 +47,7 @@ namespace DealSe.Areas.Admin.Controllers
             this.stateService = stateService;
             this.cityService = cityService;
             this.areaService = areaService;
+            this.hostingEnvironment = hostingEnvironment;
             this.config = config;
             this.mapper = mapper;
         }
@@ -150,7 +155,7 @@ namespace DealSe.Areas.Admin.Controllers
 
         //Post method of add Store
         [HttpPost]
-        public async Task<IActionResult> AddStore(StoreFormModel model)
+        public async Task<IActionResult> AddStore(StoreFormModel model, IFormFile file)
         {
             try
             {
@@ -168,6 +173,25 @@ namespace DealSe.Areas.Admin.Controllers
                         ViewBag.AreaList = FillDropdownList.FillAreaList(areaService, model.CityId);
                         return View(model);
                     }
+
+                    if (file != null)
+                    {
+                        string targetDirectory = Path.Combine(hostingEnvironment.WebRootPath, "Upload/Store/Logo");
+
+                        if (!Directory.Exists(targetDirectory))
+                            Directory.CreateDirectory(targetDirectory);
+
+                        string extension = Path.GetExtension(file.FileName);
+                        var logo = DateTime.Now.Ticks.ToString() + extension;
+                        var imagePath = Path.Combine(targetDirectory, logo);
+
+                        using (var fileStream = new FileStream(imagePath, FileMode.Create))
+                        {
+                            file.CopyTo(fileStream);
+                        }
+                        model.Logo = logo;
+                    }
+
                     var mappedResult = mapper.Map<StoreFormModel, Store>(model);
                     mappedResult.AddedDate = DateTime.Now;
                     await storeService.Create(mappedResult);
@@ -188,14 +212,14 @@ namespace DealSe.Areas.Admin.Controllers
         //Get method of edit Store
         public async Task<IActionResult> EditStore(int id)
         {
-            var eventTicketType = await storeService.GetById(id);
-            if (eventTicketType != null)
+            var storeDetails = await storeService.Get(a => a.StoreId == id);
+            if (storeDetails != null)
             {
                 ViewBag.StoreTypeList = FillDropdownList.FillStoreTypeList(storeTypeService);
-                var mappedResult = mapper.Map<Store, StoreFormModel>(eventTicketType);
-                mappedResult.CountryId = eventTicketType.Area.City.State.Country.CountryId;
-                mappedResult.StateId = eventTicketType.Area.City.State.StateId;
-                mappedResult.CityId = eventTicketType.Area.City.CityId;
+                var mappedResult = mapper.Map<Store, StoreFormModel>(storeDetails);
+                mappedResult.CountryId = storeDetails.Area.City.State.Country.CountryId;
+                mappedResult.StateId = storeDetails.Area.City.State.StateId;
+                mappedResult.CityId = storeDetails.Area.City.CityId;
                 ViewBag.CountryList = FillDropdownList.FillCountryList(countryService);
                 ViewBag.StateList = FillDropdownList.FillStateList(stateService, mappedResult.CountryId);
                 ViewBag.CityList = FillDropdownList.FillCityList(cityService, mappedResult.StateId);
@@ -209,7 +233,7 @@ namespace DealSe.Areas.Admin.Controllers
 
         //Post method of edit Store
         [HttpPost]
-        public async Task<IActionResult> EditStore(StoreFormModel model)
+        public async Task<IActionResult> EditStore(StoreFormModel model, IFormFile file)
         {
             try
             {
@@ -227,6 +251,27 @@ namespace DealSe.Areas.Admin.Controllers
                         ViewBag.AreaList = FillDropdownList.FillAreaList(areaService, model.CityId);
                         return View(model);
                     }
+
+                    if (file != null)
+                    {
+                        string targetDirectory = Path.Combine(hostingEnvironment.WebRootPath, "Upload/Store/Logo");
+
+                        if (!Directory.Exists(targetDirectory))
+                            Directory.CreateDirectory(targetDirectory);
+
+                        string extension = Path.GetExtension(file.FileName);
+                        var logo = DateTime.Now.Ticks.ToString() + extension;
+                        var imagePath = Path.Combine(targetDirectory, logo);
+
+                        using (var fileStream = new FileStream(imagePath, FileMode.Create))
+                        {
+                            file.CopyTo(fileStream);
+                        }
+
+                        ImageProcessor.RemoveImageFromFolder("Upload/Store/Logo", model.Logo);
+                        model.Logo = logo;
+                    }
+
                     var mappedResult = mapper.Map<StoreFormModel, Store>(model);
                     mappedResult.UpdatedDate = DateTime.Now;
                     await storeService.Update(mappedResult);

@@ -90,7 +90,7 @@ namespace DealSe.API.v1
         [Route("AddUser")]
         [ProducesResponseType(404)]
         [ProducesResponseType(200)]
-        [ProducesResponseType(typeof(UserApiModel), 200)]
+        [ProducesResponseType(typeof(UserAddUpdateReturnApiModel), 200)]
         [HttpPost]
         public async Task<IActionResult> AddUser(UserParamApiFormModel model)
         {
@@ -99,7 +99,7 @@ namespace DealSe.API.v1
             {
                 if (ModelState.IsValid)
                 {
-                    UserApiModel userApiModel = new UserApiModel();
+                    UserAddUpdateReturnApiModel userApiModel = new UserAddUpdateReturnApiModel();
                     User user = new User();
                     if (model.RegistrationType == (int)RegistrationType.Google)
                         user = await userService.CheckUserExists(model.RegistrationType, model.GooglePlusId);
@@ -115,12 +115,23 @@ namespace DealSe.API.v1
                         mappedResult.AddedDate = DateTime.Now;
                         mappedResult.DeviceType = (int)UserDeviceType.Android;
                         await userService.Create(mappedResult);
-                        userApiModel.UserId = mappedResult.UserId;
+                        userApiModel = mapper.Map<User, UserAddUpdateReturnApiModel>(mappedResult);
+                        var baseURL = config.Value.BaseUrl;
+                        var imagePath = "Upload/UserProfilePicture/";
+                        if (!string.IsNullOrEmpty(userApiModel.Photo))
+                        {
+                            userApiModel.Photo = baseURL + imagePath + userApiModel.Photo;
+                        }
+                        else
+                        {
+                            userApiModel.Photo = baseURL + imagePath + "Default.png";
+                        }
+						userApiModel.UserID = mappedResult.UserId;
                         apiModel = APIStatusHelper.Success(userApiModel, DealSeResource.InsertMessage.Replace("{0}", "User"));
                         return Ok(apiModel);
                     }
 
-                    userApiModel.UserId = user.UserId;
+                    userApiModel.UserID = user.UserId;
                     apiModel = APIStatusHelper.Found(userApiModel, DealSeResource.RecordExists.Replace("{0}", "User"));
                     return Ok(apiModel);
                 }
@@ -135,7 +146,7 @@ namespace DealSe.API.v1
         [Route("UpdateUser")]
         [ProducesResponseType(404)]
         [ProducesResponseType(200)]
-        [ProducesResponseType(typeof(UserUpdateReturnApiModel), 200)]
+        [ProducesResponseType(typeof(UserAddUpdateReturnApiModel), 200)]
         [HttpPut]
         public async Task<IActionResult> UpdateUser(UserUpdateParamApiModel model)
         {
@@ -160,7 +171,17 @@ namespace DealSe.API.v1
                         var mappedData = mapper.Map(model, user);
                         mappedData.DeviceType = (int)UserDeviceType.Android;
                         await userService.Update(mappedData);
-                        var usermappedData = mapper.Map<User, UserUpdateReturnApiModel>(mappedData);
+                        var usermappedData = mapper.Map<User, UserAddUpdateReturnApiModel>(mappedData);
+                        var baseURL = config.Value.BaseUrl;
+                        var imagePath = "Upload/UserProfilePicture/";
+                        if (!string.IsNullOrEmpty(usermappedData.Photo))
+                        {
+                            usermappedData.Photo = baseURL + imagePath + usermappedData.Photo;
+                        }
+                        else
+                        {
+                            usermappedData.Photo = baseURL + imagePath + "Default.png";
+                        }
                         apiModel = APIStatusHelper.Success(usermappedData, DealSeResource.UpdateMessage.Replace("{0}", "User"));
                         return Ok(apiModel);
                     }
@@ -181,6 +202,7 @@ namespace DealSe.API.v1
         [Route("UpdateUserImage")]
         [ProducesResponseType(404)]
         [ProducesResponseType(200)]
+        [ProducesResponseType(typeof(UserUpdateImageReturnModel), 200)]
         [HttpPut]
         public async Task<IActionResult> UpdateUserImage(IFormFile file, int userID, bool isRemoveProfilePicture)
         {
@@ -218,7 +240,11 @@ namespace DealSe.API.v1
                             System.IO.File.Delete(deletePath);
                         }
                     }
-                    apiModel = APIStatusHelper.Success(null, DealSeResource.UpdateMessage.Replace("{0}", "User profile image"));
+                    UserUpdateImageReturnModel userUpdateImageReturnModel = new UserUpdateImageReturnModel();
+                    var baseURL = config.Value.BaseUrl;
+                    var imagePath = "Upload/UserProfilePicture/";
+                    userUpdateImageReturnModel.Photo = baseURL + imagePath + dbuser.Photo;
+                    apiModel = APIStatusHelper.Success(userUpdateImageReturnModel, DealSeResource.UpdateMessage.Replace("{0}", "User profile image"));
                     return Ok(apiModel);
                 }
                 else

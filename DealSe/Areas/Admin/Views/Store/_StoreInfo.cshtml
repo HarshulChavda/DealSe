@@ -1,11 +1,12 @@
 ﻿@model DealSe.Areas.Admin.FormModels.StoreFormModel
 
-<form method="post" role="form" asp-area="admin" asp-controller="Home" asp-action="EditProfile" enctype="multipart/form-data">
+<form method="post" role="form" asp-area="admin" asp-controller="Store" asp-action="SaveStore" enctype="multipart/form-data">
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
     @Html.AntiForgeryToken()
     @Html.HiddenFor(Model => Model.AddedDate)
     @Html.HiddenFor(Model => Model.StoreId)
+    @Html.HiddenFor(Model => Model.Logo)
     <div class="row">
         <div class="col-md-3">
             <div class="form-group">
@@ -130,6 +131,14 @@
     <div class="row">
         <div class="col-md-3">
             <div class="form-group">
+                <label class="control-label">Store Type</label>
+                <label class="field-validation-error">*</label>
+                @Html.DropDownList("StoreTypeId", new SelectList(ViewBag.StoreTypeList, "Value", "Text"), "Select Store Type", new { @class = "select2" })
+                @Html.ValidationMessageFor(model => model.StoreTypeId)
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
                 <label class="control-label">Registration Type</label>
                 @Html.TextBoxFor(model => model.RegistrationType, new { @class = "form-control htmlvalid trimmed txtOnly", @maxlength = "100" })
                 @Html.ValidationMessageFor(model => model.RegistrationType)
@@ -142,7 +151,7 @@
                 @Html.ValidationMessageFor(model => model.GoogleId)
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-3">
             <div class="form-group">
                 <label class="control-label">FacebookId</label>
                 @Html.TextBoxFor(model => model.FacebookId, new { @class = "form-control htmlvalid trimmed" })

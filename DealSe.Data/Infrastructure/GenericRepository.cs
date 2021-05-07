@@ -31,9 +31,8 @@ namespace DealSe.Data.Infrastructure
         }
         public async Task<TEntity> Get(Expression<Func<TEntity, bool>> expression)
         {
-            return await _dbContext.Set<TEntity>().Where(expression).AsNoTracking().FirstOrDefaultAsync();
+            return await _dbContext.Set<TEntity>().Where(expression).FirstOrDefaultAsync();
         }
-        //T Get(Expression<Func<T, bool>> where);
         public async Task<TEntity> GetById(int id)
         {
             return await _dbContext.Set<TEntity>().FindAsync(id);

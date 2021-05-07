@@ -99,7 +99,7 @@ namespace DealSe.Mappings
             CreateMap<Store, SendStoreRegistrationToastrNotificationHubViewModel>();
             CreateMap<Offer, SendAddedOfferToastrNotificationHubViewModel>();
             CreateMap<UserUpdateParamApiModel, User>().ReverseMap();
-            CreateMap<User, UserUpdateReturnApiModel>();
+            CreateMap<User, UserAddUpdateReturnApiModel>();
             #endregion
         }
     }
