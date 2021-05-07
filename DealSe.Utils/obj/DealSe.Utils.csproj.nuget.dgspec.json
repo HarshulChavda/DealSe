@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.Utils\\DealSe.Utils.csproj": {}
+    "D:\\Project\\DealSe\\GitHub\\DealSe.Utils\\DealSe.Utils.csproj": {}
   },
   "projects": {
-    "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.Utils\\DealSe.Utils.csproj": {
+    "D:\\Project\\DealSe\\GitHub\\DealSe.Utils\\DealSe.Utils.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.Utils\\DealSe.Utils.csproj",
+        "projectUniqueName": "D:\\Project\\DealSe\\GitHub\\DealSe.Utils\\DealSe.Utils.csproj",
         "projectName": "DealSe.Utils",
-        "projectPath": "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.Utils\\DealSe.Utils.csproj",
-        "packagesPath": "C:\\Users\\A\\.nuget\\packages\\",
-        "outputPath": "D:\\Company Running Projects\\DealSe\\Local Server\\DealSe.Utils\\obj\\",
+        "projectPath": "D:\\Project\\DealSe\\GitHub\\DealSe.Utils\\DealSe.Utils.csproj",
+        "packagesPath": "C:\\Users\\harsh\\.nuget\\packages\\",
+        "outputPath": "D:\\Project\\DealSe\\GitHub\\DealSe.Utils\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\A\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\harsh\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -54,7 +54,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

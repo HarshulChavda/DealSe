@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Company Running Projects\\DealSe\\Local Server\\Dealse.shared\\Dealse.Shared.csproj": {}
+    "D:\\Project\\DealSe\\GitHub\\Dealse.shared\\Dealse.Shared.csproj": {}
   },
   "projects": {
-    "D:\\Company Running Projects\\DealSe\\Local Server\\Dealse.shared\\Dealse.Shared.csproj": {
+    "D:\\Project\\DealSe\\GitHub\\Dealse.shared\\Dealse.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Company Running Projects\\DealSe\\Local Server\\Dealse.shared\\Dealse.Shared.csproj",
+        "projectUniqueName": "D:\\Project\\DealSe\\GitHub\\Dealse.shared\\Dealse.Shared.csproj",
         "projectName": "Dealse.Shared",
-        "projectPath": "D:\\Company Running Projects\\DealSe\\Local Server\\Dealse.shared\\Dealse.Shared.csproj",
-        "packagesPath": "C:\\Users\\A\\.nuget\\packages\\",
-        "outputPath": "D:\\Company Running Projects\\DealSe\\Local Server\\Dealse.shared\\obj\\",
+        "projectPath": "D:\\Project\\DealSe\\GitHub\\Dealse.shared\\Dealse.Shared.csproj",
+        "packagesPath": "C:\\Users\\harsh\\.nuget\\packages\\",
+        "outputPath": "D:\\Project\\DealSe\\GitHub\\Dealse.shared\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\A\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\harsh\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -54,7 +54,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
