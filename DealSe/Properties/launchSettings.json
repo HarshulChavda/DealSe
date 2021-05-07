@@ -3,30 +3,35 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iis": {
-      "applicationUrl": "http://192.168.2.102:8888/",
+      "applicationUrl": "http://localhost:8888/",
       "sslPort": 0
     },
     "iisExpress": {
-      "applicationUrl": "http://192.168.2.102:8888/",
-      "sslPort": 44312
+      "applicationUrl": "http://localhost:8888/",
+      "sslPort": 0
     }
   },
   "profiles": {
     "IIS Express": {
       "commandName": "IIS",
       "launchBrowser": true,
-      "launchUrl": "http://192.168.2.102:8888/",
+      "launchUrl": "http://localhost:8888/",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "DealSe": {
-      "commandName": "Project",
+    "Dack": {
+      "commandName": "IIS",
       "launchBrowser": true,
+      "launchUrl": "http://localhost:8888/",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "https://localhost:5001;http://localhost:5000"
+      "applicationUrl": "http://localhost:8888/"
+    },
+    "Dealse": {
+      "commandName": "Executable",
+      "workingDirectory": "http://localhost:8888/"
     }
   }
 }

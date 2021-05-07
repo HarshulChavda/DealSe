@@ -1,0 +1,123 @@
+﻿@* Offer Scripts *@
+<script type="text/javascript">
+
+    
+     $(document).ready(function () {
+            loadData();
+    });
+
+    var responsiveHelper;
+    var breakpointDefinition = {
+        tablet: 1024,
+        phone: 480
+    };
+
+     function loadData() {
+        var tableContainer;
+        tableContainer = $("#OfferDetails");
+
+        tableContainer.dataTable(
+            {
+                "destroy": true,
+                "aaSorting": [],
+                "pageLength": 10,
+                "bStateSave": false,
+                "processing": true,
+                oLanguage: {
+                    sProcessing: "<div id=preloader></div>"
+                },
+                "serverSide": true,
+                "ajax": {
+                    "url": '/Admin/Offer/LoadData',
+                    "type": "POST",
+                    "datatype": "json"
+                },
+
+                "aoColumns": [
+                    {
+                        mData: null, "bSortable": false, "bSearchable": false, "width": "5%",
+                        "mRender": function (data, type, row) {
+                            return "<div class='checkbox checkbox-replace itemclass'><input type='checkbox' id=" + row.offerId + "></div>";
+                        }
+                    },
+                    {
+                        mData: null, "bSortable": false, "bSearchable": false, "width": "10%",
+                        "mRender": function (data, type, row) {
+                            return '';
+                        }
+                    },
+                    { "data": "storeName", "name": "StoreName", "bSearchable": true, "autoWidth": true, "width": "20%" },
+                    { "data": "name", "name": "Name", "bSearchable": true, "bSortable": true, "autoWidth": true, "width": "15%" },
+                    { "data": "validityDates", "name": "ValidityDates", "bSearchable": true, "bSortable": true, "autoWidth": true, "width": "15%" },
+                    { "data": "addedDate", "name": "AddedDate", "bSearchable": true, "bSortable": true, "autoWidth": true, "width": "15%" },
+                    { "data": "userRedeemLimit", "name": "UserRedeemLimit", "bSearchable": true,"bSortable": true, "autoWidth": true, "width": "10%" },
+                    {
+                        "mData": "Activated", "bSearchable": false, "bSortable": false, "autoWidth": true, "width": "15%",
+                        "mRender": function (data, type, row) {
+                            return '<a class="btn btn-blue btn-sm btn-icon icon-left" href="/Admin/Area//' +  + '"><i class="entypo-pencil"></i>Edit</a>';
+                        }, "sClass": "view-more"
+                    }
+                ],
+                "fnRowCallback": function (nRow, aData, iDisplayIndex) {
+                    var info = $(this).DataTable().page.info();
+                    $("td:nth-child(2)", nRow).append(info.start + iDisplayIndex + 1);
+                    return nRow;
+                },
+                "fnDrawCallback": function () {
+                    replaceCheckboxes();
+                    responsivePaginationDesign();
+                    checkAllCheckboxes();
+                    addresponsiveTableDiv("#OfferDetails");
+                },
+            });
+            $(".dataTables_wrapper select").select2({
+                minimumResultsForSearch: -1
+            });
+    }
+
+    $(window).resize(function () {
+        if (window.matchMedia('(max-width: 768px)').matches) {
+            responsiveTableColumn('#OfferDetails');
+        }
+    })
+
+    function checkall(current) {
+        var status = $('#' + current.id).is(':checked');
+        if (status == true) {
+            $('#OfferDetails input[type="checkbox"]').each(function () {
+                $(this).prop('checked', true);
+                $(this).attr('checked', true);
+            });
+            $(".itemclass").addClass("checked");
+        }
+        else {
+            $('#OfferDetails input[type="checkbox"]').each(function () {
+                $(this).prop('checked', false);
+            });
+            $(".itemclass").removeClass("checked");
+        }
+    }
+    function checkchanged() {
+        $('#OfferDetails td input[type="checkbox"]').on("change", function () {
+            checkAllCheckboxes()
+        });
+    }
+    function checkAllCheckboxes() {
+        var total = $('#OfferDetails td input[type="checkbox"]').length;
+        var selected = 0;
+        $('#OfferDetails td input[type="checkbox"]').each(function () {
+            if ($(this).is(":checked")) {
+                selected += 1;
+            }
+        });
+        if ((selected == total) && (total != 0)) {
+            $('#OfferDetails th input[type="checkbox"]').prop("checked", true);
+            $('#OfferDetails th input[type="checkbox"]').trigger("change")
+        }
+        else {
+            $('#OfferDetails th input[type="checkbox"]').prop("checked", false);
+            $('#OfferDetails th input[type="checkbox"]').trigger("change")
+        }
+    }
+
+</script>

@@ -27,6 +27,7 @@ namespace DealSe.Domain.Models
         public virtual DbSet<GetLimitedTimeOffers> GetLimitedTimeOffers { get; set; }
 		 public virtual DbSet<GetAreas> GetAllAreas { get; set; }
         public virtual DbSet<GetStoreTypes> GetAllStoreTypes { get; set; }
+        public virtual DbSet<GetAllOffers> GetAllOffers { get; set; }
         #endregion
     }
 }

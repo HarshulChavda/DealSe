@@ -41,7 +41,7 @@ namespace DealSe
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DealSeContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DealSeContext")));
+            services.AddDbContext<DealSeContext>(options => options.UseLazyLoadingProxies().UseSqlServer(Configuration.GetConnectionString("DealSeContext")));
             services.Configure<ConnectionStrings>(Configuration.GetSection("ConnectionStrings"));
             services.Configure<CustomSettings>(Configuration.GetSection("CustomSettings"));
             services.Configure<RazorViewEngineOptions>(options =>

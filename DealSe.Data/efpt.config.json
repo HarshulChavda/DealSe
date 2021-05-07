@@ -13,71 +13,86 @@
    "SelectedToBeGenerated": 0,
    "Tables": [
       {
+         "HasPrimaryKey": true,
          "Name": "[dbo].[Admin]",
          "ObjectType": 0
       },
       {
+         "HasPrimaryKey": true,
          "Name": "[dbo].[Area]",
          "ObjectType": 0
       },
       {
+         "HasPrimaryKey": true,
          "Name": "[dbo].[City]",
          "ObjectType": 0
       },
       {
+         "HasPrimaryKey": true,
          "Name": "[dbo].[Country]",
          "ObjectType": 0
       },
       {
+         "HasPrimaryKey": true,
          "Name": "[dbo].[EmailTemplate]",
          "ObjectType": 0
       },
       {
+         "HasPrimaryKey": true,
          "Name": "[dbo].[Offer]",
          "ObjectType": 0
       },
       {
+         "HasPrimaryKey": true,
          "Name": "[dbo].[OfferBanner]",
          "ObjectType": 0
       },
       {
+         "HasPrimaryKey": true,
          "Name": "[dbo].[SiteSetting]",
          "ObjectType": 0
       },
       {
+         "HasPrimaryKey": true,
          "Name": "[dbo].[State]",
          "ObjectType": 0
       },
       {
+         "HasPrimaryKey": true,
          "Name": "[dbo].[Store]",
          "ObjectType": 0
       },
       {
+         "HasPrimaryKey": true,
          "Name": "[dbo].[StoreSuggestedOffer]",
          "ObjectType": 0
       },
       {
+         "HasPrimaryKey": true,
          "Name": "[dbo].[StoreTime]",
          "ObjectType": 0
       },
       {
+         "HasPrimaryKey": true,
          "Name": "[dbo].[StoreType]",
          "ObjectType": 0
       },
       {
+         "HasPrimaryKey": true,
          "Name": "[dbo].[SuggestedOffer]",
          "ObjectType": 0
       },
       {
+         "HasPrimaryKey": true,
          "Name": "[dbo].[User]",
          "ObjectType": 0
       },
       {
+         "HasPrimaryKey": true,
          "Name": "[dbo].[UserUsedOffer]",
          "ObjectType": 0
       }
    ],
-   "UseBoolPropertiesWithoutDefaultSql": false,
    "UseDatabaseNames": true,
    "UseDbContextSplitting": false,
    "UseFluentApiOnly": false,

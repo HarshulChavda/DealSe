@@ -1,0 +1,36 @@
+﻿@*View to show area details*@
+@model DealSe.Areas.Admin.ViewModels.AreaViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<ol class="breadcrumb">
+    <li>
+        <a href="@Url.Action("Index", "Home",new { Area = "Admin" })"><i class="entypo-home"></i>Home</a>
+    </li>
+    <li>
+        <i class="entypo-globe"></i>Areas
+    </li>
+</ol>
+<h1>Offers</h1>
+<br />
+@if (TempData["Error"] != null)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger"><strong>Oops!</strong><br /><span> @TempData["Error"]</span></div>
+        </div>
+    </div>
+}
+else if (TempData["Success"] != null)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success"><strong>Success!</strong> @TempData["Success"]</div>
+        </div>
+    </div>
+}
+<br class="clear" />
+@await Html.PartialAsync("_OfferDetails")
+@await Html.PartialAsync("_DatatableCSSJSView")
+@await Html.PartialAsync("_OfferScripts")
