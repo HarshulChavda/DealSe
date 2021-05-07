@@ -14,3 +14,12 @@ D:\Company Running Projects\DealSe\Local Server\Dealse.shared\obj\Debug\netcorea
 D:\Company Running Projects\DealSe\Local Server\Dealse.shared\obj\Debug\netcoreapp3.1\Dealse.Shared.csproj.CoreCompileInputs.cache
 D:\Company Running Projects\DealSe\Local Server\Dealse.shared\obj\Debug\netcoreapp3.1\Dealse.Shared.dll
 D:\Company Running Projects\DealSe\Local Server\Dealse.shared\obj\Debug\netcoreapp3.1\Dealse.Shared.pdb
+D:\Project\DealSe\GitHub\Dealse.shared\bin\Debug\netcoreapp3.1\Dealse.Shared.deps.json
+D:\Project\DealSe\GitHub\Dealse.shared\bin\Debug\netcoreapp3.1\Dealse.Shared.dll
+D:\Project\DealSe\GitHub\Dealse.shared\bin\Debug\netcoreapp3.1\Dealse.Shared.pdb
+D:\Project\DealSe\GitHub\Dealse.shared\obj\Debug\netcoreapp3.1\Dealse.Shared.csprojAssemblyReference.cache
+D:\Project\DealSe\GitHub\Dealse.shared\obj\Debug\netcoreapp3.1\Dealse.Shared.AssemblyInfoInputs.cache
+D:\Project\DealSe\GitHub\Dealse.shared\obj\Debug\netcoreapp3.1\Dealse.Shared.AssemblyInfo.cs
+D:\Project\DealSe\GitHub\Dealse.shared\obj\Debug\netcoreapp3.1\Dealse.Shared.csproj.CoreCompileInputs.cache
+D:\Project\DealSe\GitHub\Dealse.shared\obj\Debug\netcoreapp3.1\Dealse.Shared.dll
+D:\Project\DealSe\GitHub\Dealse.shared\obj\Debug\netcoreapp3.1\Dealse.Shared.pdb
