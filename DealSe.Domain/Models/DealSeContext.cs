@@ -146,7 +146,6 @@ namespace DealSe.Domain.Models
                 entity.HasOne(d => d.Area)
                     .WithMany(p => p.User)
                     .HasForeignKey(d => d.AreaId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_User_Area");
             });
 

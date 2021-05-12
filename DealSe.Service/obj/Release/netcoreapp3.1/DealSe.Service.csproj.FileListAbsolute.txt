@@ -22,3 +22,19 @@ D:\Company Running Projects\DealSe\Local Server\DealSe.Service\obj\Release\netco
 D:\Company Running Projects\DealSe\Local Server\DealSe.Service\obj\Release\netcoreapp3.1\DealSe.Service.csproj.CopyComplete
 D:\Company Running Projects\DealSe\Local Server\DealSe.Service\obj\Release\netcoreapp3.1\DealSe.Service.dll
 D:\Company Running Projects\DealSe\Local Server\DealSe.Service\obj\Release\netcoreapp3.1\DealSe.Service.pdb
+D:\Company Running Projects\DealSe\GitHub\DealSe.Service\bin\Release\netcoreapp3.1\DealSe.Service.deps.json
+D:\Company Running Projects\DealSe\GitHub\DealSe.Service\bin\Release\netcoreapp3.1\DealSe.Service.dll
+D:\Company Running Projects\DealSe\GitHub\DealSe.Service\bin\Release\netcoreapp3.1\DealSe.Service.pdb
+D:\Company Running Projects\DealSe\GitHub\DealSe.Service\bin\Release\netcoreapp3.1\DealSe.Data.dll
+D:\Company Running Projects\DealSe\GitHub\DealSe.Service\bin\Release\netcoreapp3.1\DealSe.Domain.dll
+D:\Company Running Projects\DealSe\GitHub\DealSe.Service\bin\Release\netcoreapp3.1\Dealse.Shared.dll
+D:\Company Running Projects\DealSe\GitHub\DealSe.Service\bin\Release\netcoreapp3.1\DealSe.Data.pdb
+D:\Company Running Projects\DealSe\GitHub\DealSe.Service\bin\Release\netcoreapp3.1\DealSe.Domain.pdb
+D:\Company Running Projects\DealSe\GitHub\DealSe.Service\bin\Release\netcoreapp3.1\Dealse.Shared.pdb
+D:\Company Running Projects\DealSe\GitHub\DealSe.Service\obj\Release\netcoreapp3.1\DealSe.Service.csprojAssemblyReference.cache
+D:\Company Running Projects\DealSe\GitHub\DealSe.Service\obj\Release\netcoreapp3.1\DealSe.Service.AssemblyInfoInputs.cache
+D:\Company Running Projects\DealSe\GitHub\DealSe.Service\obj\Release\netcoreapp3.1\DealSe.Service.AssemblyInfo.cs
+D:\Company Running Projects\DealSe\GitHub\DealSe.Service\obj\Release\netcoreapp3.1\DealSe.Service.csproj.CoreCompileInputs.cache
+D:\Company Running Projects\DealSe\GitHub\DealSe.Service\obj\Release\netcoreapp3.1\DealSe.Service.csproj.CopyComplete
+D:\Company Running Projects\DealSe\GitHub\DealSe.Service\obj\Release\netcoreapp3.1\DealSe.Service.dll
+D:\Company Running Projects\DealSe\GitHub\DealSe.Service\obj\Release\netcoreapp3.1\DealSe.Service.pdb
