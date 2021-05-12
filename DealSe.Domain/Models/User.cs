@@ -18,7 +18,7 @@ namespace DealSe.Domain.Models
 
         [Key]
         public int UserId { get; set; }
-        public int AreaId { get; set; }
+        public int? AreaId { get; set; }
         [StringLength(50)]
         public string FirstName { get; set; }
         [StringLength(50)]

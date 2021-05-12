@@ -1,0 +1,9 @@
+D:\Company Running Projects\DealSe\GitHub\Dealse.shared\bin\Release\netcoreapp3.1\Dealse.Shared.deps.json
+D:\Company Running Projects\DealSe\GitHub\Dealse.shared\bin\Release\netcoreapp3.1\Dealse.Shared.dll
+D:\Company Running Projects\DealSe\GitHub\Dealse.shared\bin\Release\netcoreapp3.1\Dealse.Shared.pdb
+D:\Company Running Projects\DealSe\GitHub\Dealse.shared\obj\Release\netcoreapp3.1\Dealse.Shared.csprojAssemblyReference.cache
+D:\Company Running Projects\DealSe\GitHub\Dealse.shared\obj\Release\netcoreapp3.1\Dealse.Shared.AssemblyInfoInputs.cache
+D:\Company Running Projects\DealSe\GitHub\Dealse.shared\obj\Release\netcoreapp3.1\Dealse.Shared.AssemblyInfo.cs
+D:\Company Running Projects\DealSe\GitHub\Dealse.shared\obj\Release\netcoreapp3.1\Dealse.Shared.csproj.CoreCompileInputs.cache
+D:\Company Running Projects\DealSe\GitHub\Dealse.shared\obj\Release\netcoreapp3.1\Dealse.Shared.dll
+D:\Company Running Projects\DealSe\GitHub\Dealse.shared\obj\Release\netcoreapp3.1\Dealse.Shared.pdb

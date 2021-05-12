@@ -52,14 +52,13 @@ namespace DealSe.API.v1
         [Route("Login")]
         [ProducesResponseType(200)]
         [ProducesResponseType(401)]
-        [ProducesResponseType(typeof(GetProfileForm), 200)]
+        [ProducesResponseType(typeof(UserAddUpdateReturnApiModel), 200)]
         [HttpPost]
         public async Task<IActionResult> Login(LoginApiModel model)
         {
             ApiOkResponse apiOkResponse = new ApiOkResponse();
             if (ModelState.IsValid)
             {
-                GetProfileForm getProfileForm = new GetProfileForm();
                 User user = new User();
                 if (model.RegistrationType == (int)RegistrationType.Google)
                     user = await userService.CheckUserExists(model.RegistrationType, model.GooglePlusId);
@@ -70,16 +69,27 @@ namespace DealSe.API.v1
 
                 if (user != null)
                 {
-                    getProfileForm.IsRegistered = true;
-                    apiOkResponse = APIStatusHelper.Success(getProfileForm, "Welcome to DealSe!");
+                    var userApiModel = mapper.Map<User, UserAddUpdateReturnApiModel>(user);
+                    var baseURL = config.Value.BaseUrl;
+                    var imagePath = "Upload/UserProfilePicture/";
+                    if (!string.IsNullOrEmpty(userApiModel.Photo))
+                    {
+                        userApiModel.Photo = baseURL + imagePath + userApiModel.Photo;
+                    }
+                    else
+                    {
+                        userApiModel.Photo = baseURL + imagePath + "Default.png";
+                    }
+                    userApiModel.UserID = user.UserId;
+                    apiOkResponse = APIStatusHelper.Success(userApiModel, "Welcome to DealSe!");
                     return Ok(apiOkResponse);
                 }
                 else
                 {
-                    getProfileForm.IsRegistered = false;
+                    UserAddUpdateReturnApiModel userAddUpdateReturnApiModel = new UserAddUpdateReturnApiModel();
                     apiOkResponse.Code = (int)HttpStatusCode.NotFound;
                     apiOkResponse.Message = "User is not yet registered";
-                    apiOkResponse.Data = getProfileForm;
+                    apiOkResponse.Data = userAddUpdateReturnApiModel;
                     return Ok(apiOkResponse);
                 }
             }
@@ -352,7 +362,7 @@ namespace DealSe.API.v1
         [ProducesResponseType(200)]
         [ProducesResponseType(typeof(List<UserNearByPlaces>), 200)]
         [HttpPost]
-        public IActionResult GetUserOfferDetailsNearByPlacesByPaging([FromQuery] GetUserNearByPlacesByPagingParamAPIModel model)
+        public IActionResult GetUserOfferDetailsNearByPlacesByPaging(GetUserNearByPlacesByPagingParamAPIModel model)
         {
             var baseURL = config.Value.BaseUrl;
             ApiOkResponse apiOkResponse = new ApiOkResponse();
