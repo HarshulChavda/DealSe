@@ -2034,3 +2034,4 @@ D:\Project\DealSe\GitHub\DealSe\obj\Release\netcoreapp3.1\DealSe.csproj.CopyComp
 D:\Project\DealSe\GitHub\DealSe\obj\Release\netcoreapp3.1\DealSe.dll
 D:\Project\DealSe\GitHub\DealSe\obj\Release\netcoreapp3.1\DealSe.pdb
 D:\Project\DealSe\GitHub\DealSe\obj\Release\netcoreapp3.1\DealSe.genruntimeconfig.cache
+D:\Project\DealSe\GitHub\DealSe\obj\Release\netcoreapp3.1\Razor\Views\Home\PrivacyPolicy.cshtml.g.cs
