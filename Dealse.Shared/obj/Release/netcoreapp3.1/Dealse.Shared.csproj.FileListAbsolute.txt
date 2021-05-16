@@ -7,3 +7,11 @@ D:\Company Running Projects\DealSe\GitHub\Dealse.shared\obj\Release\netcoreapp3.
 D:\Company Running Projects\DealSe\GitHub\Dealse.shared\obj\Release\netcoreapp3.1\Dealse.Shared.csproj.CoreCompileInputs.cache
 D:\Company Running Projects\DealSe\GitHub\Dealse.shared\obj\Release\netcoreapp3.1\Dealse.Shared.dll
 D:\Company Running Projects\DealSe\GitHub\Dealse.shared\obj\Release\netcoreapp3.1\Dealse.Shared.pdb
+D:\Project\DealSe\GitHub\Dealse.shared\bin\Release\netcoreapp3.1\Dealse.Shared.deps.json
+D:\Project\DealSe\GitHub\Dealse.shared\bin\Release\netcoreapp3.1\Dealse.Shared.dll
+D:\Project\DealSe\GitHub\Dealse.shared\bin\Release\netcoreapp3.1\Dealse.Shared.pdb
+D:\Project\DealSe\GitHub\Dealse.shared\obj\Release\netcoreapp3.1\Dealse.Shared.AssemblyInfoInputs.cache
+D:\Project\DealSe\GitHub\Dealse.shared\obj\Release\netcoreapp3.1\Dealse.Shared.AssemblyInfo.cs
+D:\Project\DealSe\GitHub\Dealse.shared\obj\Release\netcoreapp3.1\Dealse.Shared.csproj.CoreCompileInputs.cache
+D:\Project\DealSe\GitHub\Dealse.shared\obj\Release\netcoreapp3.1\Dealse.Shared.dll
+D:\Project\DealSe\GitHub\Dealse.shared\obj\Release\netcoreapp3.1\Dealse.Shared.pdb

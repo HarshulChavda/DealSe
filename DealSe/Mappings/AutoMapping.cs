@@ -37,8 +37,7 @@ namespace DealSe.Mappings
                 .ForMember(dest => dest.MobileNo, opt => opt.MapFrom(src => string.IsNullOrEmpty(src.MobileNo) ? "-" : src.MobileNo))
                 .ForMember(dest => dest.FacebookId, opt => opt.MapFrom(src => string.IsNullOrEmpty(src.FacebookId) ? "-" : src.FacebookId))
                 .ForMember(dest => dest.GooglePlusId, opt => opt.MapFrom(src => string.IsNullOrEmpty(src.GoogleId) ? "-" : src.GoogleId))
-                .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => string.IsNullOrEmpty(src.FirstName) ? "-" : src.FirstName))
-                .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => string.IsNullOrEmpty(src.LastName) ? "-" : src.LastName))
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => string.IsNullOrEmpty(src.Name) ? "-" : src.Name))
                 .ReverseMap();
             CreateMap<StoreType, StoreTypeFormModel>().ReverseMap();
             CreateMap<Store, StoreFormModel>().ReverseMap();

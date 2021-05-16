@@ -44,3 +44,21 @@ D:\Company Running Projects\DealSe\GitHub\DealSe.IoC\obj\Release\netcoreapp3.1\D
 D:\Company Running Projects\DealSe\GitHub\DealSe.IoC\obj\Release\netcoreapp3.1\DealSe.IoC.csproj.CopyComplete
 D:\Company Running Projects\DealSe\GitHub\DealSe.IoC\obj\Release\netcoreapp3.1\DealSe.IoC.dll
 D:\Company Running Projects\DealSe\GitHub\DealSe.IoC\obj\Release\netcoreapp3.1\DealSe.IoC.pdb
+D:\Project\DealSe\GitHub\DealSe.IoC\bin\Release\netcoreapp3.1\DealSe.IoC.deps.json
+D:\Project\DealSe\GitHub\DealSe.IoC\bin\Release\netcoreapp3.1\DealSe.IoC.dll
+D:\Project\DealSe\GitHub\DealSe.IoC\bin\Release\netcoreapp3.1\DealSe.IoC.pdb
+D:\Project\DealSe\GitHub\DealSe.IoC\bin\Release\netcoreapp3.1\DealSe.Data.dll
+D:\Project\DealSe\GitHub\DealSe.IoC\bin\Release\netcoreapp3.1\DealSe.Domain.dll
+D:\Project\DealSe\GitHub\DealSe.IoC\bin\Release\netcoreapp3.1\DealSe.Service.dll
+D:\Project\DealSe\GitHub\DealSe.IoC\bin\Release\netcoreapp3.1\Dealse.Shared.dll
+D:\Project\DealSe\GitHub\DealSe.IoC\bin\Release\netcoreapp3.1\DealSe.Service.pdb
+D:\Project\DealSe\GitHub\DealSe.IoC\bin\Release\netcoreapp3.1\DealSe.Data.pdb
+D:\Project\DealSe\GitHub\DealSe.IoC\bin\Release\netcoreapp3.1\DealSe.Domain.pdb
+D:\Project\DealSe\GitHub\DealSe.IoC\bin\Release\netcoreapp3.1\Dealse.Shared.pdb
+D:\Project\DealSe\GitHub\DealSe.IoC\obj\Release\netcoreapp3.1\DealSe.IoC.csprojAssemblyReference.cache
+D:\Project\DealSe\GitHub\DealSe.IoC\obj\Release\netcoreapp3.1\DealSe.IoC.AssemblyInfoInputs.cache
+D:\Project\DealSe\GitHub\DealSe.IoC\obj\Release\netcoreapp3.1\DealSe.IoC.AssemblyInfo.cs
+D:\Project\DealSe\GitHub\DealSe.IoC\obj\Release\netcoreapp3.1\DealSe.IoC.csproj.CoreCompileInputs.cache
+D:\Project\DealSe\GitHub\DealSe.IoC\obj\Release\netcoreapp3.1\DealSe.IoC.csproj.CopyComplete
+D:\Project\DealSe\GitHub\DealSe.IoC\obj\Release\netcoreapp3.1\DealSe.IoC.dll
+D:\Project\DealSe\GitHub\DealSe.IoC\obj\Release\netcoreapp3.1\DealSe.IoC.pdb
