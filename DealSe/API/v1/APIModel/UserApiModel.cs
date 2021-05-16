@@ -18,7 +18,6 @@ namespace DealSe.API.v1.APIModel
         [Required]
         public int RegistrationType { get; set; }
         public string DeviceID { get; set; }
-        public string DeviceType { get; set; }
         public decimal Latitude { get; set; }
         public decimal Longitude { get; set; }
     }
@@ -175,6 +174,10 @@ namespace DealSe.API.v1.APIModel
         [Required]
         public string MobileNo { get; set; }
         public string Email { get; set; }
+        public string FacebookId { get; set; }
+        public string GooglePlusId { get; set; }
+        public int RegistrationType { get; set; }
+        public string DeviceID { get; set; }
         public decimal Latitude { get; set; }
         public decimal Longitude { get; set; }
         public int? Gender { get; set; }
