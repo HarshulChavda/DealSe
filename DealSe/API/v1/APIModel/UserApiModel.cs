@@ -6,11 +6,8 @@ namespace DealSe.API.v1.APIModel
 {
     public class UserParamApiFormModel
     {
-        public int? AreaID { get; set; }
         [StringLength(50)]
-        public string FirstName { get; set; }
-        [StringLength(50)]
-        public string LastName { get; set; }
+        public string Name { get; set; }
         [StringLength(12)]
         public string MobileNo { get; set; }
         [StringLength(100)]
@@ -24,16 +21,6 @@ namespace DealSe.API.v1.APIModel
         public string DeviceType { get; set; }
         public decimal Latitude { get; set; }
         public decimal Longitude { get; set; }
-        public int? Gender { get; set; }
-        public int? MaritalStatus { get; set; }
-        public DateTime? DOB { get; set; }
-        [StringLength(500)]
-        public string Address1 { get; set; }
-        [StringLength(500)]
-        public string Address2 { get; set; }
-        [StringLength(500)]
-        public string Address3 { get; set; }
-
     }
 
     public class UserUpdateImageReturnModel
@@ -201,9 +188,7 @@ namespace DealSe.API.v1.APIModel
     public class UserAddUpdateReturnApiModel
     {
         public int UserID { get; set; }
-        public int AreaID { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string Name { get; set; }
         public string MobileNo { get; set; }
         public string Email { get; set; }
         public string FacebookId { get; set; }
@@ -213,9 +198,9 @@ namespace DealSe.API.v1.APIModel
         public string DeviceType { get; set; }
         public decimal Latitude { get; set; }
         public decimal Longitude { get; set; }
-        public int Gender { get; set; }
-        public int MaritalStatus { get; set; }
-        public DateTime DOB { get; set; }
+        public int? Gender { get; set; }
+        public int? MaritalStatus { get; set; }
+        public DateTime? DOB { get; set; }
         public string Address1 { get; set; }
         public string Address2 { get; set; }
         public string Address3 { get; set; }

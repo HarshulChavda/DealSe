@@ -20,9 +20,7 @@ namespace DealSe.Domain.Models
         public int UserId { get; set; }
         public int? AreaId { get; set; }
         [StringLength(50)]
-        public string FirstName { get; set; }
-        [StringLength(50)]
-        public string LastName { get; set; }
+        public string Name { get; set; }
         [Required]
         [StringLength(10)]
         public string MobileNo { get; set; }

@@ -7437,19 +7437,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\A\\.nuget\\packages\\": {}
+    "C:\\Users\\harsh\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Company Running Projects\\DealSe\\GitHub\\DealSe.Service\\DealSe.Service.csproj",
+      "projectUniqueName": "D:\\Project\\DealSe\\GitHub\\DealSe.Service\\DealSe.Service.csproj",
       "projectName": "DealSe.Service",
-      "projectPath": "D:\\Company Running Projects\\DealSe\\GitHub\\DealSe.Service\\DealSe.Service.csproj",
-      "packagesPath": "C:\\Users\\A\\.nuget\\packages\\",
-      "outputPath": "D:\\Company Running Projects\\DealSe\\GitHub\\DealSe.Service\\obj\\",
+      "projectPath": "D:\\Project\\DealSe\\GitHub\\DealSe.Service\\DealSe.Service.csproj",
+      "packagesPath": "C:\\Users\\harsh\\.nuget\\packages\\",
+      "outputPath": "D:\\Project\\DealSe\\GitHub\\DealSe.Service\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\A\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\harsh\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7463,8 +7463,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "D:\\Company Running Projects\\DealSe\\GitHub\\DealSe.Data\\DealSe.Data.csproj": {
-              "projectPath": "D:\\Company Running Projects\\DealSe\\GitHub\\DealSe.Data\\DealSe.Data.csproj"
+            "D:\\Project\\DealSe\\GitHub\\DealSe.Data\\DealSe.Data.csproj": {
+              "projectPath": "D:\\Project\\DealSe\\GitHub\\DealSe.Data\\DealSe.Data.csproj"
             }
           }
         }
@@ -7499,7 +7499,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

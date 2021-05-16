@@ -97,11 +97,11 @@ namespace DealSe.Common
                 {
                     foreach (var item in user)
                     {
-                        emailBody = emailBody.Replace("{{NAME}}", item.FirstName + " " + item.LastName).Replace("{{PASSWORD}}", password);
+                        emailBody = emailBody.Replace("{{NAME}}", item.Name).Replace("{{PASSWORD}}", password);
                         await Task.Run(() => EmailSender.SendAsync(
                           SMTPEmail,
                           SMTPSenderName,
-                          item.Email, item.FirstName + " " + item.LastName, template.EmailTemplateSubject, emailBody,
+                          item.Email, item.Name, template.EmailTemplateSubject, emailBody,
                           Convert.ToInt32(SMTPPort),
                           SMTPHost,
                           SMTPUser,

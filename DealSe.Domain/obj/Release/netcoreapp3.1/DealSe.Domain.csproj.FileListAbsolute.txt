@@ -10,3 +10,15 @@ D:\Company Running Projects\DealSe\GitHub\DealSe.Domain\obj\Release\netcoreapp3.
 D:\Company Running Projects\DealSe\GitHub\DealSe.Domain\obj\Release\netcoreapp3.1\DealSe.Domain.csproj.CopyComplete
 D:\Company Running Projects\DealSe\GitHub\DealSe.Domain\obj\Release\netcoreapp3.1\DealSe.Domain.dll
 D:\Company Running Projects\DealSe\GitHub\DealSe.Domain\obj\Release\netcoreapp3.1\DealSe.Domain.pdb
+D:\Project\DealSe\GitHub\DealSe.Domain\bin\Release\netcoreapp3.1\DealSe.Domain.deps.json
+D:\Project\DealSe\GitHub\DealSe.Domain\bin\Release\netcoreapp3.1\DealSe.Domain.dll
+D:\Project\DealSe\GitHub\DealSe.Domain\bin\Release\netcoreapp3.1\DealSe.Domain.pdb
+D:\Project\DealSe\GitHub\DealSe.Domain\bin\Release\netcoreapp3.1\Dealse.Shared.dll
+D:\Project\DealSe\GitHub\DealSe.Domain\bin\Release\netcoreapp3.1\Dealse.Shared.pdb
+D:\Project\DealSe\GitHub\DealSe.Domain\obj\Release\netcoreapp3.1\DealSe.Domain.csprojAssemblyReference.cache
+D:\Project\DealSe\GitHub\DealSe.Domain\obj\Release\netcoreapp3.1\DealSe.Domain.AssemblyInfoInputs.cache
+D:\Project\DealSe\GitHub\DealSe.Domain\obj\Release\netcoreapp3.1\DealSe.Domain.AssemblyInfo.cs
+D:\Project\DealSe\GitHub\DealSe.Domain\obj\Release\netcoreapp3.1\DealSe.Domain.csproj.CoreCompileInputs.cache
+D:\Project\DealSe\GitHub\DealSe.Domain\obj\Release\netcoreapp3.1\DealSe.Domain.csproj.CopyComplete
+D:\Project\DealSe\GitHub\DealSe.Domain\obj\Release\netcoreapp3.1\DealSe.Domain.dll
+D:\Project\DealSe\GitHub\DealSe.Domain\obj\Release\netcoreapp3.1\DealSe.Domain.pdb
