@@ -54,3 +54,5 @@ D:\Company Running Projects\DealSe\GitHub\DealSe.Service\obj\Debug\netcoreapp3.1
 D:\Company Running Projects\DealSe\GitHub\DealSe.Service\obj\Debug\netcoreapp3.1\DealSe.Service.csproj.CopyComplete
 D:\Company Running Projects\DealSe\GitHub\DealSe.Service\obj\Debug\netcoreapp3.1\DealSe.Service.dll
 D:\Company Running Projects\DealSe\GitHub\DealSe.Service\obj\Debug\netcoreapp3.1\DealSe.Service.pdb
+D:\Company Running Projects\DealSe\GitHub\DealSe.Service\bin\Debug\netcoreapp3.1\DealSe.Utils.dll
+D:\Company Running Projects\DealSe\GitHub\DealSe.Service\bin\Debug\netcoreapp3.1\DealSe.Utils.pdb

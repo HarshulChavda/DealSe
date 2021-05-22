@@ -9,6 +9,7 @@
       "DealSe.Service/1.0.0": {
         "dependencies": {
           "DealSe.Data": "1.0.0",
+          "DealSe.Utils": "1.0.0",
           "Newtonsoft.Json": "12.0.3"
         },
         "runtime": {
@@ -1437,6 +1438,11 @@
         "runtime": {
           "Dealse.Shared.dll": {}
         }
+      },
+      "DealSe.Utils/1.0.0": {
+        "runtime": {
+          "DealSe.Utils.dll": {}
+        }
       }
     }
   },
@@ -2374,6 +2380,11 @@
       "sha512": ""
     },
     "Dealse.Shared/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DealSe.Utils/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DealSe.Data\DealSe.Data.csproj" />
+    <ProjectReference Include="..\DealSe.Utils\DealSe.Utils.csproj" />
   </ItemGroup>
 
 </Project>
