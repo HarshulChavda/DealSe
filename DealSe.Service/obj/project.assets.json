@@ -2174,6 +2174,16 @@
         "runtime": {
           "bin/placeholder/Dealse.Shared.dll": {}
         }
+      },
+      "DealSe.Utils/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/DealSe.Utils.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DealSe.Utils.dll": {}
+        }
       }
     }
   },
@@ -7428,11 +7438,17 @@
       "type": "project",
       "path": "../Dealse.shared/Dealse.Shared.csproj",
       "msbuildProject": "../Dealse.shared/Dealse.Shared.csproj"
+    },
+    "DealSe.Utils/1.0.0": {
+      "type": "project",
+      "path": "../DealSe.Utils/DealSe.Utils.csproj",
+      "msbuildProject": "../DealSe.Utils/DealSe.Utils.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "DealSe.Data >= 1.0.0",
+      "DealSe.Utils >= 1.0.0",
       "Newtonsoft.Json >= 12.0.3"
     ]
   },
@@ -7465,6 +7481,9 @@
           "projectReferences": {
             "D:\\Company Running Projects\\DealSe\\GitHub\\DealSe.Data\\DealSe.Data.csproj": {
               "projectPath": "D:\\Company Running Projects\\DealSe\\GitHub\\DealSe.Data\\DealSe.Data.csproj"
+            },
+            "D:\\Company Running Projects\\DealSe\\GitHub\\DealSe.Utils\\DealSe.Utils.csproj": {
+              "projectPath": "D:\\Company Running Projects\\DealSe\\GitHub\\DealSe.Utils\\DealSe.Utils.csproj"
             }
           }
         }

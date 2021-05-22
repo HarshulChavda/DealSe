@@ -228,6 +228,9 @@
             "projectReferences": {
               "D:\\Company Running Projects\\DealSe\\GitHub\\DealSe.Data\\DealSe.Data.csproj": {
                 "projectPath": "D:\\Company Running Projects\\DealSe\\GitHub\\DealSe.Data\\DealSe.Data.csproj"
+              },
+              "D:\\Company Running Projects\\DealSe\\GitHub\\DealSe.Utils\\DealSe.Utils.csproj": {
+                "projectPath": "D:\\Company Running Projects\\DealSe\\GitHub\\DealSe.Utils\\DealSe.Utils.csproj"
               }
             }
           }
