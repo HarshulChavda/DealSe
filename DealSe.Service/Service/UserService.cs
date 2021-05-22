@@ -4,7 +4,6 @@ using DealSe.Service.Common;
 using DealSe.Service.Interface;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;

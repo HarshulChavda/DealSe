@@ -1,6 +1,4 @@
-﻿using System;
-using System.Net;
-using System.Threading.Tasks;
+﻿using System.Net;
 using AutoMapper;
 using DealSe.API.v1.APIModel;
 using DealSe.Common;
@@ -9,10 +7,7 @@ using DealSe.Service.Interface;
 using DealSe.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using DealSe.Utils.Enum;
 using DealSe.ExceptionFilter;
-using System.IO;
-using Microsoft.AspNetCore.Hosting;
 using System.Linq;
 using System.Collections.Generic;
 using Microsoft.Data.SqlClient;

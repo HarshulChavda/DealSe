@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using DealSe.Areas.Admin.FormModels;
-using DealSe.Common;
 using DealSe.Domain.Models;
 using DealSe.Domain.SPModel;
 using DealSe.Service.Common;

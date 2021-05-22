@@ -2034,3 +2034,4 @@ D:\Company Running Projects\DealSe\GitHub\DealSe\obj\Debug\netcoreapp3.1\DealSe.
 D:\Company Running Projects\DealSe\GitHub\DealSe\obj\Debug\netcoreapp3.1\DealSe.dll
 D:\Company Running Projects\DealSe\GitHub\DealSe\obj\Debug\netcoreapp3.1\DealSe.pdb
 D:\Company Running Projects\DealSe\GitHub\DealSe\obj\Debug\netcoreapp3.1\DealSe.genruntimeconfig.cache
+D:\Company Running Projects\DealSe\GitHub\DealSe\obj\Debug\netcoreapp3.1\Razor\Views\Home\PrivacyPolicy.cshtml.g.cs

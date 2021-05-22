@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
 using DealSe.ActionFilter;
 using DealSe.Areas.Admin.ViewModels;
@@ -10,7 +9,6 @@ using DealSe.Domain.SPModel;
 using DealSe.Service.Common;
 using DealSe.Service.Interface;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace DealSe.Areas.Admin.Controllers

@@ -1,7 +1,5 @@
-﻿using DealSe.Data.Infrastructure;
-using DealSe.Domain.Interface;
+﻿using DealSe.Domain.Interface;
 using DealSe.Domain.Models;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace DealSe.Service.Interface

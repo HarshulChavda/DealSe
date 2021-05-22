@@ -9524,19 +9524,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\harsh\\.nuget\\packages\\": {}
+    "C:\\Users\\A\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Project\\DealSe\\GitHub\\DealSe\\DealSe.csproj",
+      "projectUniqueName": "D:\\Company Running Projects\\DealSe\\GitHub\\DealSe\\DealSe.csproj",
       "projectName": "DealSe",
-      "projectPath": "D:\\Project\\DealSe\\GitHub\\DealSe\\DealSe.csproj",
-      "packagesPath": "C:\\Users\\harsh\\.nuget\\packages\\",
-      "outputPath": "D:\\Project\\DealSe\\GitHub\\DealSe\\obj\\",
+      "projectPath": "D:\\Company Running Projects\\DealSe\\GitHub\\DealSe\\DealSe.csproj",
+      "packagesPath": "C:\\Users\\A\\.nuget\\packages\\",
+      "outputPath": "D:\\Company Running Projects\\DealSe\\GitHub\\DealSe\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\harsh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\A\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9550,17 +9550,17 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "D:\\Project\\DealSe\\GitHub\\DealSe.Data\\DealSe.Data.csproj": {
-              "projectPath": "D:\\Project\\DealSe\\GitHub\\DealSe.Data\\DealSe.Data.csproj"
+            "D:\\Company Running Projects\\DealSe\\GitHub\\DealSe.Data\\DealSe.Data.csproj": {
+              "projectPath": "D:\\Company Running Projects\\DealSe\\GitHub\\DealSe.Data\\DealSe.Data.csproj"
             },
-            "D:\\Project\\DealSe\\GitHub\\DealSe.IoC\\DealSe.IoC.csproj": {
-              "projectPath": "D:\\Project\\DealSe\\GitHub\\DealSe.IoC\\DealSe.IoC.csproj"
+            "D:\\Company Running Projects\\DealSe\\GitHub\\DealSe.IoC\\DealSe.IoC.csproj": {
+              "projectPath": "D:\\Company Running Projects\\DealSe\\GitHub\\DealSe.IoC\\DealSe.IoC.csproj"
             },
-            "D:\\Project\\DealSe\\GitHub\\DealSe.Service\\DealSe.Service.csproj": {
-              "projectPath": "D:\\Project\\DealSe\\GitHub\\DealSe.Service\\DealSe.Service.csproj"
+            "D:\\Company Running Projects\\DealSe\\GitHub\\DealSe.Service\\DealSe.Service.csproj": {
+              "projectPath": "D:\\Company Running Projects\\DealSe\\GitHub\\DealSe.Service\\DealSe.Service.csproj"
             },
-            "D:\\Project\\DealSe\\GitHub\\DealSe.Utils\\DealSe.Utils.csproj": {
-              "projectPath": "D:\\Project\\DealSe\\GitHub\\DealSe.Utils\\DealSe.Utils.csproj"
+            "D:\\Company Running Projects\\DealSe\\GitHub\\DealSe.Utils\\DealSe.Utils.csproj": {
+              "projectPath": "D:\\Company Running Projects\\DealSe\\GitHub\\DealSe.Utils\\DealSe.Utils.csproj"
             }
           }
         }
@@ -9656,7 +9656,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }

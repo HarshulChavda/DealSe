@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DealSe.Service.Common
+﻿namespace DealSe.Service.Common
 {
     public class GetUserNearByPlaces
     {
