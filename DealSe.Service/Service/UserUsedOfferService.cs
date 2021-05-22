@@ -1,12 +1,6 @@
 ﻿using DealSe.Data.Infrastructure;
 using DealSe.Domain.Models;
-using DealSe.Service.Common;
 using DealSe.Service.Interface;
-using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace DealSe.Service.Service

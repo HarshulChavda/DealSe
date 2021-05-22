@@ -1,5 +1,4 @@
-﻿using DealSe.Domain;
-using DealSe.Domain.Interface;
+﻿using DealSe.Domain.Interface;
 using DealSe.Domain.Models;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;

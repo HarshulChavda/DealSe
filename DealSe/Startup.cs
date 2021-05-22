@@ -1,8 +1,5 @@
 using AutoMapper;
-using DealSe.Common;
 using DealSe.Domain.Models;
-using DealSe.Service.Interface;
-using DealSe.Service.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
@@ -18,7 +15,6 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Text;
-using DealSe.Service;
 using DealSe.IoC;
 using DealSe.Hubs;
 using DealSe.Shared.Common;

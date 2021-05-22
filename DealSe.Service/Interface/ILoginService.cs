@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using DealSe.Data.Infrastructure;
 using DealSe.Domain.Interface;
 using DealSe.Domain.Models;
 namespace DealSe.Service.Interface

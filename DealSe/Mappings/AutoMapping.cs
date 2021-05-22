@@ -4,7 +4,6 @@ using DealSe.Areas.Admin.FormModels;
 using DealSe.Areas.Admin.ViewModels;
 using DealSe.Domain.Models;
 using DealSe.Domain.SPModel;
-using DealSe.Utils.Common;
 using DealSe.Utils.Enum;
 using Newtonsoft.Json;
 using System.Collections.Generic;

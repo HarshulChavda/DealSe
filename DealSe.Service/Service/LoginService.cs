@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using DealSe.Data.Infrastructure;
+﻿using DealSe.Data.Infrastructure;
 using DealSe.Domain.Models;
 using DealSe.Service.Interface;
 using System;

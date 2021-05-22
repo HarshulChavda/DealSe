@@ -1,7 +1,5 @@
 ﻿using DealSe.Domain.SPModel;
-using DealSe.Shared.Common;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options; 
 
 
 namespace DealSe.Domain.Models
