@@ -8,7 +8,6 @@
    "ModelNamespace": null,
    "OutputContextPath": null,
    "OutputPath": "Models",
-   "ProceduresReturnList": false,
    "ProjectRootNamespace": "DealSe.Domain",
    "Schemas": null,
    "SelectedHandlebarsLanguage": 0,
@@ -79,7 +78,7 @@
          "ObjectType": 0
       }
    ],
-   "UiHint": "DESKTOP-1BRKM2K.DealSe",
+   "UiHint": "HARSHUL-PC\\SQLEXPRESS.DealSe",
    "UseBoolPropertiesWithoutDefaultSql": false,
    "UseDatabaseNames": true,
    "UseDbContextSplitting": false,
@@ -92,5 +91,6 @@
    "UseNoObjectFilter": false,
    "UseNodaTime": false,
    "UseNullableReferences": false,
+   "UseSchemaFolders": false,
    "UseSpatial": false
 }

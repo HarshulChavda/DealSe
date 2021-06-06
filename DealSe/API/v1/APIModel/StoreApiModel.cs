@@ -58,11 +58,9 @@ namespace DealSe.API.v1.APIModel
         public string MobileNo2 { get; set; }
         [Required]
         [StringLength(500)]
-        public string Address1 { get; set; }
-        [StringLength(500)]
-        public string Address2 { get; set; }
-        [StringLength(500)]
-        public string Address3 { get; set; }
+        public string Address { get; set; }
+        public string DeviceID { get; set; }
+        public byte? DeviceType { get; set; }
         [Required]
         [Column(TypeName = "decimal(11, 8)")]
         public decimal Latitude { get; set; }

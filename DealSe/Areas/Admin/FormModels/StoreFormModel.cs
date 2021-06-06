@@ -33,11 +33,9 @@ namespace DealSe.Areas.Admin.FormModels
         public string MobileNo2 { get; set; }
         [Required(ErrorMessage = "This field is required.")]
         [StringLength(500, ErrorMessage = "The address1 must be a maximum length of 500.")]
-        public string Address1 { get; set; }
-        [StringLength(500, ErrorMessage = "The address2 must be a maximum length of 500.")]
-        public string Address2 { get; set; }
-        [StringLength(500, ErrorMessage = "The address3 must be a maximum length of 500.")]
-        public string Address3 { get; set; }
+        public string Address { get; set; }
+        public string DeviceID { get; set; }
+        public byte? DeviceType { get; set; }
         [Required(ErrorMessage = "This field is required.")]
         public decimal Latitude { get; set; }
         [Required(ErrorMessage = "This field is required.")]

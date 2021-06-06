@@ -169,7 +169,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label class="control-label">Address</label>
-                @Html.TextAreaFor(model => model.Address1, new { @class = "form-control htmlvalid trimmed" })
+                @Html.TextAreaFor(model => model.Address, new { @class = "form-control htmlvalid trimmed" })
             </div>
         </div>
         <div class="col-md-3">
@@ -185,7 +185,7 @@
             </div>
         </div>
     </div>
-    @if (Model.StoreId != 0 && !string.IsNullOrEmpty(Model.Address1))
+    @if (Model.StoreId != 0 && !string.IsNullOrEmpty(Model.Address))
     {
         <iframe width="100%"
                 height="450"
@@ -193,7 +193,7 @@
                 loading="lazy"
                 allowfullscreen
                 src="https://www.google.com/maps/embed/v1/place?key=@Model.GoogleMapAPIKey
-    &q=@Model.Address1">
+    &q=@Model.Address">
         </iframe>
     }
     <div class="row">
