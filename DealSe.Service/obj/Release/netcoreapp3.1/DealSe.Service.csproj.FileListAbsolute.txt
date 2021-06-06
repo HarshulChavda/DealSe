@@ -31,7 +31,6 @@ D:\Company Running Projects\DealSe\GitHub\DealSe.Service\bin\Release\netcoreapp3
 D:\Company Running Projects\DealSe\GitHub\DealSe.Service\bin\Release\netcoreapp3.1\DealSe.Data.pdb
 D:\Company Running Projects\DealSe\GitHub\DealSe.Service\bin\Release\netcoreapp3.1\DealSe.Domain.pdb
 D:\Company Running Projects\DealSe\GitHub\DealSe.Service\bin\Release\netcoreapp3.1\Dealse.Shared.pdb
-D:\Company Running Projects\DealSe\GitHub\DealSe.Service\obj\Release\netcoreapp3.1\DealSe.Service.csprojAssemblyReference.cache
 D:\Company Running Projects\DealSe\GitHub\DealSe.Service\obj\Release\netcoreapp3.1\DealSe.Service.AssemblyInfoInputs.cache
 D:\Company Running Projects\DealSe\GitHub\DealSe.Service\obj\Release\netcoreapp3.1\DealSe.Service.AssemblyInfo.cs
 D:\Company Running Projects\DealSe\GitHub\DealSe.Service\obj\Release\netcoreapp3.1\DealSe.Service.csproj.CoreCompileInputs.cache
@@ -54,3 +53,6 @@ D:\Project\DealSe\GitHub\DealSe.Service\obj\Release\netcoreapp3.1\DealSe.Service
 D:\Project\DealSe\GitHub\DealSe.Service\obj\Release\netcoreapp3.1\DealSe.Service.csproj.CopyComplete
 D:\Project\DealSe\GitHub\DealSe.Service\obj\Release\netcoreapp3.1\DealSe.Service.dll
 D:\Project\DealSe\GitHub\DealSe.Service\obj\Release\netcoreapp3.1\DealSe.Service.pdb
+D:\Company Running Projects\DealSe\GitHub\DealSe.Service\bin\Release\netcoreapp3.1\DealSe.Utils.dll
+D:\Company Running Projects\DealSe\GitHub\DealSe.Service\bin\Release\netcoreapp3.1\DealSe.Utils.pdb
+D:\Company Running Projects\DealSe\GitHub\DealSe.Service\obj\Release\netcoreapp3.1\DealSe.Service.csproj.AssemblyReference.cache

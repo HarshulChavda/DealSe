@@ -22,6 +22,7 @@ namespace DealSe.IoC
             services.AddScoped<IOfferService, OfferService>();
             services.AddScoped<IOfferBannerService, OfferBannerService>();
             services.AddScoped<IUserUsedOfferService, UserUsedOfferService>();
+            services.AddScoped<INotificationService, NotificationService>();
         }
     }
 }
