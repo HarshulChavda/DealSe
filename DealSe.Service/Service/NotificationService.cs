@@ -21,8 +21,8 @@ namespace DealSe.Service.Service
         {
             userDeviceType = 1;
             notificationID = "1";
-            notificationHeading = "test";
-            notificationBody = "test";
+            notificationHeading = "test late yaar";
+            notificationBody = "test late yaar hotu hoy";
             userNotificationCount = "2";
 
             string fcmAndroidServerKey = _configuration["CustomSettings:FCMServerKey"];

@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.SignalR;
 using DealSe.Hubs;
 using DealSe.Areas.Admin.ViewModels;
 using DealSe.Shared.Common;
+using DealSe.Utils.Enum;
 
 namespace DealSe.API.v1
 {
@@ -36,10 +37,12 @@ namespace DealSe.API.v1
         private readonly IUserUsedOfferService userUsedOfferService;
         private readonly IOfferService offerService;
         private readonly IHubContext<NotificationUserHub> notificationUserHubContext;
+        private readonly INotificationService notificationService;
         private readonly IWebHostEnvironment hostingEnvironment;
         private readonly IOptions<CustomSettings> config;
         private readonly IMapper mapper;
-        public StoreController(IStoreService storeService, IAreaService areaService, IStoreTypeService storeTypeService, IUserUsedOfferService userUsedOfferService, IOfferService offerService, IHubContext<NotificationUserHub> notificationUserHubContext, IWebHostEnvironment hostingEnvironment, IOptions<CustomSettings> config, IMapper mapper)
+        
+        public StoreController(IStoreService storeService, IAreaService areaService, IStoreTypeService storeTypeService, IUserUsedOfferService userUsedOfferService, IOfferService offerService, IHubContext<NotificationUserHub> notificationUserHubContext, INotificationService notificationService, IWebHostEnvironment hostingEnvironment, IOptions<CustomSettings> config, IMapper mapper)
         {
             this.storeService = storeService;
             this.areaService = areaService;
@@ -47,6 +50,7 @@ namespace DealSe.API.v1
             this.userUsedOfferService = userUsedOfferService;
             this.offerService = offerService;
             this.notificationUserHubContext = notificationUserHubContext;
+            this.notificationService = notificationService;
             this.hostingEnvironment = hostingEnvironment;
             this.config = config;
             this.mapper = mapper;
@@ -148,6 +152,8 @@ namespace DealSe.API.v1
                 var areaDetails = await areaService.GetById(mappedResult.AreaId);
                 sendStoreRegistrationToastrNotificationHubDetails.AreaName = areaDetails.Name;
                 await notificationUserHubContext.Clients.Groups("group_1").SendAsync("SendStoreRegistrationToastrNotificationToAdmin", sendStoreRegistrationToastrNotificationHubDetails);
+
+                notificationService.SendMobileNotification((int)UserDeviceType.Android,"",model.DeviceID, "","","2");
 
                 return Ok(apiModel);
             }

@@ -34,7 +34,6 @@ D:\Project\DealSe\GitHub\DealSe.Utils\obj\Debug\netcoreapp3.1\DealSe.Utils.pdb
 D:\Company Running Projects\DealSe\GitHub\DealSe.Utils\bin\Debug\netcoreapp3.1\DealSe.Utils.deps.json
 D:\Company Running Projects\DealSe\GitHub\DealSe.Utils\bin\Debug\netcoreapp3.1\DealSe.Utils.dll
 D:\Company Running Projects\DealSe\GitHub\DealSe.Utils\bin\Debug\netcoreapp3.1\DealSe.Utils.pdb
-D:\Company Running Projects\DealSe\GitHub\DealSe.Utils\obj\Debug\netcoreapp3.1\DealSe.Utils.csprojAssemblyReference.cache
 D:\Company Running Projects\DealSe\GitHub\DealSe.Utils\obj\Debug\netcoreapp3.1\DealSe.Utils.DealSeResource.resources
 D:\Company Running Projects\DealSe\GitHub\DealSe.Utils\obj\Debug\netcoreapp3.1\DealSe.Utils.csproj.GenerateResource.cache
 D:\Company Running Projects\DealSe\GitHub\DealSe.Utils\obj\Debug\netcoreapp3.1\DealSe.Utils.AssemblyInfoInputs.cache
@@ -42,3 +41,4 @@ D:\Company Running Projects\DealSe\GitHub\DealSe.Utils\obj\Debug\netcoreapp3.1\D
 D:\Company Running Projects\DealSe\GitHub\DealSe.Utils\obj\Debug\netcoreapp3.1\DealSe.Utils.csproj.CoreCompileInputs.cache
 D:\Company Running Projects\DealSe\GitHub\DealSe.Utils\obj\Debug\netcoreapp3.1\DealSe.Utils.dll
 D:\Company Running Projects\DealSe\GitHub\DealSe.Utils\obj\Debug\netcoreapp3.1\DealSe.Utils.pdb
+D:\Company Running Projects\DealSe\GitHub\DealSe.Utils\obj\Debug\netcoreapp3.1\DealSe.Utils.csproj.AssemblyReference.cache

@@ -274,7 +274,7 @@ namespace DealSe.API.v1
         [ProducesResponseType(200)]
         [ProducesResponseType(typeof(GetUserUsedOfferHistoryReturnAPIModel), 200)]
         [HttpPost]
-        public IActionResult GetUserUsedOfferHistory([FromQuery] GetUserUsedOfferParamAPIFormModel model)
+        public IActionResult GetUserUsedOfferHistory(GetUserUsedOfferParamAPIFormModel model)
         {
             ApiOkResponse apiOkResponse = new ApiOkResponse();
             int pagesize = 10;
@@ -320,7 +320,7 @@ namespace DealSe.API.v1
         [ProducesResponseType(200)]
         [ProducesResponseType(typeof(GetOfferDetailsReturnAPIModel), 200)]
         [HttpPost]
-        public IActionResult GetOfferDetails([FromQuery] GetOfferDetailsParamAPIModel model)
+        public IActionResult GetOfferDetails(GetOfferDetailsParamAPIModel model)
         {
             ApiOkResponse apiOkResponse = new ApiOkResponse();
             if (ModelState.IsValid)

@@ -1739,6 +1739,8 @@ D:\Company Running Projects\DealSe\GitHub\DealSe\obj\Release\netcoreapp3.1\PubTm
 D:\Company Running Projects\DealSe\GitHub\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\lib\jquery\dist\jquery.min.map
 D:\Company Running Projects\DealSe\GitHub\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\lib\jquery\LICENSE.txt
 D:\Company Running Projects\DealSe\GitHub\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\signalr\signalr.js
+D:\Company Running Projects\DealSe\GitHub\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\Upload\Store\Logo\637573255145415490.jpg
+D:\Company Running Projects\DealSe\GitHub\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\Upload\Store\Logo\637573262942477669.jpg
 D:\Company Running Projects\DealSe\GitHub\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\web.config
 D:\Company Running Projects\DealSe\GitHub\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\appsettings.Development.json
 D:\Company Running Projects\DealSe\GitHub\DealSe\obj\Release\netcoreapp3.1\PubTmp\Out\appsettings.json
