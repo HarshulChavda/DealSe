@@ -49,7 +49,7 @@ namespace DealSe.API.v1
         }
 
         //User Login API
-        [Route("Login")]
+        [Route("LoginForUserApp")]
         [ProducesResponseType(200)]
         [ProducesResponseType(401)]
         [ProducesResponseType(typeof(UserAddUpdateReturnApiModel), 200)]
@@ -97,7 +97,7 @@ namespace DealSe.API.v1
         }
 
         //Add user / registration API
-        [Route("AddUser")]
+        [Route("AddUserForUserApp")]
         [ProducesResponseType(404)]
         [ProducesResponseType(200)]
         [ProducesResponseType(typeof(UserAddUpdateReturnApiModel), 200)]
@@ -153,7 +153,7 @@ namespace DealSe.API.v1
             }
         }
 
-        [Route("UpdateUser")]
+        [Route("UpdateUserForUserApp")]
         [ProducesResponseType(404)]
         [ProducesResponseType(200)]
         [ProducesResponseType(typeof(UserAddUpdateReturnApiModel), 200)]
@@ -209,7 +209,7 @@ namespace DealSe.API.v1
         }
 
         //Update user image
-        [Route("UpdateUserImage")]
+        [Route("UpdateUserImageForUserApp")]
         [ProducesResponseType(404)]
         [ProducesResponseType(200)]
         [ProducesResponseType(typeof(UserUpdateImageReturnModel), 200)]
@@ -269,7 +269,7 @@ namespace DealSe.API.v1
         }
 
         //Get user used offer history
-        [Route("GetUserUsedOfferHistory")]
+        [Route("GetUserUsedOfferHistoryForUserApp")]
         [ProducesResponseType(404)]
         [ProducesResponseType(200)]
         [ProducesResponseType(typeof(GetUserUsedOfferHistoryReturnAPIModel), 200)]
@@ -315,7 +315,7 @@ namespace DealSe.API.v1
         }
 
         //Get offer details
-        [Route("GetOfferDetails")]
+        [Route("GetOfferDetailsForUserApp")]
         [ProducesResponseType(404)]
         [ProducesResponseType(200)]
         [ProducesResponseType(typeof(GetOfferDetailsReturnAPIModel), 200)]
@@ -357,7 +357,7 @@ namespace DealSe.API.v1
         }
 
         //Get near by places by Paging
-        [Route("GetUserOfferDetailsNearByPlacesByPaging")]
+        [Route("GetUserOfferDetailsNearByPlacesByPagingForUserApp")]
         [ProducesResponseType(404)]
         [ProducesResponseType(200)]
         [ProducesResponseType(typeof(List<UserNearByPlaces>), 200)]

@@ -56,7 +56,7 @@ namespace DealSe.API.v1
             this.mapper = mapper;
         }
 
-        [Route("CheckStoreMobieNumberExist")]
+        [Route("CheckStoreMobieNumberExistForStoreApp")]
         [ProducesResponseType(404)]
         [ProducesResponseType(200)]
         [HttpPost]
@@ -92,7 +92,7 @@ namespace DealSe.API.v1
             return StatusCode((int)HttpStatusCode.Forbidden, APIStatusHelper.Forbidden("Model not valid"));
         }
 
-        [Route("AddStore")]
+        [Route("AddStoreForStoreApp")]
         [ProducesResponseType(404)]
         [ProducesResponseType(200)]
         [HttpPost]
@@ -160,7 +160,7 @@ namespace DealSe.API.v1
             return StatusCode((int)HttpStatusCode.Forbidden, APIStatusHelper.Forbidden("Model not valid"));
         }
 
-        [Route("UpdateStore")]
+        [Route("UpdateStoreForStoreApp")]
         [ProducesResponseType(404)]
         [ProducesResponseType(200)]
         [HttpPost]
@@ -222,7 +222,7 @@ namespace DealSe.API.v1
             return StatusCode((int)HttpStatusCode.Forbidden, APIStatusHelper.Forbidden("Model not valid"));
         }
 
-        [Route("ScanUserOffer")]
+        [Route("ScanUserOfferForStoreApp")]
         [ProducesResponseType(404)]
         [ProducesResponseType(200)]
         [HttpPost]

@@ -43,7 +43,7 @@ namespace DealSe.API.v1
             this.userService = userService;
         }
 
-        [Route("GetUserUsedOfferListByStore")]
+        [Route("GetUserUsedOfferListByStoreForStoreApp")]
         [ProducesResponseType(404)]
         [ProducesResponseType(200)]
         [HttpPost]
@@ -68,7 +68,7 @@ namespace DealSe.API.v1
             return StatusCode((int)HttpStatusCode.Forbidden, APIStatusHelper.Forbidden("Model not valid"));
         }
 
-        [Route("GetAreaAndStoreTypeList")]
+        [Route("GetAreaAndStoreTypeListForStoreApp")]
         [ProducesResponseType(404)]
         [ProducesResponseType(200)]
         [HttpPost]
@@ -86,7 +86,7 @@ namespace DealSe.API.v1
         }
         
         // Get home screen details API method
-        [Route("GetUserHomeScreenDetails")]
+        [Route("GetUserHomeScreenDetailsForUserApp")]
         [ProducesResponseType(404)]
         [ProducesResponseType(200)]
         [ProducesResponseType(typeof(GetUserHomeScreenDetailsReturnApiFormModel), 200)]
@@ -168,7 +168,7 @@ namespace DealSe.API.v1
         [ProducesResponseType(200)]
         [ProducesResponseType(typeof(List<APIModel.GetLimitedTimeOffers>), 200)]
         [HttpPost]
-        public IActionResult GetLimitedTimeOffersByPaging([FromQuery] decimal UserLatitude, decimal UserLongitude, int PageIndex)
+        public IActionResult GetLimitedTimeOffersByPagingForUserApp([FromQuery] decimal UserLatitude, decimal UserLongitude, int PageIndex)
         {
             ApiOkResponse apiModel = new ApiOkResponse();
             var limitedOffers = GetLimitedTimeOffersSpResult(UserLatitude, UserLongitude, PageIndex);

@@ -210,6 +210,7 @@ namespace DealSe
                 };
             });
         }
+
 		private void RegisterServices(IServiceCollection services)
         {
             DependencyContainer.RegisterServices(services);
