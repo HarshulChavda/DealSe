@@ -13,6 +13,7 @@ namespace DealSe.Domain.SPModel
         public string StoreAddress { get; set; }
         public string ShortDescription { get; set; }
         public string OfferNote { get; set; }
+        public string RedeemDate { get; set; }
 
     }
 }

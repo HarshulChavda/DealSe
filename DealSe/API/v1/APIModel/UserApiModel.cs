@@ -46,47 +46,31 @@ namespace DealSe.API.v1.APIModel
 
     public class GetUserUsedOfferHistoryReturnAPIModel
     {
-        [Required]
         public int OfferID { get; set; }
-        [Required]
         public string Title { get; set; }
         public string Image { get; set; }
-        [Required]
         public string StoreName { get; set; }
-        [Required]
         public string AreaName { get; set; }
-        [Required]
         public string StoreAddress { get; set; }
-        [Required]
         public string ShortDescription { get; set; }
-        [Required]
         public string OfferNote { get; set; }
+        public string RedeemDate { get; set; }
     }
 
     public class GetOfferDetailsReturnAPIModel
     {
-        [Required]
         public int OfferID { get; set; }
         public List<OfferImages> OfferImages { get; set; }
-        [Required]
         public string Title { get; set; }
-        [Required]
         public string StoreName { get; set; }
-        [Required]
         public string StoreAddress { get; set; }
-        [Required]
         public string StartDate { get; set; }
-        [Required]
         public string EndDate { get; set; }
         public string StoreContact { get; set; }
-        [Required]
         public string StoreOwnerContact { get; set; }
         public List<StoreTimes> StoreTimes { get; set; }
-        [Required]
         public string ShortDescription { get; set; }
-        [Required]
         public string StoreLatitude { get; set; }
-        [Required]
         public string StoreLongitude { get; set; }
         public string TermsAndConditions { get; set; }
         public List<UserNearByPlaces> UserNearByPlaces { get; set; }
