@@ -15,3 +15,6 @@ D:\Project\DealSe\GitHub\Dealse.shared\obj\Release\netcoreapp3.1\Dealse.Shared.c
 D:\Project\DealSe\GitHub\Dealse.shared\obj\Release\netcoreapp3.1\Dealse.Shared.dll
 D:\Project\DealSe\GitHub\Dealse.shared\obj\Release\netcoreapp3.1\Dealse.Shared.pdb
 D:\Company Running Projects\DealSe\GitHub\Dealse.shared\obj\Release\netcoreapp3.1\Dealse.Shared.csproj.AssemblyReference.cache
+D:\Company Running Projects\DealSe\GitHub\Dealse.shared\bin\Release\netcoreapp3.1\DealSe.Utils.dll
+D:\Company Running Projects\DealSe\GitHub\Dealse.shared\bin\Release\netcoreapp3.1\DealSe.Utils.pdb
+D:\Company Running Projects\DealSe\GitHub\Dealse.shared\obj\Release\netcoreapp3.1\Dealse.Shared.csproj.CopyComplete

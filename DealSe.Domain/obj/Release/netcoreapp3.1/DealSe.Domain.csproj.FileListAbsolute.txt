@@ -22,3 +22,5 @@ D:\Project\DealSe\GitHub\DealSe.Domain\obj\Release\netcoreapp3.1\DealSe.Domain.c
 D:\Project\DealSe\GitHub\DealSe.Domain\obj\Release\netcoreapp3.1\DealSe.Domain.dll
 D:\Project\DealSe\GitHub\DealSe.Domain\obj\Release\netcoreapp3.1\DealSe.Domain.pdb
 D:\Company Running Projects\DealSe\GitHub\DealSe.Domain\obj\Release\netcoreapp3.1\DealSe.Domain.csproj.AssemblyReference.cache
+D:\Company Running Projects\DealSe\GitHub\DealSe.Domain\bin\Release\netcoreapp3.1\DealSe.Utils.dll
+D:\Company Running Projects\DealSe\GitHub\DealSe.Domain\bin\Release\netcoreapp3.1\DealSe.Utils.pdb
