@@ -1,6 +1,6 @@
 ﻿namespace DealSe.Service.Common
 {
-    public class GetAreaList
+    public class GetAreaListForAPI
     {
         public int AreaId { get; set; }
         public string AreaName { get; set; }

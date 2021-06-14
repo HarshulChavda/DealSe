@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DealSe.Domain.SPModel
 {
-    public class GetAllArea
+    public class GetAllAreaSPModel
     {
         [Key]
         public int AreaId { get; set; }

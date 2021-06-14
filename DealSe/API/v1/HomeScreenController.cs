@@ -77,9 +77,9 @@ namespace DealSe.API.v1
             ApiOkResponse apiModel = new ApiOkResponse();
             GetAreaAndStoreTypeListReturnApiFormModel getAreaAndStoreTypeListReturnApiFormModel = new GetAreaAndStoreTypeListReturnApiFormModel();
             var areaList = areaService.GetMany(c => c.Active == true).OrderBy(c => c.Name).ToList();
-            getAreaAndStoreTypeListReturnApiFormModel.areaListModel = mapper.Map<List<Area>, List<AreaListModel>>(areaList);
+            getAreaAndStoreTypeListReturnApiFormModel.areaListModel = mapper.Map<List<Area>, List<AreaListModelReturnApiFormModel>>(areaList);
             var storeList = storeTypeService.GetMany(c => c.Active == true && c.Deleted == false).OrderBy(c => c.Name).ToList();
-            getAreaAndStoreTypeListReturnApiFormModel.storeTypeApiModel = mapper.Map<List<StoreType>, List<StoreTypeListApiModel>>(storeList);
+            getAreaAndStoreTypeListReturnApiFormModel.storeTypeApiModel = mapper.Map<List<StoreType>, List<StoreTypeListReturnApiFormModel>>(storeList);
 
             apiModel = APIStatusHelper.Success(getAreaAndStoreTypeListReturnApiFormModel, DealSeResource.DetailsLoaded.Replace("{0}", "Area And StoreType List"));
             return Ok(apiModel);
@@ -91,24 +91,24 @@ namespace DealSe.API.v1
         [ProducesResponseType(200)]
         [ProducesResponseType(typeof(GetUserHomeScreenDetailsReturnApiFormModel), 200)]
         [HttpPost]
-        public IActionResult GetUserHomeScreenDetails([FromQuery] GetUserHomeScreenDetailsParamsApiFormModel model)
+        public IActionResult GetUserHomeScreenDetails(GetUserHomeScreenDetailsParamsApiFormModel model)
         {
             ApiOkResponse apiModel = new ApiOkResponse();
             if(ModelState.IsValid)
             {
                 GetUserHomeScreenDetailsReturnApiFormModel getUserHomeScreenDetailsReturnApiFormModel = new GetUserHomeScreenDetailsReturnApiFormModel();
                 var baseURL = config.Value.BaseUrl;
-                var areas = areaService.GetAllAreas(0);
+                var areas = areaService.GetAllAreaForAPI(0);
                 var categories = storeTypeService.GetAllStoreTypes(0);
 ;               var nearByPlaces = userService.GetUserNearByPlaces(0, model.UserLatitude, model.UserLogitude, 0 , baseURL);
-                var limitedTimeOffers = GetLimitedTimeOffersSpResult(model.UserLatitude, model.UserLogitude, 0);
+                var limitedTimeOffers = GetLimitedTimeOffers(model.UserLatitude, model.UserLogitude, 0);
                 if (areas.Count() > 0)  
                 {
-                    getUserHomeScreenDetailsReturnApiFormModel.Areas = mapper.Map<List<Service.Common.GetAreaList>, List<AreaListModel>>(areas);
+                    getUserHomeScreenDetailsReturnApiFormModel.Areas = mapper.Map<List<Service.Common.GetAreaListForAPI>, List<AreaListModelReturnApiFormModel>>(areas);
                 }
                 if(categories.Count() > 0)
                 {
-                    getUserHomeScreenDetailsReturnApiFormModel.StoreTypes = mapper.Map<List<Service.Common.GetStoreTypeList>, List<StoreTypeListApiModel>>(categories);
+                    getUserHomeScreenDetailsReturnApiFormModel.StoreTypes = mapper.Map<List<Service.Common.GetStoreTypeList>, List<StoreTypeListReturnApiFormModel>>(categories);
                 }
                 if (nearByPlaces.Count() > 0)
                 {
@@ -128,15 +128,15 @@ namespace DealSe.API.v1
         [Route("GetAreasByPaging")]
         [ProducesResponseType(404)]
         [ProducesResponseType(200)]
-        [ProducesResponseType(typeof(List<AreaListModel>), 200)]
+        [ProducesResponseType(typeof(List<AreaListModelReturnApiFormModel>), 200)]
         [HttpPost]
-        public IActionResult GetAreasByPaging([FromQuery] int pageIndex)
+        public IActionResult GetAreasByPaging(PageIndexApiFormModel pageIndexApiFormModel)
         {
             ApiOkResponse apiModel = new ApiOkResponse();
-            var areas = areaService.GetAllAreas(pageIndex);
+            var areas = areaService.GetAllAreaForAPI(pageIndexApiFormModel.PageIndex);
             if (areas.Count() > 0)
             {
-                var mappedData = mapper.Map<List<Service.Common.GetAreaList>, List<AreaListModel>>(areas);
+                var mappedData = mapper.Map<List<Service.Common.GetAreaListForAPI>, List<AreaListModelReturnApiFormModel>>(areas);
                 apiModel = APIStatusHelper.Success(mappedData, DealSeResource.DetailsLoaded.Replace("{0}", "Areas"));
                 return Ok(apiModel);
             }
@@ -147,15 +147,15 @@ namespace DealSe.API.v1
         [Route("GetCategoriesByPaging")]
         [ProducesResponseType(404)]
         [ProducesResponseType(200)]
-        [ProducesResponseType(typeof(List<StoreTypeListApiModel>), 200)]
+        [ProducesResponseType(typeof(List<StoreTypeListReturnApiFormModel>), 200)]
         [HttpPost]
-        public IActionResult GetCategoriesByPaging([FromQuery] int pageIndex)
+        public IActionResult GetCategoriesByPaging(PageIndexApiFormModel pageIndexApiFormModel)
         {
             ApiOkResponse apiModel = new ApiOkResponse();
-            var categories = storeTypeService.GetAllStoreTypes(pageIndex);
+            var categories = storeTypeService.GetAllStoreTypes(pageIndexApiFormModel.PageIndex);
             if (categories.Count() > 0)
             {
-                var mappedData = mapper.Map<List<Service.Common.GetStoreTypeList>, List<StoreTypeListApiModel>>(categories);
+                var mappedData = mapper.Map<List<Service.Common.GetStoreTypeList>, List<StoreTypeListReturnApiFormModel>>(categories);
                 apiModel = APIStatusHelper.Success(mappedData, DealSeResource.DetailsLoaded.Replace("{0}", "Categories"));
                 return Ok(apiModel);
             }
@@ -163,15 +163,15 @@ namespace DealSe.API.v1
         }
 
         //Get limited time offers by paging API method
-        [Route("GetLimitedTimeOffersByPaging")]
+        [Route("GetLimitedTimeOffersByPagingForUserApp")]
         [ProducesResponseType(404)]
         [ProducesResponseType(200)]
-        [ProducesResponseType(typeof(List<APIModel.GetLimitedTimeOffers>), 200)]
+        [ProducesResponseType(typeof(List<GetLimitedTimeOffersReturnApiFormModel>), 200)]
         [HttpPost]
-        public IActionResult GetLimitedTimeOffersByPagingForUserApp([FromQuery] decimal UserLatitude, decimal UserLongitude, int PageIndex)
+        public IActionResult GetLimitedTimeOffersByPaging(GetLimitedTimeOffersByPagingParamApiModel getLimitedTimeOffersByPagingParamApiModel)
         {
             ApiOkResponse apiModel = new ApiOkResponse();
-            var limitedOffers = GetLimitedTimeOffersSpResult(UserLatitude, UserLongitude, PageIndex);
+            var limitedOffers = GetLimitedTimeOffers(getLimitedTimeOffersByPagingParamApiModel.UserLatitude, getLimitedTimeOffersByPagingParamApiModel.UserLongitude, getLimitedTimeOffersByPagingParamApiModel.PageIndex);
             if(limitedOffers.Count() > 0)
             {
                 apiModel = APIStatusHelper.Success(limitedOffers, DealSeResource.DetailsLoaded.Replace("{0}", "Limited Offers"));
@@ -182,20 +182,20 @@ namespace DealSe.API.v1
 
         //GetLimitedTimeOffers sp result
         [ApiExplorerSettings(IgnoreApi = true)]
-        public List<APIModel.GetLimitedTimeOffers> GetLimitedTimeOffersSpResult(decimal UserLatitude, decimal UserLongitude, int PageIndex)
+        public List<GetLimitedTimeOffersReturnApiFormModel> GetLimitedTimeOffers(decimal userLatitude, decimal userLongitude, int pageIndex)
         {
             int pagesize = 10;
             var baseURL = config.Value.BaseUrl;
             SqlParameter[] parameters = new SqlParameter[4];
-            parameters[0] = new SqlParameter("@UserLatitude", UserLatitude);
-            parameters[1] = new SqlParameter("@UserLongitude", UserLongitude);
-            parameters[2] = new SqlParameter("@PageIndex", PageIndex == 0 ? 1 : PageIndex);
+            parameters[0] = new SqlParameter("@UserLatitude", userLatitude);
+            parameters[1] = new SqlParameter("@UserLongitude", userLongitude);
+            parameters[2] = new SqlParameter("@PageIndex", pageIndex == 0 ? 1 : pageIndex);
             parameters[3] = new SqlParameter("@PageSize", pagesize);
             var spResult = dataContext.GetLimitedTimeOffers.FromSqlRaw("GetLimitedTimeOffers @UserLatitude,@UserLongitude,@PageIndex,@PageSize", parameters).ToList();
-            List<APIModel.GetLimitedTimeOffers> limitedTimeOffers = new List<APIModel.GetLimitedTimeOffers>();
+            List<GetLimitedTimeOffersReturnApiFormModel> limitedTimeOffers = new List<GetLimitedTimeOffersReturnApiFormModel>();
             if(spResult.FirstOrDefault().LimitedTimeOffers!=null)
             {
-                limitedTimeOffers = JsonConvert.DeserializeObject<List<APIModel.GetLimitedTimeOffers>>(spResult.FirstOrDefault().LimitedTimeOffers.ToString());
+                limitedTimeOffers = JsonConvert.DeserializeObject<List<GetLimitedTimeOffersReturnApiFormModel>>(spResult.FirstOrDefault().LimitedTimeOffers.ToString());
                 limitedTimeOffers = limitedTimeOffers.Select(top => 
                 {
                     if (!(string.IsNullOrEmpty(top.Image)))

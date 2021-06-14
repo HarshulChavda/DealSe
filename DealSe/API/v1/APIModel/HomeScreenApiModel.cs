@@ -25,8 +25,8 @@ namespace DealSe.API.v1.APIModel
 
     public class GetAreaAndStoreTypeListReturnApiFormModel
     {
-        public List<AreaListModel> areaListModel { get; set; }
-        public List<StoreTypeListApiModel> storeTypeApiModel { get; set; }
+        public List<AreaListModelReturnApiFormModel> areaListModel { get; set; }
+        public List<StoreTypeListReturnApiFormModel> storeTypeApiModel { get; set; }
     }
 
     public class GetUserHomeScreenDetailsParamsApiFormModel
@@ -39,21 +39,31 @@ namespace DealSe.API.v1.APIModel
 
     public class GetUserHomeScreenDetailsReturnApiFormModel
     {
-        public List<AreaListModel> Areas { get; set; }
-        public List<StoreTypeListApiModel> StoreTypes { get; set; }
+        public List<AreaListModelReturnApiFormModel> Areas { get; set; }
+        public List<StoreTypeListReturnApiFormModel> StoreTypes { get; set; }
         public List<UserNearByPlaces> UserNearByPlaces { get; set; }
-        public List<GetLimitedTimeOffers> LimitedTimeOffers { get; set; }
+        public List<GetLimitedTimeOffersReturnApiFormModel> LimitedTimeOffers { get; set; }
 
         public GetUserHomeScreenDetailsReturnApiFormModel()
         {
-            Areas = new List<AreaListModel>();
-            StoreTypes = new List<StoreTypeListApiModel>();
+            Areas = new List<AreaListModelReturnApiFormModel>();
+            StoreTypes = new List<StoreTypeListReturnApiFormModel>();
             UserNearByPlaces = new List<UserNearByPlaces>();
-            LimitedTimeOffers = new List<GetLimitedTimeOffers>();
+            LimitedTimeOffers = new List<GetLimitedTimeOffersReturnApiFormModel>();
         }
     }
 
-    public class GetLimitedTimeOffers
+    public class GetLimitedTimeOffersByPagingParamApiModel
+    {
+        [Required]
+        public decimal UserLatitude { get; set; }
+        [Required]
+        public decimal UserLongitude { get; set; }
+        [Required]
+        public int PageIndex { get; set; }
+    }
+
+    public class GetLimitedTimeOffersReturnApiFormModel
     {
         [Required]
         public int OfferID { get; set; }

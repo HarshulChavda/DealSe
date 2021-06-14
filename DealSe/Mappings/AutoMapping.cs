@@ -52,13 +52,13 @@ namespace DealSe.Mappings
                .ForMember(dest => dest.DisplayAddedDate, opt => opt.MapFrom(src => src.AddedDate.ToString("dd/MM/yyyy hh:mm tt")));
             CreateMap<GetAllCity, CityViewModel>()
                .ForMember(dest => dest.DisplayAddedDate, opt => opt.MapFrom(src => src.AddedDate.ToString("dd/MM/yyyy hh:mm tt")));
-            CreateMap<GetAllArea, AreaViewModel>()
+            CreateMap<GetAllAreaSPModel, AreaViewModel>()
                .ForMember(dest => dest.DisplayAddedDate, opt => opt.MapFrom(src => src.AddedDate.ToString("dd/MM/yyyy hh:mm tt")));
             CreateMap<UsersSPModel, UserViewModel>()
                 .ForMember(dest => dest.DisplayAddedDate, opt => opt.MapFrom(src => src.AddedDate.ToString("dd/MM/yyyy hh:mm tt")));
-            CreateMap<GetAllStoreType, StoreTypeViewModel>()
+            CreateMap<GetAllStoreTypeSPModel, StoreTypeViewModel>()
                 .ForMember(dest => dest.DisplayAddedDate, opt => opt.MapFrom(src => src.AddedDate.ToString("dd/MM/yyyy hh:mm tt")));
-            CreateMap<GetAllStore, StoreViewModel>()
+            CreateMap<GetAllStoreSPModel, StoreViewModel>()
                 .ForMember(dest => dest.DisplayAddedDate, opt => opt.MapFrom(src => src.AddedDate.ToString("dd/MM/yyyy hh:mm tt")));
             #endregion
 
@@ -76,11 +76,11 @@ namespace DealSe.Mappings
                 .ForMember(dest => dest.offerImagesLists, opt => opt.MapFrom(src => JsonConvert.DeserializeObject<List<OfferImagesList>>(src.OfferImagesList)))
                 .ReverseMap();
             CreateMap<GetUserUsedOfferListByStoreSPModel, GetUserUsedOfferListByStoreReturnApiModel>().ReverseMap();
-            CreateMap<Area, AreaListModel>()
+            CreateMap<Area, AreaListModelReturnApiFormModel>()
                  .ForMember(dest => dest.areaId, opt => opt.MapFrom(src => src.AreaId))
                  .ForMember(dest => dest.areaName, opt => opt.MapFrom(src => src.Name))
                 .ReverseMap();
-            CreateMap<StoreType, StoreTypeListApiModel>()
+            CreateMap<StoreType, StoreTypeListReturnApiFormModel>()
                  .ForMember(dest => dest.storeTypeId, opt => opt.MapFrom(src => src.StoreTypeId))
                  .ForMember(dest => dest.storeTypeName, opt => opt.MapFrom(src => src.Name))
                  .ReverseMap();
@@ -90,8 +90,8 @@ namespace DealSe.Mappings
                   .ForMember(dest => dest.StoreTimes, opt => opt.Ignore())
                   .ForMember(dest => dest.UserNearByPlaces, opt => opt.Ignore()).ReverseMap();
             CreateMap<Service.Common.GetUserNearByPlaces, UserNearByPlaces>().ReverseMap();
-            CreateMap<Service.Common.GetAreaList, AreaListModel>().ReverseMap();
-            CreateMap<Service.Common.GetStoreTypeList, StoreTypeListApiModel>().ReverseMap();
+            CreateMap<Service.Common.GetAreaListForAPI, AreaListModelReturnApiFormModel>().ReverseMap();
+            CreateMap<Service.Common.GetStoreTypeList, StoreTypeListReturnApiFormModel>().ReverseMap();
 			 CreateMap<Store, CheckStoreMobieNumberReturnApiFormModel>().ReverseMap(); 
 			 CreateMap<UserUsedOfferFormModel, UserUsedOffer>().ReverseMap();
             CreateMap<Store, SendStoreRegistrationToastrNotificationHubViewModel>();

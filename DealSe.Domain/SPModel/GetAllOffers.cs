@@ -2,7 +2,7 @@
 
 namespace DealSe.Domain.SPModel
 {
-    public class GetAllOffers
+    public class GetAllOffersSPModel
     {
         [Key]
         public int OfferId { get; set; }

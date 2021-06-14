@@ -30,6 +30,6 @@ namespace DealSe.Service.Interface
         /// </summary>
         /// <param name="PageIndex"></param>
         /// <returns></returns>
-        List<GetAreaList> GetAllAreas(int PageIndex);
+        List<GetAreaListForAPI> GetAllAreaForAPI(int PageIndex);
     }
 }

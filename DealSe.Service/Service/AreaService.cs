@@ -49,17 +49,17 @@ namespace DealSe.Service.Service
         /// </summary>
         /// <param name="PageIndex"></param>
         /// <returns></returns>
-        public List<GetAreaList> GetAllAreas(int PageIndex)
+        public List<GetAreaListForAPI> GetAllAreaForAPI(int PageIndex)
         {
             int pagesize = 10;
             SqlParameter[] parameters = new SqlParameter[2];
             parameters[0] = new SqlParameter("@PageIndex", PageIndex==0 ? 1 : PageIndex);
             parameters[1] = new SqlParameter("@PageSize", pagesize);
             var spResult = dataContext.GetAllAreas.FromSqlRaw("GetAllAreas @PageIndex,@PageSize", parameters).ToList();
-            List<GetAreaList> getAreas = new List<GetAreaList>();
+            List<GetAreaListForAPI> getAreas = new List<GetAreaListForAPI>();
             if(spResult.FirstOrDefault().Areas!=null)
             {
-                getAreas = JsonConvert.DeserializeObject<List<GetAreaList>>(spResult.FirstOrDefault().Areas.ToString());
+                getAreas = JsonConvert.DeserializeObject<List<GetAreaListForAPI>>(spResult.FirstOrDefault().Areas.ToString());
             }
             return getAreas;
         }

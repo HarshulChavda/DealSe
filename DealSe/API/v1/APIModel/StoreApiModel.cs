@@ -35,8 +35,8 @@ namespace DealSe.API.v1.APIModel
         public string About { get; set; }
         public string OldLogo { get; set; }
         public DateTime AddedDate { get; set; }
-        public List<AreaListModel> areaListModel { get; set; }
-        public List<StoreTypeListApiModel> storeTypeApiModel { get; set; }
+        public List<AreaListModelReturnApiFormModel> areaListModel { get; set; }
+        public List<StoreTypeListReturnApiFormModel> storeTypeApiModel { get; set; }
     }
 
     //Add Store Param Api FormModel
@@ -98,8 +98,8 @@ namespace DealSe.API.v1.APIModel
         public string OwnerMobileNo { get; set; }
         public string About { get; set; }
         public DateTime AddedDate { get; set; }
-        public List<AreaListModel> areaListModel { get; set; }
-        public List<StoreTypeListApiModel> storeTypeApiModel { get; set; }
+        public List<AreaListModelReturnApiFormModel> areaListModel { get; set; }
+        public List<StoreTypeListReturnApiFormModel> storeTypeApiModel { get; set; }
     }
 
     //Update Store Param Api FormModel

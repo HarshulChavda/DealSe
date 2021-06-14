@@ -82,7 +82,7 @@ namespace DealSe.Areas.Admin.Controllers
                 parameters[1] = new SqlParameter("@AreaId", areaId);
 
                 var result = dataContext.GetAllStore.FromSqlRaw("GetAllStoreForAdminListing @AreaId,@StoreTypeId", parameters).ToList();
-                var mappedResult = mapper.Map<IEnumerable<GetAllStore>, IEnumerable<StoreViewModel>>(result);
+                var mappedResult = mapper.Map<IEnumerable<GetAllStoreSPModel>, IEnumerable<StoreViewModel>>(result);
                 if (!string.IsNullOrEmpty(param.Search.Value))
                 {
                     var searchvalue = param.Search.Value.ToLower().Trim();

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DealSe.Domain.SPModel
 {
-    public class GetLimitedTimeOffers
+    public class GetLimitedTimeOffersSPModel
     {
         [Key]
         public Int64 SrNo { get; set; }
