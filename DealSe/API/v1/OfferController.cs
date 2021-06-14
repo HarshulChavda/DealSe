@@ -51,7 +51,7 @@ namespace DealSe.API.v1
             this.mapper = mapper;
         }
 
-        [Route("GetOfferList")]
+        [Route("GetOfferListForStoreApp")]
         [ProducesResponseType(404)]
         [ProducesResponseType(200)]
         [HttpPost]
@@ -102,7 +102,7 @@ namespace DealSe.API.v1
             return StatusCode((int)HttpStatusCode.Forbidden, APIStatusHelper.Forbidden("Model not valid"));
         }
 
-        [Route("AddOffer")]
+        [Route("AddOfferForStoreApp")]
         [ProducesResponseType(404)]
         [ProducesResponseType(200)]
         [HttpPost]
@@ -147,7 +147,7 @@ namespace DealSe.API.v1
             
         }
 
-        [Route("UpdateOffer")]
+        [Route("UpdateOfferForStoreApp")]
         [ProducesResponseType(404)]
         [ProducesResponseType(200)]
         [HttpPost]

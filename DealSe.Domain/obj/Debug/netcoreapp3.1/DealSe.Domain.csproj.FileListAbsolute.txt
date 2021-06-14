@@ -45,3 +45,5 @@ D:\Company Running Projects\DealSe\GitHub\DealSe.Domain\obj\Debug\netcoreapp3.1\
 D:\Company Running Projects\DealSe\GitHub\DealSe.Domain\obj\Debug\netcoreapp3.1\DealSe.Domain.dll
 D:\Company Running Projects\DealSe\GitHub\DealSe.Domain\obj\Debug\netcoreapp3.1\DealSe.Domain.pdb
 D:\Company Running Projects\DealSe\GitHub\DealSe.Domain\obj\Debug\netcoreapp3.1\DealSe.Domain.csproj.AssemblyReference.cache
+D:\Company Running Projects\DealSe\GitHub\DealSe.Domain\bin\Debug\netcoreapp3.1\DealSe.Utils.dll
+D:\Company Running Projects\DealSe\GitHub\DealSe.Domain\bin\Debug\netcoreapp3.1\DealSe.Utils.pdb
