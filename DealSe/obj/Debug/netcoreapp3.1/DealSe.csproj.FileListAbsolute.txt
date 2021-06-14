@@ -1516,9 +1516,9 @@ D:\Project\DealSe\GitHub\DealSe\obj\Debug\netcoreapp3.1\DealSe.csproj.CopyComple
 D:\Project\DealSe\GitHub\DealSe\obj\Debug\netcoreapp3.1\DealSe.dll
 D:\Project\DealSe\GitHub\DealSe\obj\Debug\netcoreapp3.1\DealSe.pdb
 D:\Project\DealSe\GitHub\DealSe\obj\Debug\netcoreapp3.1\DealSe.genruntimeconfig.cache
+D:\Company Running Projects\DealSe\GitHub\DealSe\bin\Debug\netcoreapp3.1\web.config
 D:\Company Running Projects\DealSe\GitHub\DealSe\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\Company Running Projects\DealSe\GitHub\DealSe\bin\Debug\netcoreapp3.1\appsettings.json
-D:\Company Running Projects\DealSe\GitHub\DealSe\bin\Debug\netcoreapp3.1\web.config
 D:\Company Running Projects\DealSe\GitHub\DealSe\bin\Debug\netcoreapp3.1\DealSe.exe
 D:\Company Running Projects\DealSe\GitHub\DealSe\bin\Debug\netcoreapp3.1\DealSe.deps.json
 D:\Company Running Projects\DealSe\GitHub\DealSe\bin\Debug\netcoreapp3.1\DealSe.runtimeconfig.json
@@ -1942,6 +1942,7 @@ D:\Company Running Projects\DealSe\GitHub\DealSe\bin\Debug\netcoreapp3.1\DealSe.
 D:\Company Running Projects\DealSe\GitHub\DealSe\bin\Debug\netcoreapp3.1\DealSe.Utils.pdb
 D:\Company Running Projects\DealSe\GitHub\DealSe\bin\Debug\netcoreapp3.1\DealSe.Domain.pdb
 D:\Company Running Projects\DealSe\GitHub\DealSe\bin\Debug\netcoreapp3.1\Dealse.Shared.pdb
+D:\Company Running Projects\DealSe\GitHub\DealSe\obj\Debug\netcoreapp3.1\DealSe.csproj.AssemblyReference.cache
 D:\Company Running Projects\DealSe\GitHub\DealSe\obj\Debug\netcoreapp3.1\DealSe.AssemblyInfoInputs.cache
 D:\Company Running Projects\DealSe\GitHub\DealSe\obj\Debug\netcoreapp3.1\DealSe.AssemblyInfo.cs
 D:\Company Running Projects\DealSe\GitHub\DealSe\obj\Debug\netcoreapp3.1\DealSe.csproj.CoreCompileInputs.cache
@@ -2021,6 +2022,7 @@ D:\Company Running Projects\DealSe\GitHub\DealSe\obj\Debug\netcoreapp3.1\Razor\A
 D:\Company Running Projects\DealSe\GitHub\DealSe\obj\Debug\netcoreapp3.1\Razor\Views\AboutUs\Index.cshtml.g.cs
 D:\Company Running Projects\DealSe\GitHub\DealSe\obj\Debug\netcoreapp3.1\Razor\Views\Error\Index.cshtml.g.cs
 D:\Company Running Projects\DealSe\GitHub\DealSe\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
+D:\Company Running Projects\DealSe\GitHub\DealSe\obj\Debug\netcoreapp3.1\Razor\Views\Home\PrivacyPolicy.cshtml.g.cs
 D:\Company Running Projects\DealSe\GitHub\DealSe\obj\Debug\netcoreapp3.1\Razor\Views\PrivacyPolicy\Index.cshtml.g.cs
 D:\Company Running Projects\DealSe\GitHub\DealSe\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 D:\Company Running Projects\DealSe\GitHub\DealSe\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
@@ -2033,5 +2035,3 @@ D:\Company Running Projects\DealSe\GitHub\DealSe\obj\Debug\netcoreapp3.1\DealSe.
 D:\Company Running Projects\DealSe\GitHub\DealSe\obj\Debug\netcoreapp3.1\DealSe.dll
 D:\Company Running Projects\DealSe\GitHub\DealSe\obj\Debug\netcoreapp3.1\DealSe.pdb
 D:\Company Running Projects\DealSe\GitHub\DealSe\obj\Debug\netcoreapp3.1\DealSe.genruntimeconfig.cache
-D:\Company Running Projects\DealSe\GitHub\DealSe\obj\Debug\netcoreapp3.1\Razor\Views\Home\PrivacyPolicy.cshtml.g.cs
-D:\Company Running Projects\DealSe\GitHub\DealSe\obj\Debug\netcoreapp3.1\DealSe.csproj.AssemblyReference.cache

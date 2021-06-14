@@ -44,7 +44,7 @@ namespace DealSe.Areas.Admin.Controllers
             int start = Convert.ToInt32(param.Start);
             int pagesize = Convert.ToInt32(param.Length);
             var result = dataContext.GetAllStoreType.FromSqlRaw("GetAllStoreTypeForAdminListing").ToList();
-            var mappedResult = mapper.Map<IEnumerable<GetAllStoreType>, IEnumerable<StoreTypeViewModel>>(result);
+            var mappedResult = mapper.Map<IEnumerable<GetAllStoreTypeSPModel>, IEnumerable<StoreTypeViewModel>>(result);
             if (!string.IsNullOrEmpty(param.Search.Value))
             {
                 var searchvalue = param.Search.Value.ToLower().Trim();

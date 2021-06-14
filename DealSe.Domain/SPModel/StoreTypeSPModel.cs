@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DealSe.Domain.SPModel
 {
-    public class GetAllStoreType
+    public class GetAllStoreTypeSPModel
     {
         [Key]
         public int StoreTypeId { get; set; }

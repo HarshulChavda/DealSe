@@ -83,9 +83,9 @@ namespace DealSe.API.v1
                 }
 
                 var areaList = areaService.GetMany(c => c.Active == true).OrderBy(c => c.Name).ToList();
-                checkStoreMobieNumberReturnApiFormModel.areaListModel = mapper.Map<List<Area>, List<AreaListModel>>(areaList);
+                checkStoreMobieNumberReturnApiFormModel.areaListModel = mapper.Map<List<Area>, List<AreaListModelReturnApiFormModel>>(areaList);
                 var storeList = storeTypeService.GetMany(c => c.Active == true && c.Deleted == false).OrderBy(c => c.Name).ToList();
-                checkStoreMobieNumberReturnApiFormModel.storeTypeApiModel = mapper.Map<List<StoreType>, List<StoreTypeListApiModel>>(storeList);
+                checkStoreMobieNumberReturnApiFormModel.storeTypeApiModel = mapper.Map<List<StoreType>, List<StoreTypeListReturnApiFormModel>>(storeList);
                 apiModel = APIStatusHelper.Found(checkStoreMobieNumberReturnApiFormModel, DealSeResource.RecordExists.Replace("{0}", "Store"));
                 return Ok(apiModel);
             }
@@ -140,9 +140,9 @@ namespace DealSe.API.v1
                 addStoreReturnApiFormModel.OldLogo = logo;
 
                 var areaList = areaService.GetMany(c => c.Active == true).OrderBy(c => c.Name).ToList();
-                addStoreReturnApiFormModel.areaListModel = mapper.Map<List<Area>, List<AreaListModel>>(areaList);
+                addStoreReturnApiFormModel.areaListModel = mapper.Map<List<Area>, List<AreaListModelReturnApiFormModel>>(areaList);
                 var storeList = storeTypeService.GetMany(c => c.Active == true && c.Deleted == false).OrderBy(c => c.Name).ToList();
-                addStoreReturnApiFormModel.storeTypeApiModel = mapper.Map<List<StoreType>, List<StoreTypeListApiModel>>(storeList);
+                addStoreReturnApiFormModel.storeTypeApiModel = mapper.Map<List<StoreType>, List<StoreTypeListReturnApiFormModel>>(storeList);
 
                 apiModel = APIStatusHelper.Success(addStoreReturnApiFormModel, DealSeResource.InsertMessage.Replace("{0}", "Store"));
 
@@ -213,9 +213,9 @@ namespace DealSe.API.v1
                 addStoreReturnApiFormModel.OldLogo = logo;
 
                 var areaList = areaService.GetMany(c => c.Active == true).OrderBy(c => c.Name).ToList();
-                addStoreReturnApiFormModel.areaListModel = mapper.Map<List<Area>, List<AreaListModel>>(areaList);
+                addStoreReturnApiFormModel.areaListModel = mapper.Map<List<Area>, List<AreaListModelReturnApiFormModel>>(areaList);
                 var storeList = storeTypeService.GetMany(c => c.Active == true && c.Deleted == false).OrderBy(c => c.Name).ToList();
-                addStoreReturnApiFormModel.storeTypeApiModel = mapper.Map<List<StoreType>, List<StoreTypeListApiModel>>(storeList);
+                addStoreReturnApiFormModel.storeTypeApiModel = mapper.Map<List<StoreType>, List<StoreTypeListReturnApiFormModel>>(storeList);
                 apiModel = APIStatusHelper.Success(addStoreReturnApiFormModel, DealSeResource.UpdateMessage.Replace("{0}", "Store"));
                 return Ok(apiModel);
             }

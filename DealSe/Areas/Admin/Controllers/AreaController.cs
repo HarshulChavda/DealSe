@@ -65,7 +65,7 @@ namespace DealSe.Areas.Admin.Controllers
                 parameters[0] = new SqlParameter("@CityId", cityId);
 
                 var result = dataContext.GetAllArea.FromSqlRaw("GetAllAreaForAdminListing @CityId", parameters).ToList();
-                var mappedResult = mapper.Map<IEnumerable<GetAllArea>, IEnumerable<AreaViewModel>>(result);
+                var mappedResult = mapper.Map<IEnumerable<GetAllAreaSPModel>, IEnumerable<AreaViewModel>>(result);
                 if (!string.IsNullOrEmpty(param.Search.Value))
                 {
                     var searchvalue = param.Search.Value.ToLower().Trim();
