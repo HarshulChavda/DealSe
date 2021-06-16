@@ -7,6 +7,7 @@ namespace DealSe.Domain.SPModel
     {
         [Key]
         public int OfferID { get; set; }
+        public int StoreId { get; set; }
         public string OfferName { get; set; }
         public string StoreName { get; set; }
         public string StoreAddress { get; set; }

@@ -365,7 +365,7 @@ namespace DealSe.API.v1
             return StatusCode((int)HttpStatusCode.Forbidden, APIStatusHelper.Forbidden("Model not valid"));
         }
 
-        //Get near by places by Paging
+        //Get near by places by paging
         [Route("GetUserOfferDetailsNearByPlacesByPagingForUserApp")]
         [ProducesResponseType(404)]
         [ProducesResponseType(200)]
@@ -384,5 +384,16 @@ namespace DealSe.API.v1
             }
             return NotFound(APIStatusHelper.NotFound());
         }
+
+        //Generate QR code on redeem button
+        //[Route("GenerateQRCodeForUserApp")]
+        //[ProducesResponseType(404)]
+        //[ProducesResponseType(200)]
+        //[ProducesResponseType(typeof(List<UserNearByPlaces>), 200)]
+        //[HttpPost]
+        //public IActionResult GenerateQRCode()
+        //{
+
+        //}
     }
 }
