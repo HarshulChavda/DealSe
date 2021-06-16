@@ -38,14 +38,16 @@ namespace DealSe.API.v1
         private readonly DealSeContext dataContext;
         private readonly IOptions<CustomSettings> config;
         private IWebHostEnvironment hostingEnvironment;
+        private readonly INotificationService notificationService;
 
-        public UserController(IUserService userService, IMapper mapper, DealSeContext dataContext, IOptions<CustomSettings> config, IWebHostEnvironment hostingEnvironment)
+        public UserController(IUserService userService, IMapper mapper, DealSeContext dataContext, IOptions<CustomSettings> config, IWebHostEnvironment hostingEnvironment, INotificationService notificationService)
         {
             this.userService = userService;
             this.mapper = mapper;
             this.dataContext = dataContext;
             this.config = config;
             this.hostingEnvironment = hostingEnvironment;
+            this.notificationService = notificationService;
         }
 
         //User Login API
@@ -143,6 +145,13 @@ namespace DealSe.API.v1
 
                     userApiModel.UserID = user.UserId;
                     apiModel = APIStatusHelper.Found(userApiModel, DealSeResource.RecordExists.Replace("{0}", "User"));
+
+                    //Send mobile notification
+                    string notificationHeading = "Welcome, DealSe";
+                    string notificationBody = "Let's Start Exploring Nearby Best Deals.";
+                    string userNotificationCount = "0";
+                    notificationService.SendMobileNotification((int)UserDeviceType.Android, "", model.DeviceID, notificationHeading, notificationBody, userNotificationCount);
+
                     return Ok(apiModel);
                 }
                 return StatusCode((int)HttpStatusCode.Forbidden, APIStatusHelper.Forbidden("Model not valid"));

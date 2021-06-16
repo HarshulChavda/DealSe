@@ -19,12 +19,7 @@ namespace DealSe.Service.Service
 
         public void SendMobileNotification(int userDeviceType,string notificationID,string deviceID, string notificationHeading, string notificationBody, string userNotificationCount)
         {
-            userDeviceType = 1;
             notificationID = "1";
-            notificationHeading = "test late yaar";
-            notificationBody = "test late yaar hotu hoy";
-            userNotificationCount = "2";
-
             string fcmAndroidServerKey = _configuration["CustomSettings:FCMServerKey"];
             string fcmAndroidSenderId = _configuration["CustomSettings:FCMSenderId"];
             string fcmIOSServerKey = _configuration["CustomSettings:FCMIOSServerKey"];

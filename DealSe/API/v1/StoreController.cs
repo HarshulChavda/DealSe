@@ -153,7 +153,11 @@ namespace DealSe.API.v1
                 sendStoreRegistrationToastrNotificationHubDetails.AreaName = areaDetails.Name;
                 await notificationUserHubContext.Clients.Groups("group_1").SendAsync("SendStoreRegistrationToastrNotificationToAdmin", sendStoreRegistrationToastrNotificationHubDetails);
 
-                notificationService.SendMobileNotification((int)UserDeviceType.Android,"",model.DeviceID, "","","2");
+                //Send mobile notification
+                string notificationHeading = "Welcome, DealSe";
+                string notificationBody = "Let's Grow Your Business Together.";
+                string userNotificationCount = "0";
+                notificationService.SendMobileNotification((int)UserDeviceType.Android,"",model.DeviceID, notificationHeading, notificationBody, userNotificationCount);
 
                 return Ok(apiModel);
             }
