@@ -83,24 +83,23 @@ namespace DealSe.Service.Service
         }
 
         /// <summary>
-        /// Create user
+        /// Get User Near By Places
         /// </summary>
-        /// <param name="OfferID"></param>
-        /// <param name="CategoryID"></param>
-        /// <param name="UserLatitude"></param>
-        /// <param name="UserLongitude"></param>
-        /// <param name="PageIndex"></param>
+        /// <param name="categoryID"></param>
+        /// <param name="userLatitude"></param>
+        /// <param name="userLongitude"></param>
+        /// <param name="pageIndex"></param>
         /// <returns></returns>
-        public List<GetUserNearByPlaces> GetUserNearByPlaces(int CategoryID, decimal UserLatitude, decimal UserLongitude, int PageIndex,string baseURL)
+        public List<GetUserNearByPlaces> GetUserNearByPlaces(int categoryID, decimal userLatitude, decimal userLongitude, int pageIndex,string baseURL)
         {
             int pagesize = 10;
             SqlParameter[] parameters = new SqlParameter[5];
-            parameters[0] = new SqlParameter("@CateGoryID", CategoryID);
-            parameters[1] = new SqlParameter("@UserLatitude", UserLatitude);
-            parameters[2] = new SqlParameter("@UserLongitude", UserLongitude);
-            parameters[3] = new SqlParameter("@PageIndex", PageIndex == 0 ? 1 : PageIndex);
+            parameters[0] = new SqlParameter("@CategoryID", categoryID);
+            parameters[1] = new SqlParameter("@UserLatitude", userLatitude);
+            parameters[2] = new SqlParameter("@UserLongitude", userLongitude);
+            parameters[3] = new SqlParameter("@PageIndex", pageIndex == 0 ? 1 : pageIndex);
             parameters[4] = new SqlParameter("@PageSize", pagesize);
-            var spResult = dataContext.GetUserNearByPlaces.FromSqlRaw("GetUserNearByPlaces @CateGoryID,@UserLatitude,@UserLongitude,@PageIndex,@PageSize", parameters).ToList();
+            var spResult = dataContext.GetUserNearByPlaces.FromSqlRaw("GetUserNearByPlaces @CategoryID,@UserLatitude,@UserLongitude,@PageIndex,@PageSize", parameters).ToList();
             List<GetUserNearByPlaces> nearByPlaces = new List<GetUserNearByPlaces>();
             if (spResult.FirstOrDefault().UserNearByPlaces != null)
             {
