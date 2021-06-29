@@ -100,7 +100,7 @@ namespace DealSe.API.v1
                 var baseURL = config.Value.BaseUrl;
                 var areas = areaService.GetAllAreaForAPI(0);
                 var categories = storeTypeService.GetAllStoreTypes(0);
-;               var nearByPlaces = userService.GetUserNearByPlaces(0, model.UserLatitude, model.UserLogitude, 0 , baseURL);
+;               var nearByPlaces = userService.GetUserNearByPlaces(model.StoreTypeId, model.UserLatitude, model.UserLogitude, 0 , baseURL);
                 var limitedTimeOffers = GetLimitedTimeOffers(model.UserLatitude, model.UserLogitude, 0);
                 if (areas.Count() > 0)  
                 {
