@@ -365,24 +365,35 @@ namespace DealSe.API.v1
             return StatusCode((int)HttpStatusCode.Forbidden, APIStatusHelper.Forbidden("Model not valid"));
         }
 
-        //Get near by places by Paging
-        [Route("GetUserOfferDetailsNearByPlacesByPagingForUserApp")]
-        [ProducesResponseType(404)]
-        [ProducesResponseType(200)]
-        [ProducesResponseType(typeof(List<UserNearByPlaces>), 200)]
-        [HttpPost]
-        public IActionResult GetUserOfferDetailsNearByPlacesByPaging(GetUserNearByPlacesByPagingParamAPIModel model)
-        {
-            var baseURL = config.Value.BaseUrl;
-            ApiOkResponse apiOkResponse = new ApiOkResponse();
-            var nearByPlaces = userService.GetUserNearByPlaces(model.CategoryID, model.UserLatitude, model.UserLongitude, model.PageIndex, baseURL);
-            if (nearByPlaces.Count() > 0)
-            {
-                var mappedData = mapper.Map<List<Service.Common.GetUserNearByPlaces>, List<UserNearByPlaces>>(nearByPlaces);
-                apiOkResponse = APIStatusHelper.Success(mappedData, DealSeResource.DetailsLoaded.Replace("{0}", "User near by places"));
-                return Ok(apiOkResponse);
-            }
-            return NotFound(APIStatusHelper.NotFound());
-        }
+        //Get near by places by paging
+        //[Route("GetUserOfferDetailsNearByPlacesByPagingForUserApp")]
+        //[ProducesResponseType(404)]
+        //[ProducesResponseType(200)]
+        //[ProducesResponseType(typeof(List<UserNearByPlaces>), 200)]
+        //[HttpPost]
+        //public IActionResult GetUserOfferDetailsNearByPlacesByPaging(GetUserNearByPlacesByPagingParamAPIModel model)
+        //{
+        //    var baseURL = config.Value.BaseUrl;
+        //    ApiOkResponse apiOkResponse = new ApiOkResponse();
+        //    var nearByPlaces = userService.GetUserNearByPlaces(model.AreaId, model.CategoryID, model.UserLatitude, model.UserLongitude, model.PageIndex, baseURL);
+        //    if (nearByPlaces.Count() > 0)
+        //    {
+        //        var mappedData = mapper.Map<List<Service.Common.GetUserNearByPlaces>, List<UserNearByPlaces>>(nearByPlaces);
+        //        apiOkResponse = APIStatusHelper.Success(mappedData, DealSeResource.DetailsLoaded.Replace("{0}", "User near by places"));
+        //        return Ok(apiOkResponse);
+        //    }
+        //    return NotFound(APIStatusHelper.NotFound());
+        //}
+
+        //Generate QR code on redeem button
+        //[Route("GenerateQRCodeForUserApp")]
+        //[ProducesResponseType(404)]
+        //[ProducesResponseType(200)]
+        //[ProducesResponseType(typeof(List<UserNearByPlaces>), 200)]
+        //[HttpPost]
+        //public IActionResult GenerateQRCode()
+        //{
+
+        //}
     }
 }

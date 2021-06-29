@@ -60,6 +60,7 @@ namespace DealSe.API.v1.APIModel
     public class GetOfferDetailsReturnAPIModel
     {
         public int OfferID { get; set; }
+        public int StoreId { get; set; }
         public List<OfferImages> OfferImages { get; set; }
         public string OfferName { get; set; }
         public string StoreName { get; set; }
@@ -193,5 +194,13 @@ namespace DealSe.API.v1.APIModel
         public string Address2 { get; set; }
         public string Address3 { get; set; }
         public string Photo { get; set; }
+    }
+
+    public class GenerateQRCodeParamAPIFormModel
+    {
+        [Required]
+        public int UserId { get; set; }
+        [Required]
+        public int OfferId { get; set; }
     }
 }

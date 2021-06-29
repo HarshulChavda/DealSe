@@ -50,13 +50,13 @@ namespace DealSe.Service.Interface
         /// <summary>
         /// Create user
         /// </summary>
-        /// <param name="CategoryID"></param>
-        /// <param name="UserLatitude"></param>
-        /// <param name="UserLongitude"></param>
-        /// <param name="PageIndex"></param>
+        /// <param name="categoryID"></param>
+        /// <param name="userLatitude"></param>
+        /// <param name="userLongitude"></param>
+        /// <param name="pageIndex"></param>
         /// <param name="baseURL"></param>
         /// <returns></returns>
-        List<GetUserNearByPlaces> GetUserNearByPlaces(int CategoryID, decimal UserLatitude, decimal UserLongitude, int PageIndex, string baseURL);
+        List<GetUserNearByPlaces> GetUserNearByPlaces(int categoryID, decimal userLatitude, decimal userLongitude, int pageIndex, string baseURL);
 
         /// <summary>
         /// Get user

@@ -230,7 +230,7 @@ namespace DealSe.API.v1
         [ProducesResponseType(404)]
         [ProducesResponseType(200)]
         [HttpPost]
-        public async Task<IActionResult> ScanUserOffer(UserUsedOfferFormModel model)
+        public async Task<IActionResult> ScanUserOffer(UserUsedOfferParamApiFormModel model)
         {
             ApiOkResponse apiModel = new ApiOkResponse();
             if (ModelState.IsValid)
@@ -247,7 +247,7 @@ namespace DealSe.API.v1
                     apiModel = APIStatusHelper.Found(null, "Already used offer");
                     return Ok(apiModel);
                 }
-                var mappedResult = mapper.Map<UserUsedOfferFormModel, UserUsedOffer>(model);
+                var mappedResult = mapper.Map<UserUsedOfferParamApiFormModel, UserUsedOffer>(model);
                 mappedResult.Active = true;
                 mappedResult.IsRedeem = true;
                 mappedResult.AddedDate = DateTime.Now;

@@ -31,9 +31,8 @@ namespace DealSe.API.v1.APIModel
 
     public class GetUserHomeScreenDetailsParamsApiFormModel
     {
-        [Required]
+        public int StoreTypeId { get; set; }
         public decimal UserLatitude { get; set; }
-        [Required]
         public decimal UserLogitude { get; set; }
     }
 

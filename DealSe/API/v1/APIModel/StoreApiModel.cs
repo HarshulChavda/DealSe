@@ -25,9 +25,8 @@ namespace DealSe.API.v1.APIModel
         public string Email { get; set; }
         public string MobileNo1 { get; set; }
         public string MobileNo2 { get; set; }
-        public string Address1 { get; set; }
-        public string Address2 { get; set; }
-        public string Address3 { get; set; }
+        public string Address { get; set; }
+        public string DeviceID { get; set; }
         public decimal Latitude { get; set; }
         public decimal Longitude { get; set; }
         public string OwnerName { get; set; }
@@ -142,7 +141,7 @@ namespace DealSe.API.v1.APIModel
         public DateTime AddedDate { get; set; }
     }
 
-    public class UserUsedOfferFormModel
+    public class UserUsedOfferParamApiFormModel
     {
         public int UserUsedOfferId { get; set; }
         public int UserId { get; set; }
